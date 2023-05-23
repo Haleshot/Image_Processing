@@ -100,8 +100,8 @@ class Ui_Dialog_4(object):
             print("The new size of the image is ", m, " x ", n)
 
 
-            cv2.imwrite(r"Image_Processing\All_Project_Files\Final_Project_Files\Cam_Media\Blurred_Images\Blurred_Image.png", blurred_image)
-            Downsized_File_Name = r"Image_Processing\All_Project_Files\Final_Project_Files\Cam_Media\Blurred_Images\Blurred_Image.png"
+            cv2.imwrite(r"All_Project_Files\Final_Project_Files\Cam_Media\Blurred_Images\Blurred_Image.png", blurred_image)
+            Downsized_File_Name = r"All_Project_Files\Final_Project_Files\Cam_Media\Blurred_Images\Blurred_Image.png"
             self.label_2.setPixmap(QPixmap(Downsized_File_Name))
 
 

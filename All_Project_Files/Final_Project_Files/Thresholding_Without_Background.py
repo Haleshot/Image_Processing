@@ -135,8 +135,8 @@ class Ui_Dialog_2(object):
             m, n= threshold_image.shape
             print("The new size of the image is ", m, " x ", n)
 
-            cv2.imwrite(r"Image_Processing\All_Project_Files\Final_Project_Files\Cam_Media\Thresholding_Without\Threshold_Without_Image.png", threshold_image)
-            Thresholding_Without_File_Name = r"Image_Processing\All_Project_Files\Final_Project_Files\Cam_Media\Thresholding_Without\Threshold_Without_Image.png"
+            cv2.imwrite(r"All_Project_Files\Final_Project_Files\Cam_Media\Thresholding_Without\Threshold_Without_Image.png", threshold_image)
+            Thresholding_Without_File_Name = r"All_Project_Files\Final_Project_Files\Cam_Media\Thresholding_Without\Threshold_Without_Image.png"
             self.label_2.setPixmap(QPixmap(Thresholding_Without_File_Name))
 
 
