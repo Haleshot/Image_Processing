@@ -71,8 +71,8 @@ class Ui_Background(object):
         img = cv2.imread(file_name)
         maximum = np.amax(img)
         negative_img = maximum - img
-        cv2.imwrite(r"Image_Processing\All_Project_Files\Final_Project_Files\Cam_Media\Negative_Images\Negative_Image.png", negative_img)
-        Negative_File_Name = r"Image_Processing\All_Project_Files\Final_Project_Files\Cam_Media\Negative_Images\Negative_Image.png"
+        cv2.imwrite(r"All_Project_Files\Final_Project_Files\Cam_Media\Negative_Images\Negative_Image.png", negative_img)
+        Negative_File_Name = r"All_Project_Files\Final_Project_Files\Cam_Media\Negative_Images\Negative_Image.png"
         self.label_2.setPixmap(QPixmap(Negative_File_Name))
 
 
