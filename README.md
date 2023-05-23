@@ -491,7 +491,7 @@ Simple terms:
 
 <p align="justify"> 
 
-  https://media.tenor.com/12DuAMmK3dwAAAAC/sofakingdoge.gif
+  <div class="tenor-gif-embed" data-postid="22441608" data-share-method="host" data-aspect-ratio="1" data-width="100%"><a href="https://tenor.com/view/sofakingdoge-gif-22441608">Sofakingdoge GIF</a>from <a href="https://tenor.com/search/sofakingdoge-gifs">Sofakingdoge GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
 
 </p>
 <hr>
