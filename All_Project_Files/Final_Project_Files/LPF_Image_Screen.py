@@ -121,8 +121,8 @@ class Ui_Dialog_5(object):
             print("The new size of the image is ", m, " x ", n)
 
             
-            cv2.imwrite(r"Image_Processing\All_Project_Files\Final_Project_Files\Cam_Media\LPF_Img\LPF_Image.png", LPF_Image)
-            LPF_Image_File_Name = r"Image_Processing\All_Project_Files\Final_Project_Files\Cam_Media\LPF_Img\LPF_Image.png"
+            cv2.imwrite(r"All_Project_Files\Final_Project_Files\Cam_Media\LPF_Img\LPF_Image.png", LPF_Image)
+            LPF_Image_File_Name = r"All_Project_Files\Final_Project_Files\Cam_Media\LPF_Img\LPF_Image.png"
             self.label_2.setPixmap(QPixmap(LPF_Image_File_Name))
 
 

@@ -94,8 +94,8 @@ class Ui_Dialog_6(object):
         print("The new size of the image is ", m, " x ", n)
 
         
-        cv2.imwrite(r"Image_Processing\All_Project_Files\Final_Project_Files\Cam_Media\Gaussian_Image\Gaussian_Image.png", Gaussian_Image)
-        Gaussian_Image_File_Name = r"Image_Processing\All_Project_Files\Final_Project_Files\Cam_Media\Gaussian_Image\Gaussian_Image.png"
+        cv2.imwrite(r"All_Project_Files\Final_Project_Files\Cam_Media\Gaussian_Image\Gaussian_Image.png", Gaussian_Image)
+        Gaussian_Image_File_Name = r"All_Project_Files\Final_Project_Files\Cam_Media\Gaussian_Image\Gaussian_Image.png"
         self.label_2.setPixmap(QPixmap(Gaussian_Image_File_Name))
 
 
