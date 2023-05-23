@@ -32,13 +32,13 @@ Refer to the following articles on the basics of Git and GitHub and can also con
 **2.** Clone the forked repository. Open terminal and type:
 
 ```bash
-git clone https://github.com/<your-github-username>/Projects.git
+git clone https://github.com/<your-github-username>/Image_Processing.git
 ```
 
 **3.** Navigate to the project directory.
 
 ```bash
-cd Projects
+cd Image_Processing
 ```
 
 **4.** Make a feature branch
