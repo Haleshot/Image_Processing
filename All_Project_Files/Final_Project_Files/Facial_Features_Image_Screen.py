@@ -63,8 +63,8 @@ class Ui_Dialog_7(object):
         
         
         # Load the classifier
-        face_cascade = cv2.CascadeClassifier("Image_Processing\All_Project_Files\haarcascade_frontalface_default.xml")
-        eye_cascade = cv2.CascadeClassifier("Image_Processing\All_Project_Files\haarcascade_eye.xml")
+        face_cascade = cv2.CascadeClassifier("All_Project_Files\haarcascade_frontalface_default.xml")
+        eye_cascade = cv2.CascadeClassifier("All_Project_Files\haarcascade_eye.xml")
 
 
         self.label_5.setText("")
