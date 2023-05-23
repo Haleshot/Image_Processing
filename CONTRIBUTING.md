@@ -17,7 +17,7 @@ Refer to the following articles on the basics of Git and GitHub and can also con
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.png?v=103)](https://github.com/ellerbrock/open-source-badges/)
 
-- Take a look at the Existing [Issues](https://github.com/Image_Processing/issues) or create your own Issues!
+- Take a look at the Existing [Issues](https://github.com/Haleshot/Image_Processing/issues) or create your own Issues!
 - Wait for the Issue to be assigned to you after which you can start working on it.
 - Fork the Repo and create a Branch for any Issue that you are working upon.
 - Read the [Code of Conduct](https://github.com/Haleshot/Image_Processing/blob/main/CODE_OF_CONDUCT.md)
