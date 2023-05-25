@@ -488,7 +488,13 @@ Simple terms:
 <!-- Video Demo -->
 <h2 id="Video Demo"> Video Demo </h2>
 
-![Work_In_Progress](https://media.tenor.com/hB9OTbewrikAAAAi/work-work-in-progress.gif)
+<p align="center">
+
+
+<img src="https://media.tenor.com/hB9OTbewrikAAAAi/work-work-in-progress.gif" width="200" height="300" />
+
+</p>
+
 <hr>
 
 
