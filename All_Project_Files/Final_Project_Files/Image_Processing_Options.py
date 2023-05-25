@@ -10,7 +10,7 @@ from PyQt5.QtWidgets import QFileDialog
 
 # import files of various UI pages used in the Project (Workflow)
 from Negative_Image_Screen import Ui_Background
-from Down_Sampling_Image_Screen import Ui_Dialog
+from Test_Down_Sampling_Image_Screen import Ui_Dialog
 from Up_Sampling_Image_Screen import Ui_Dialog_1
 from Thresholding_Without_Background import Ui_Dialog_2
 from Thresholding_With_Background import Ui_Dialog_3
