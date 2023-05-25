@@ -485,7 +485,6 @@ Simple terms:
 
 
 
-<!-- 
 <!-- Video Demo -->
 <h2 id="Video Demo"> Video Demo </h2>
 
