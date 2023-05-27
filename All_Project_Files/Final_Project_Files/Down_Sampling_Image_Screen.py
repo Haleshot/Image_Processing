@@ -41,11 +41,19 @@ class Ui_Dialog(object):
         self.Open_Image_Button = QtWidgets.QPushButton(Dialog)
         self.Open_Image_Button.setGeometry(QtCore.QRect(70, 620, 401, 81))
         self.Open_Image_Button.setObjectName("Open_Image_Button")
+
         self.label = QtWidgets.QLabel(Dialog)
         self.label.setGeometry(QtCore.QRect(10, 20, 571, 561))
         self.label.setText("")
         self.label.setAlignment(QtCore.Qt.AlignCenter)
         self.label.setObjectName("label")
+        self.label.setBackgroundRole(QPalette.Base)
+        self.label.setSizePolicy(QSizePolicy.Ignored, QSizePolicy.Ignored)
+        self.label.setScaledContents(True)
+
+
+
+
         self.label_3 = QtWidgets.QLabel(Dialog)
         self.label_3.setGeometry(QtCore.QRect(590, 260, 61, 31))
         self.label_3.setStyleSheet("font: 22pt \"MS Shell Dlg 2\";")
@@ -68,15 +76,6 @@ class Ui_Dialog(object):
         self.label_5.setObjectName("label_5")        
 
 
-        self.scroll_area = QScrollArea()  
-        # setting the background color of the scroll bar to display the image using the setBackgroundRole() method and QPalette class  
-        self.scroll_area.setBackgroundRole(QPalette.Dark)  
-        # setting the scrolling area to the image label using the setWidget() method  
-        self.scroll_area.setWidget(self.label)  
-        # setting the visibility of the scrolling area with the help of the setVisible() method  
-        self.scroll_area.setVisible(False)  
-
-
 
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
@@ -91,9 +90,7 @@ class Ui_Dialog(object):
 
         self.Open_Image_Button.clicked.connect(self.File_Select)
         
-          
-        # setting the central widget to the scroll area using the setCentral Widget() method  
-        # self.setCentralWidget(self.scroll_area)  
+
 
 
 
