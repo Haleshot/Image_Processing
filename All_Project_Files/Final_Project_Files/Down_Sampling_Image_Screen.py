@@ -66,6 +66,11 @@ class Ui_Dialog(object):
         self.label_5.setText("")
         self.label_5.setObjectName("label_5")
 
+
+        
+
+
+
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
