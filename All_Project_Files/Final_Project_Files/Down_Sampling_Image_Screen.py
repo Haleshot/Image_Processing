@@ -19,7 +19,7 @@ from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QDialog, QApplication, QWidget, QStackedWidget, QComboBox, QPushButton, QVBoxLayout, QLabel
 from PyQt5.QtWidgets import QApplication, QLabel, QSizePolicy, QScrollArea, QMessageBox, QMainWindow, QMenu, QAction, qApp, QFileDialog, QToolBar, QMenuBar  
 from PyQt5.QtGui import QPixmap
-from PyQt5.QtWidgets import QFileDialog
+from PyQt5.QtWidgets import QFileDialog, QHBoxLayout
 import cv2
 
 
@@ -50,7 +50,6 @@ class Ui_Dialog(object):
         self.label.setBackgroundRole(QPalette.Base)
         self.label.setSizePolicy(QSizePolicy.Ignored, QSizePolicy.Ignored)
         self.label.setScaledContents(True)
-
 
 
 
@@ -109,7 +108,7 @@ class Ui_Dialog(object):
             Down_Sampling_Value = int(self.lineEdit.text())
             file_name, _ = QFileDialog.getOpenFileName(None, 'Open Image File', r"<Default dir>", "Image files (*.jpg *.jpeg *.gif *.png)")
             self.label.setPixmap(QPixmap(file_name))
-            self.scroll_area.setVisible(True) 
+
             img = cv2.imread(file_name)
             m, n, c = img.shape
             print("The original size of the image is ", m, " x ", n)
