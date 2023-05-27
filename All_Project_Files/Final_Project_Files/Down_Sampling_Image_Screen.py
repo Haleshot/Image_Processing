@@ -17,6 +17,7 @@ from PyQt5.QtCore import *
 from PyQt5.uic import loadUi
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QDialog, QApplication, QWidget, QStackedWidget, QComboBox, QPushButton, QVBoxLayout, QLabel
+from PyQt5.QtWidgets import QApplication, QLabel, QSizePolicy, QScrollArea, QMessageBox, QMainWindow, QMenu, QAction, qApp, QFileDialog, QToolBar, QMenuBar  
 from PyQt5.QtGui import QPixmap
 from PyQt5.QtWidgets import QFileDialog
 import cv2
@@ -67,6 +68,15 @@ class Ui_Dialog(object):
         self.label_5.setObjectName("label_5")
 
 
+        # creating an object of the QScrollArea class to display the scroll bar  
+        self.scroll_area = QScrollArea()  
+        # setting the background color of the scroll bar to display the image using the setBackgroundRole() method and QPalette class  
+        self.scroll_area.setBackgroundRole(QPalette.Dark)  
+        # setting the scrolling area to the image label using the setWidget() method  
+        self.scroll_area.setWidget(self.label)  
+        # setting the visibility of the scrolling area with the help of the setVisible() method  
+        self.scroll_area.setVisible(False)  
+  
         
 
 
@@ -83,6 +93,8 @@ class Ui_Dialog(object):
         self.lineEdit.setPlaceholderText(_translate("Dialog", "Enter Downsampling Value..."))
 
         self.Open_Image_Button.clicked.connect(self.File_Select)
+        # setting the central widget to the scroll area using the setCentral Widget() method  
+        # self.setCentralWidget(self.scroll_area)
         
 
 
