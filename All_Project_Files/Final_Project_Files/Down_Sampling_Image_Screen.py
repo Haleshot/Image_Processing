@@ -93,8 +93,7 @@ class Ui_Dialog(object):
         self.lineEdit.setPlaceholderText(_translate("Dialog", "Enter Downsampling Value..."))
 
         self.Open_Image_Button.clicked.connect(self.File_Select)
-        # setting the central widget to the scroll area using the setCentral Widget() method  
-        # self.setCentralWidget(self.scroll_area)
+        
         
 
 
