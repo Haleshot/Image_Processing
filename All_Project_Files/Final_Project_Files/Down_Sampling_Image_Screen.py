@@ -65,19 +65,7 @@ class Ui_Dialog(object):
         self.label_5.setGeometry(QtCore.QRect(410, 730, 581, 41))
         self.label_5.setStyleSheet("color: rgb(255, 0, 0);")
         self.label_5.setText("")
-        self.label_5.setObjectName("label_5")
-
-
-        # creating an object of the QScrollArea class to display the scroll bar  
-        self.scroll_area = QScrollArea()  
-        # setting the background color of the scroll bar to display the image using the setBackgroundRole() method and QPalette class  
-        self.scroll_area.setBackgroundRole(QPalette.Dark)  
-        # setting the scrolling area to the image label using the setWidget() method  
-        self.scroll_area.setWidget(self.label)  
-        # setting the visibility of the scrolling area with the help of the setVisible() method  
-        self.scroll_area.setVisible(False)  
-  
-        
+        self.label_5.setObjectName("label_5")        
 
 
 
