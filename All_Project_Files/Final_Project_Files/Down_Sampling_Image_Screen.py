@@ -68,6 +68,15 @@ class Ui_Dialog(object):
         self.label_5.setObjectName("label_5")        
 
 
+        self.scroll_area = QScrollArea()  
+        # setting the background color of the scroll bar to display the image using the setBackgroundRole() method and QPalette class  
+        self.scroll_area.setBackgroundRole(QPalette.Dark)  
+        # setting the scrolling area to the image label using the setWidget() method  
+        self.scroll_area.setWidget(self.label)  
+        # setting the visibility of the scrolling area with the help of the setVisible() method  
+        self.scroll_area.setVisible(False)  
+
+
 
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
@@ -82,7 +91,9 @@ class Ui_Dialog(object):
 
         self.Open_Image_Button.clicked.connect(self.File_Select)
         
-        
+          
+        # setting the central widget to the scroll area using the setCentral Widget() method  
+        # self.setCentralWidget(self.scroll_area)  
 
 
 
@@ -101,6 +112,7 @@ class Ui_Dialog(object):
             Down_Sampling_Value = int(self.lineEdit.text())
             file_name, _ = QFileDialog.getOpenFileName(None, 'Open Image File', r"<Default dir>", "Image files (*.jpg *.jpeg *.gif *.png)")
             self.label.setPixmap(QPixmap(file_name))
+            self.scroll_area.setVisible(True) 
             img = cv2.imread(file_name)
             m, n, c = img.shape
             print("The original size of the image is ", m, " x ", n)
