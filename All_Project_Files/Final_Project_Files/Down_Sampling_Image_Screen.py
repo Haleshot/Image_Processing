@@ -130,7 +130,11 @@ class Ui_Dialog(object):
             self.Open_Image_Button.setEnabled(False)
     
     def Save_Directory(self):
-        pass
+        option = QFileDialog.Options()
+        
+
+        file=QFileDialog.getSaveFileName(None, 'Open Image File', r"<Default dir>", "Image files (*.jpg *.jpeg *.gif *.png)")
+        print(file[0])
 
 if __name__ == "__main__":
     import sys
