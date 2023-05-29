@@ -27,6 +27,33 @@ class Ui_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
         Dialog.resize(1366, 800)
+
+
+        
+
+
+
+        self.scrollArea = QtWidgets.QScrollArea(Dialog)
+        self.scrollArea.setGeometry(QtCore.QRect(10, 20, 571, 561))
+        self.scrollArea.setWidgetResizable(True)
+        self.scrollArea.setObjectName("scrollArea")
+        self.scrollAreaWidgetContents = QtWidgets.QWidget()
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 569, 559))
+        self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
+
+        self.scrollArea.setWidget(self.scrollAreaWidgetContents)
+
+        self.scrollArea_2 = QtWidgets.QScrollArea(Dialog)
+        self.scrollArea_2.setGeometry(QtCore.QRect(660, 20, 571, 561))
+        self.scrollArea_2.setWidgetResizable(True)
+        self.scrollArea_2.setObjectName("scrollArea_2")
+        self.scrollAreaWidgetContents_2 = QtWidgets.QWidget()
+        self.scrollAreaWidgetContents_2.setGeometry(QtCore.QRect(0, 0, 569, 559))
+        self.scrollAreaWidgetContents_2.setObjectName("scrollAreaWidgetContents_2")
+
+        self.scrollArea_2.setWidget(self.scrollAreaWidgetContents_2)
+
+
         self.label_2 = QtWidgets.QLabel(Dialog)
         self.label_2.setGeometry(QtCore.QRect(690, 20, 571, 561))
         self.label_2.setText("")
@@ -77,38 +104,6 @@ class Ui_Dialog(object):
 
 
 
-        self.scrollArea = QtWidgets.QScrollArea(Dialog)
-        self.scrollArea.setGeometry(QtCore.QRect(10, 20, 571, 561))
-        self.scrollArea.setWidgetResizable(True)
-        self.scrollArea.setObjectName("scrollArea")
-        self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 569, 559))
-        self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
-
-        self.scrollArea.setWidget(self.scrollAreaWidgetContents)
-
-        self.scrollArea_2 = QtWidgets.QScrollArea(Dialog)
-        self.scrollArea_2.setGeometry(QtCore.QRect(660, 20, 571, 561))
-        self.scrollArea_2.setWidgetResizable(True)
-        self.scrollArea_2.setObjectName("scrollArea_2")
-        self.scrollAreaWidgetContents_2 = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents_2.setGeometry(QtCore.QRect(0, 0, 569, 559))
-        self.scrollAreaWidgetContents_2.setObjectName("scrollAreaWidgetContents_2")
-
-        self.scrollArea_2.setWidget(self.scrollAreaWidgetContents_2)
-
-        
-
-
-
-
-
-
-
-
-
-
-
 
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
@@ -133,6 +128,7 @@ class Ui_Dialog(object):
         if not (int(Down_Sampling_Value.isdigit())):
             self.label_5.setText("Please enter an integer value!")
         else:
+            self.label_5.setText("")
             # fname = QFileDialog.getOpenFileName(self, "Open File", "All_Project_Files\Final_Project_Files\Cam_Media", "Images (*.png *.xpm *.jpg)")
             # # Opening the Image
             # self.pixmap = QPixmap(fname[0]) # This returns a tuple and hence we mention [0].
