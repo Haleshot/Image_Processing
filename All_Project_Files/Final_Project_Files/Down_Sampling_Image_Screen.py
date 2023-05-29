@@ -26,7 +26,7 @@ import cv2
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
-        Dialog.resize(1366, 800)
+        Dialog.resize(1366, 801)
 
         self.scrollArea_2 = QtWidgets.QScrollArea(Dialog)
         self.scrollArea_2.setGeometry(QtCore.QRect(660, 20, 571, 561))
