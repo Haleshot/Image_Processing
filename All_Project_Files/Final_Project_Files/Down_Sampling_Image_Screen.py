@@ -17,11 +17,10 @@ from PyQt5.QtCore import *
 from PyQt5.uic import loadUi
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QDialog, QApplication, QWidget, QStackedWidget, QComboBox, QPushButton, QVBoxLayout, QLabel
-from PyQt5.QtWidgets import QApplication, QLabel, QSizePolicy, QScrollArea, QMessageBox, QMainWindow, QMenu, QAction, qApp, QFileDialog, QToolBar, QMenuBar  
+from PyQt5.QtWidgets import QApplication, QLabel, QSizePolicy, QScrollArea, QMessageBox, QMainWindow, QMenu, QAction, qApp, QFileDialog, QToolBar, QMenuBar  , QFormLayout, QGroupBox
 from PyQt5.QtGui import QPixmap
 from PyQt5.QtWidgets import QFileDialog, QHBoxLayout
 import cv2
-
 
 
 class Ui_Dialog(object):
@@ -72,7 +71,13 @@ class Ui_Dialog(object):
         self.label_5.setGeometry(QtCore.QRect(410, 730, 581, 41))
         self.label_5.setStyleSheet("color: rgb(255, 0, 0);")
         self.label_5.setText("")
-        self.label_5.setObjectName("label_5")        
+        self.label_5.setObjectName("label_5")
+
+
+        formLayout = QFormLayout()
+        groupBox = QGroupBox()
+
+
 
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
@@ -118,7 +123,6 @@ class Ui_Dialog(object):
             cv2.imwrite(r"All_Project_Files\Final_Project_Files\Cam_Media\Down_Sized_Img\Down_Sized_Image.png", image_downsize)
             Downsized_File_Name = r"All_Project_Files\Final_Project_Files\Cam_Media\Down_Sized_Img\Down_Sized_Image.png"
             self.label_2.setPixmap(QPixmap(Downsized_File_Name))
-
 
             # If you want these to display these in separate windows other than GUI.
             # cv2.imshow("Negative Image", negative_img)
