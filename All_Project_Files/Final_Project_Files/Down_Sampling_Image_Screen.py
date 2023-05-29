@@ -96,7 +96,7 @@ class Ui_Dialog(object):
             Down_Sampling_Value = int(self.lineEdit.text())
             file_name, _ = QFileDialog.getOpenFileName(None, 'Open Image File', r"<Default dir>", "Image files (*.jpg *.jpeg *.gif *.png)")
             # self.label.setPixmap(QPixmap(file_name))
-
+            self.counter += 1
             img = cv2.imread(file_name)
             m, n, c = img.shape
             print("The original size of the image is ", m, " x ", n)
@@ -105,7 +105,7 @@ class Ui_Dialog(object):
             print("The new size of the image is ", m, " x ", n)
 
             
-            cv2.imwrite(r"All_Project_Files\Final_Project_Files\Cam_Media\Down_Sized_Img\Down_Sized_Image.png",self.image_downsize)
+            cv2.imwrite(r"All_Project_Files\Final_Project_Files\Cam_Media\Down_Sized_Img\Down_Sized_Image.png", self.image_downsize)
             Downsized_File_Name = r"All_Project_Files\Final_Project_Files\Cam_Media\Down_Sized_Img\Down_Sized_Image.png"
             # self.label_2.setPixmap(QPixmap(Downsized_File_Name))
 
@@ -130,9 +130,14 @@ class Ui_Dialog(object):
             self.Open_Image_Button.setEnabled(False)
     
     def Save_Directory(self):
-        option = QFileDialog.Options()
-        save_as_path = QFileDialog.getSaveFileName(None, 'Open Image File', r"Image", "Image files (*.jpg *.jpeg *.gif *.png)")
-        cv2.imwrite(save_as_path, self.image_downsize)
+        if self.counter == 1:
+            image_downsize = cv2.imread(r"All_Project_Files\Final_Project_Files\Cam_Media\Down_Sized_Img\Down_Sized_Image.png")
+            option = QFileDialog.Options()
+            save_as_path = QFileDialog.getSaveFileName(None, 'Open Image File', r"Image", "Image files (*.jpg *.jpeg *.gif *.png)")
+            print(save_as_path[0])
+            cv2.imwrite(save_as_path[0], image_downsize)
+        else:
+            self.label_5.setText("Select Image first!")
 
 if __name__ == "__main__":
     import sys
