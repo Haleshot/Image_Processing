@@ -73,6 +73,43 @@ class Ui_Dialog(object):
         self.label_5.setText("")
         self.label_5.setObjectName("label_5")
 
+
+
+
+
+        self.scrollArea = QtWidgets.QScrollArea(Dialog)
+        self.scrollArea.setGeometry(QtCore.QRect(10, 20, 571, 561))
+        self.scrollArea.setWidgetResizable(True)
+        self.scrollArea.setObjectName("scrollArea")
+        self.scrollAreaWidgetContents = QtWidgets.QWidget()
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 569, 559))
+        self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
+
+        self.scrollArea.setWidget(self.scrollAreaWidgetContents)
+
+        self.scrollArea_2 = QtWidgets.QScrollArea(Dialog)
+        self.scrollArea_2.setGeometry(QtCore.QRect(660, 20, 571, 561))
+        self.scrollArea_2.setWidgetResizable(True)
+        self.scrollArea_2.setObjectName("scrollArea_2")
+        self.scrollAreaWidgetContents_2 = QtWidgets.QWidget()
+        self.scrollAreaWidgetContents_2.setGeometry(QtCore.QRect(0, 0, 569, 559))
+        self.scrollAreaWidgetContents_2.setObjectName("scrollAreaWidgetContents_2")
+
+        self.scrollArea_2.setWidget(self.scrollAreaWidgetContents_2)
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
@@ -96,7 +133,6 @@ class Ui_Dialog(object):
         if not (int(Down_Sampling_Value.isdigit())):
             self.label_5.setText("Please enter an integer value!")
         else:
-            self.label_5.setText("")
             # fname = QFileDialog.getOpenFileName(self, "Open File", "All_Project_Files\Final_Project_Files\Cam_Media", "Images (*.png *.xpm *.jpg)")
             # # Opening the Image
             # self.pixmap = QPixmap(fname[0]) # This returns a tuple and hence we mention [0].
@@ -104,7 +140,7 @@ class Ui_Dialog(object):
             # self.label.setPixmap(self.pixmap)
             Down_Sampling_Value = int(self.lineEdit.text())
             file_name, _ = QFileDialog.getOpenFileName(None, 'Open Image File', r"<Default dir>", "Image files (*.jpg *.jpeg *.gif *.png)")
-            self.label.setPixmap(QPixmap(file_name))
+            # self.label.setPixmap(QPixmap(file_name))
 
             img = cv2.imread(file_name)
             m, n, c = img.shape
@@ -116,17 +152,27 @@ class Ui_Dialog(object):
             
             cv2.imwrite(r"All_Project_Files\Final_Project_Files\Cam_Media\Down_Sized_Img\Down_Sized_Image.png", image_downsize)
             Downsized_File_Name = r"All_Project_Files\Final_Project_Files\Cam_Media\Down_Sized_Img\Down_Sized_Image.png"
+            # self.label_2.setPixmap(QPixmap(Downsized_File_Name))
+
+            lay = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents)
+            lay_2 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents_2)
+        
+            lay.setContentsMargins(0, 0, 0, 0)
+            lay_2.setContentsMargins(0, 0, 0, 0)
+
+            lay.addWidget(self.label)
+            lay_2.addWidget(self.label_2)
+
+            self.label.setPixmap(QPixmap(file_name))
             self.label_2.setPixmap(QPixmap(Downsized_File_Name))
 
-            # If you want these to display these in separate windows other than GUI.
-            # cv2.imshow("Negative Image", negative_img)
+            # self.scrollArea.setWidgetResizable(True)
+            # self.scrollArea_2.setWidgetResizable(True)
 
+            self.label.setAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
+            self.label_2.setAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
 
-            # cv2.imshow("Image", img)
-            # cv2.waitKey(0)
-    
-            # # closing all open windows
-            # cv2.destroyAllWindows()
+            self.Open_Image_Button.setEnabled(False)
 
 
 if __name__ == "__main__":
