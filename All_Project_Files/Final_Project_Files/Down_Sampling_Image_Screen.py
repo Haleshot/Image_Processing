@@ -74,8 +74,6 @@ class Ui_Dialog(object):
         self.label_5.setText("")
         self.label_5.setObjectName("label_5")        
 
-
-
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
@@ -119,7 +117,9 @@ class Ui_Dialog(object):
             
             cv2.imwrite(r"All_Project_Files\Final_Project_Files\Cam_Media\Down_Sized_Img\Down_Sized_Image.png", image_downsize)
             Downsized_File_Name = r"All_Project_Files\Final_Project_Files\Cam_Media\Down_Sized_Img\Down_Sized_Image.png"
-            self.label_2.setPixmap(QPixmap(Downsized_File_Name))
+            # self.label_2.setPixmap(QPixmap(Downsized_File_Name))
+            self.imageScrollArea.setWidgetResizable(True)
+            self.label.setAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
 
 
             # If you want these to display these in separate windows other than GUI.
