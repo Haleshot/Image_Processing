@@ -74,11 +74,12 @@ class Ui_Dialog(object):
 
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
-        Dialog.setWindowTitle(_translate("Dialog", "Test Window"))
+        Dialog.setWindowTitle(_translate("Dialog", "Down Sampling"))
         self.lineEdit.setPlaceholderText(_translate("Dialog", "Enter Downsampling Value..."))
         self.Open_Image_Button.setText(_translate("Dialog", "Open Image"))
+        self.Save_As.setText(_translate("Dialog", "Save As"))
         self.Open_Image_Button.clicked.connect(self.File_Select)
-        self.Save_as_Button.clicked.connect(self.Save_Directory)
+        self.Save_As.clicked.connect(self.Save_Directory)
         
     def File_Select(self):
         Down_Sampling_Value = self.lineEdit.text() # Accessing the value entered by the user.
