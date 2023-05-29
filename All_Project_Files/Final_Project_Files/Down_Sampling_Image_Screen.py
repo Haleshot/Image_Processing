@@ -100,12 +100,12 @@ class Ui_Dialog(object):
             img = cv2.imread(file_name)
             m, n, c = img.shape
             print("The original size of the image is ", m, " x ", n)
-            image_downsize = img[::Down_Sampling_Value, ::Down_Sampling_Value]
-            m, n, c = image_downsize.shape
+            self.image_downsize = img[::Down_Sampling_Value, ::Down_Sampling_Value]
+            m, n, c = self.image_downsize.shape
             print("The new size of the image is ", m, " x ", n)
 
             
-            cv2.imwrite(r"All_Project_Files\Final_Project_Files\Cam_Media\Down_Sized_Img\Down_Sized_Image.png", image_downsize)
+            cv2.imwrite(r"All_Project_Files\Final_Project_Files\Cam_Media\Down_Sized_Img\Down_Sized_Image.png",self.image_downsize)
             Downsized_File_Name = r"All_Project_Files\Final_Project_Files\Cam_Media\Down_Sized_Img\Down_Sized_Image.png"
             # self.label_2.setPixmap(QPixmap(Downsized_File_Name))
 
@@ -131,10 +131,8 @@ class Ui_Dialog(object):
     
     def Save_Directory(self):
         option = QFileDialog.Options()
-        
-
-        file=QFileDialog.getSaveFileName(None, 'Open Image File', r"<Default dir>", "Image files (*.jpg *.jpeg *.gif *.png)")
-        print(file[0])
+        save_as_path = QFileDialog.getSaveFileName(None, 'Open Image File', r"Image", "Image files (*.jpg *.jpeg *.gif *.png)")
+        cv2.imwrite(save_as_path, self.image_downsize)
 
 if __name__ == "__main__":
     import sys
