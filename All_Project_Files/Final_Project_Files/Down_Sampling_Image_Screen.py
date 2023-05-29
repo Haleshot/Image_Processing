@@ -9,7 +9,6 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5 import QtCore, QtGui, QtWidgets, uic
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import QMenuBar, QMenu
@@ -23,26 +22,33 @@ from PyQt5.QtWidgets import QFileDialog, QHBoxLayout
 import cv2
 
 
-
-
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
-        Dialog.resize(1366, 801)
-        self.scrollArea = QtWidgets.QScrollArea(Dialog)
-        self.scrollArea.setGeometry(QtCore.QRect(80, 30, 571, 561))
-        self.scrollArea.setWidgetResizable(True)
-        self.scrollArea.setObjectName("scrollArea")
-        self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 569, 559))
-        self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
-        self.label = QtWidgets.QLabel(self.scrollAreaWidgetContents)
+        Dialog.resize(1366, 800)
+        self.label_2 = QtWidgets.QLabel(Dialog)
+        self.label_2.setGeometry(QtCore.QRect(690, 20, 571, 561))
+        self.label_2.setText("")
+        self.label_2.setObjectName("label_2")
+        self.label_4 = QtWidgets.QLabel(Dialog)
+        self.label_4.setGeometry(QtCore.QRect(870, 640, 281, 41))
+        self.label_4.setStyleSheet("font: 16pt \"MS Shell Dlg 2\";")
+        self.label_4.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_4.setObjectName("label_4")
+        self.Open_Image_Button = QtWidgets.QPushButton(Dialog)
+        self.Open_Image_Button.setGeometry(QtCore.QRect(70, 620, 401, 81))
+        self.Open_Image_Button.setObjectName("Open_Image_Button")
+        self.label = QtWidgets.QLabel(Dialog)
         self.label.setGeometry(QtCore.QRect(10, 20, 571, 561))
         self.label.setText("")
         self.label.setObjectName("label")
-        self.scrollArea.setWidget(self.scrollAreaWidgetContents)
+        self.label_3 = QtWidgets.QLabel(Dialog)
+        self.label_3.setGeometry(QtCore.QRect(590, 260, 61, 31))
+        self.label_3.setStyleSheet("font: 22pt \"MS Shell Dlg 2\";")
+        self.label_3.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_3.setObjectName("label_3")
         self.lineEdit = QtWidgets.QLineEdit(Dialog)
-        self.lineEdit.setGeometry(QtCore.QRect(550, 650, 301, 81))
+        self.lineEdit.setGeometry(QtCore.QRect(530, 620, 301, 81))
         self.lineEdit.setStyleSheet("border: 12px  solid rgb(0, 0, 0);\n"
 "border-width: 2px;\n"
 "font: 11.5pt \"MS Shell Dlg 2\";\n"
@@ -51,34 +57,10 @@ class Ui_Dialog(object):
 "padding-right:20px;")
         self.lineEdit.setText("")
         self.lineEdit.setObjectName("lineEdit")
-        self.Open_Image_Button = QtWidgets.QPushButton(Dialog)
-        self.Open_Image_Button.setGeometry(QtCore.QRect(90, 650, 401, 81))
-        self.Open_Image_Button.setObjectName("Open_Image_Button")
-        self.scrollArea_2 = QtWidgets.QScrollArea(Dialog)
-        self.scrollArea_2.setGeometry(QtCore.QRect(730, 30, 571, 561))
-        self.scrollArea_2.setWidgetResizable(True)
-        self.scrollArea_2.setObjectName("scrollArea_2")
-        self.scrollAreaWidgetContents_2 = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents_2.setGeometry(QtCore.QRect(0, 0, 569, 559))
-        self.scrollAreaWidgetContents_2.setObjectName("scrollAreaWidgetContents_2")
-        self.label_2 = QtWidgets.QLabel(self.scrollAreaWidgetContents_2)
-        self.label_2.setGeometry(QtCore.QRect(10, 20, 571, 561))
-        self.label_2.setText("")
-        self.label_2.setObjectName("label_2")
-        self.scrollArea_2.setWidget(self.scrollAreaWidgetContents_2)
-        self.label_3 = QtWidgets.QLabel(Dialog)
-        self.label_3.setGeometry(QtCore.QRect(660, 290, 61, 31))
-        self.label_3.setStyleSheet("font: 22pt \"MS Shell Dlg 2\";")
-        self.label_3.setAlignment(QtCore.Qt.AlignCenter)
-        self.label_3.setObjectName("label_3")
-        self.Save_as_Button = QtWidgets.QPushButton(Dialog)
-        self.Save_as_Button.setGeometry(QtCore.QRect(900, 650, 403, 81))
-        self.Save_as_Button.setObjectName("Save_as_Button")
         self.label_5 = QtWidgets.QLabel(Dialog)
-        self.label_5.setGeometry(QtCore.QRect(400, 730, 581, 41))
+        self.label_5.setGeometry(QtCore.QRect(410, 730, 581, 41))
         self.label_5.setStyleSheet("color: rgb(255, 0, 0);")
         self.label_5.setText("")
-        self.label_5.setAlignment(QtCore.Qt.AlignCenter)
         self.label_5.setObjectName("label_5")
 
         self.retranslateUi(Dialog)
