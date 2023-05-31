@@ -76,7 +76,6 @@ class Ui_Dialog(object):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
         self.Open_Image_Button.setText(_translate("Dialog", "Open Image"))
-        self.label_4.setText(_translate("Dialog", "Output Image"))
         self.label_3.setText(_translate("Dialog", "=>"))
         self.lineEdit.setPlaceholderText(_translate("Dialog", "Enter Up Sampling Value..."))
 
@@ -130,7 +129,7 @@ if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     Dialog = QtWidgets.QDialog()
-    ui = Ui_Dialog_1()
+    ui = Ui_Dialog()
     ui.setupUi(Dialog)
     Dialog.show()
     sys.exit(app.exec_())
