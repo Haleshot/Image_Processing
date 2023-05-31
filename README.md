@@ -474,12 +474,12 @@ Simple terms:
 ### In Progress
 
 - [ ] Improve README guides, contributing guides, etc.  
-- [ ] Add exceptions to prevent program from crashing when user opens window to select input image but clicks on the close button of the window; same with Save as button.
+
 - [ ] Showing user, which file to run as main file - portraying user flow.
 - [ ] Adding Save as button
 
 ### Done ✓
-
+- [x] Add exceptions to prevent program from crashing when user opens window to select input image but clicks on the close button of the window; same with Save as button.
 - [x] Add Facial Feature Detection Button.  
 
 </p>
