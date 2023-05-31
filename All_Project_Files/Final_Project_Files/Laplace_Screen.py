@@ -100,42 +100,44 @@ class Ui_Dialog_8(object):
 
     def File_Select(self):
         file_name, _ = QFileDialog.getOpenFileName(None, 'Open Image File', r"<Default dir>", "Image files (*.jpg *.jpeg *.gif *.png)")
-        self.label.setPixmap(QPixmap(file_name))
-        img = cv2.imread(file_name, cv2.IMREAD_GRAYSCALE)
+        if file_name:
+            self.label.setPixmap(QPixmap(file_name))
+            img = cv2.imread(file_name, cv2.IMREAD_GRAYSCALE)
 
-        # Apply the Laplacian filter to the image
-        filtered_img = self.laplacian_filter(img)
+            # Apply the Laplacian filter to the image
+            filtered_img = self.laplacian_filter(img)
 
-        cv2.imwrite(r"All_Project_Files\Final_Project_Files\Cam_Media\Laplacian_Images\Laplacian_Image.png", filtered_img)
-        Laplacian_File_Name = r"All_Project_Files\Final_Project_Files\Cam_Media\Laplacian_Images\Laplacian_Image.png"
-        # self.label_2.setPixmap(QPixmap(Laplacian_File_Name))
+            cv2.imwrite(r"All_Project_Files\Final_Project_Files\Cam_Media\Laplacian_Images\Laplacian_Image.png", filtered_img)
+            Laplacian_File_Name = r"All_Project_Files\Final_Project_Files\Cam_Media\Laplacian_Images\Laplacian_Image.png"
+            # self.label_2.setPixmap(QPixmap(Laplacian_File_Name))
 
-        lay = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents)
-        lay_2 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents_2)
-    
-        lay.setContentsMargins(0, 0, 0, 0)
-        lay_2.setContentsMargins(0, 0, 0, 0)
+            lay = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents)
+            lay_2 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents_2)
+        
+            lay.setContentsMargins(0, 0, 0, 0)
+            lay_2.setContentsMargins(0, 0, 0, 0)
 
-        lay.addWidget(self.label)
-        lay_2.addWidget(self.label_2)
+            lay.addWidget(self.label)
+            lay_2.addWidget(self.label_2)
 
-        self.label.setPixmap(QPixmap(file_name))
-        self.label_2.setPixmap(QPixmap(Laplacian_File_Name))
+            self.label.setPixmap(QPixmap(file_name))
+            self.label_2.setPixmap(QPixmap(Laplacian_File_Name))
 
-        # self.scrollArea.setWidgetResizable(True)
-        # self.scrollArea_2.setWidgetResizable(True)
+            # self.scrollArea.setWidgetResizable(True)
+            # self.scrollArea_2.setWidgetResizable(True)
 
-        self.label.setAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
-        self.label_2.setAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
+            self.label.setAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
+            self.label_2.setAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
 
-        self.Open_Image_Button.setEnabled(False)
+            self.Open_Image_Button.setEnabled(False)
 
     def Save_Directory(self):
         image_laplace = cv2.imread(r"All_Project_Files\Final_Project_Files\Cam_Media\Laplacian_Images\Laplacian_Image.png")
         option = QFileDialog.Options()
         save_as_path = QFileDialog.getSaveFileName(None, 'Open Image File', r"Laplacian Image", "Image files (*.jpg *.jpeg *.gif *.png)")
 
-        cv2.imwrite(save_as_path[0], image_laplace)
+        if option:
+            cv2.imwrite(save_as_path[0], image_laplace)
 
 
 
