@@ -1,5 +1,3 @@
-
-
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5 import QtCore, QtGui, QtWidgets, uic
 from PyQt5.QtGui import *
@@ -68,10 +66,11 @@ class Ui_Background(object):
         _translate = QtCore.QCoreApplication.translate
         Background.setWindowTitle(_translate("Background", "Dialog"))
         self.label_3.setText(_translate("Background", "=>"))
-        self.Open_Image_Button.setText(_translate("Background", "Open Image"))
-        self.label_4.setText(_translate("Background", "Output Image"))
 
+        self.Open_Image_Button.setText(_translate("Dialog", "Open Image"))
+        self.Save_As.setText(_translate("Dialog", "Save As"))
         self.Open_Image_Button.clicked.connect(self.File_Select)
+        self.Save_As.clicked.connect(self.Save_Directory)
 
 
     def File_Select(self):
@@ -99,6 +98,18 @@ class Ui_Background(object):
   
         # # closing all open windows
         # cv2.destroyAllWindows()
+
+    def Save_Directory(self):
+        if self.counter == 1:
+            self.label_5.setText("")
+            image_downsize = cv2.imread(r"All_Project_Files\Final_Project_Files\Cam_Media\Negative_Images\Negative_Image.png")
+            option = QFileDialog.Options()
+            save_as_path = QFileDialog.getSaveFileName(None, 'Open Image File', r"Down Sized Image", "Image files (*.jpg *.jpeg *.gif *.png)")
+
+            cv2.imwrite(save_as_path[0], image_downsize)
+        else:
+            self.label_5.setText("Select Image first!")
+
 
 if __name__ == "__main__":
     import sys
