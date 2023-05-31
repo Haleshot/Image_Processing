@@ -80,34 +80,35 @@ class Ui_Background(object):
         # # Adding the picture to the Label.
         # self.label.setPixmap(self.pixmap)
         file_name, _ = QFileDialog.getOpenFileName(None, 'Open Image File', r"<Default dir>", "Image files (*.jpg *.jpeg *.gif *.png)")
-        self.label.setPixmap(QPixmap(file_name))
-        img = cv2.imread(file_name)
-        maximum = np.amax(img)
-        negative_img = maximum - img
-        cv2.imwrite(r"All_Project_Files\Final_Project_Files\Cam_Media\Negative_Images\Negative_Image.png", negative_img)
-        Negative_File_Name = r"All_Project_Files\Final_Project_Files\Cam_Media\Negative_Images\Negative_Image.png"
-        # self.label_2.setPixmap(QPixmap(Negative_File_Name))
+        if file_name:
+            self.label.setPixmap(QPixmap(file_name))
+            img = cv2.imread(file_name)
+            maximum = np.amax(img)
+            negative_img = maximum - img
+            cv2.imwrite(r"All_Project_Files\Final_Project_Files\Cam_Media\Negative_Images\Negative_Image.png", negative_img)
+            Negative_File_Name = r"All_Project_Files\Final_Project_Files\Cam_Media\Negative_Images\Negative_Image.png"
+            # self.label_2.setPixmap(QPixmap(Negative_File_Name))
 
 
-        lay = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents)
-        lay_2 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents_2)
-    
-        lay.setContentsMargins(0, 0, 0, 0)
-        lay_2.setContentsMargins(0, 0, 0, 0)
+            lay = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents)
+            lay_2 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents_2)
+        
+            lay.setContentsMargins(0, 0, 0, 0)
+            lay_2.setContentsMargins(0, 0, 0, 0)
 
-        lay.addWidget(self.label)
-        lay_2.addWidget(self.label_2)
+            lay.addWidget(self.label)
+            lay_2.addWidget(self.label_2)
 
-        self.label.setPixmap(QPixmap(file_name))
-        self.label_2.setPixmap(QPixmap(Negative_File_Name))
+            self.label.setPixmap(QPixmap(file_name))
+            self.label_2.setPixmap(QPixmap(Negative_File_Name))
 
-        # self.scrollArea.setWidgetResizable(True)
-        # self.scrollArea_2.setWidgetResizable(True)
+            # self.scrollArea.setWidgetResizable(True)
+            # self.scrollArea_2.setWidgetResizable(True)
 
-        self.label.setAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
-        self.label_2.setAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
+            self.label.setAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
+            self.label_2.setAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
 
-        self.Open_Image_Button.setEnabled(False)
+            self.Open_Image_Button.setEnabled(False)
 
 
 
@@ -126,7 +127,8 @@ class Ui_Background(object):
         option = QFileDialog.Options()
         save_as_path = QFileDialog.getSaveFileName(None, 'Open Image File', r"Negative Image", "Image files (*.jpg *.jpeg *.gif *.png)")
 
-        cv2.imwrite(save_as_path[0], image_negative)
+        if option:
+            cv2.imwrite(save_as_path[0], image_negative)
 
 
 if __name__ == "__main__":

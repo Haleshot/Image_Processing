@@ -50,6 +50,6 @@ class Ui_Background(object):
         self.Camera_Label.setText("")
         self.Show_Cam_Save_Image_Button.setText(QCoreApplication.translate("Background", u"Show Camera/Save Image", None))
         self.Proceed_Button.setText(QCoreApplication.translate("Background", u"Proceed", None))
-        self.Note_Label.setText(QCoreApplication.translate("Background", u"Note - Proceeding to the Next Page where various operations on the Image can be done.", None))
+        self.Note_Label.setText(QCoreApplication.translate("Background", u"<html><head/><body><p><span style=\" color:#ff0000;\">Note - Proceeding to the Next Page where various operations on the Image can be done.</span></p></body></html>", None))
     # retranslateUi
 
