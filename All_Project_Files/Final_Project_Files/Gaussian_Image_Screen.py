@@ -63,7 +63,7 @@ class Ui_Dialog_6(object):
 
     def retranslateUi(self, Dialog_6):
         _translate = QtCore.QCoreApplication.translate
-        Dialog_6.setWindowTitle(_translate("Dialog_6", "Dialog"))
+        Dialog_6.setWindowTitle(_translate("Dialog_6", "Gaussian Image"))
         self.Open_Image_Button.setText(_translate("Dialog_6", "Open Image"))
         self.label_3.setText(_translate("Dialog_6", "=>"))
 
