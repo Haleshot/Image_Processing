@@ -101,59 +101,63 @@ class Ui_Dialog_1(object):
             # self.label.setPixmap(self.pixmap)
             Up_Sampling_Value = int(self.lineEdit.text())
             file_name, _ = QFileDialog.getOpenFileName(None, 'Open Image File', r"<Default dir>", "Image files (*.jpg *.jpeg *.gif *.png)")
-            self.label.setPixmap(QPixmap(file_name))
-            img = cv2.imread(file_name)
-            m, n, c = img.shape
-            print("The original size of the image is ", m, " x ", n)
-            img_double = cv2.resize(img, (0, 0), fx = Up_Sampling_Value, fy = Up_Sampling_Value)
-            m, n, c = img_double.shape
-            print("The new size of the image is ", m, " x ", n)
+            if file_name:
+                self.counter += 1
+                self.label.setPixmap(QPixmap(file_name))
+                img = cv2.imread(file_name)
+                m, n, c = img.shape
+                print("The original size of the image is ", m, " x ", n)
+                img_double = cv2.resize(img, (0, 0), fx = Up_Sampling_Value, fy = Up_Sampling_Value)
+                m, n, c = img_double.shape
+                print("The new size of the image is ", m, " x ", n)
 
 
-            cv2.imwrite(r"All_Project_Files\Final_Project_Files\Cam_Media\Up_Sized_Img\Up_Sized_Image.png", img_double)
-            Up_File_Name = r"All_Project_Files\Final_Project_Files\Cam_Media\Up_Sized_Img\Up_Sized_Image.png"
+                cv2.imwrite(r"All_Project_Files\Final_Project_Files\Cam_Media\Up_Sized_Img\Up_Sized_Image.png", img_double)
+                Up_File_Name = r"All_Project_Files\Final_Project_Files\Cam_Media\Up_Sized_Img\Up_Sized_Image.png"
+                
+                
+                # self.label_2.setPixmap(QPixmap(Up_File_Name))
+
+                lay = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents)
+                lay_2 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents_2)
             
-            
-            # self.label_2.setPixmap(QPixmap(Up_File_Name))
+                lay.setContentsMargins(0, 0, 0, 0)
+                lay_2.setContentsMargins(0, 0, 0, 0)
 
-            lay = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents)
-            lay_2 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents_2)
+                lay.addWidget(self.label)
+                lay_2.addWidget(self.label_2)
+
+                self.label.setPixmap(QPixmap(file_name))
+                self.label_2.setPixmap(QPixmap(Up_File_Name))
+
+                # self.scrollArea.setWidgetResizable(True)
+                # self.scrollArea_2.setWidgetResizable(True)
+
+                self.label.setAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
+                self.label_2.setAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
+
+                self.Open_Image_Button.setEnabled(False)
+
+
+                # If you want these to display these in separate windows other than GUI.
+                # cv2.imshow("Negative Image", negative_img)
+
+
+                # cv2.imshow("Image", img)
+                # cv2.waitKey(0)
         
-            lay.setContentsMargins(0, 0, 0, 0)
-            lay_2.setContentsMargins(0, 0, 0, 0)
-
-            lay.addWidget(self.label)
-            lay_2.addWidget(self.label_2)
-
-            self.label.setPixmap(QPixmap(file_name))
-            self.label_2.setPixmap(QPixmap(Up_File_Name))
-
-            # self.scrollArea.setWidgetResizable(True)
-            # self.scrollArea_2.setWidgetResizable(True)
-
-            self.label.setAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
-            self.label_2.setAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
-
-            self.Open_Image_Button.setEnabled(False)
-
-
-            # If you want these to display these in separate windows other than GUI.
-            # cv2.imshow("Negative Image", negative_img)
-
-
-            # cv2.imshow("Image", img)
-            # cv2.waitKey(0)
-    
-            # # closing all open windows
-            # cv2.destroyAllWindows()
+                # # closing all open windows
+                # cv2.destroyAllWindows()
 
     def Save_Directory(self):
-        if self.counter == 1:
+        if self.counter > 0:
             self.label_5.setText("")
             image_upsize = cv2.imread(r"All_Project_Files\Final_Project_Files\Cam_Media\Up_Sized_Img\Up_Sized_Image.png")
             option = QFileDialog.Options()
             save_as_path = QFileDialog.getSaveFileName(None, 'Open Image File', r"Up Sized Image", "Image files (*.jpg *.jpeg *.gif *.png)")
-            cv2.imwrite(save_as_path[0], image_upsize)
+            
+            if option:
+                cv2.imwrite(save_as_path[0], image_upsize)
         else:
             self.label_5.setText("Select Image first!")
 
