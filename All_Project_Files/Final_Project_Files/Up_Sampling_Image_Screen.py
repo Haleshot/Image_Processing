@@ -13,7 +13,7 @@ from skimage.util import random_noise
 import numpy as np
 
 
-class Ui_Dialog(object):
+class Ui_Dialog_1(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
         Dialog.resize(1366, 800)
@@ -75,9 +75,9 @@ class Ui_Dialog(object):
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
-        self.Open_Image_Button.setText(_translate("Dialog", "Open Image"))
         self.label_3.setText(_translate("Dialog", "=>"))
         self.lineEdit.setPlaceholderText(_translate("Dialog", "Enter Up Sampling Value..."))
+        self.Open_Image_Button.setText(_translate("Dialog", "Open Image"))
         self.Save_As.setText(_translate("Dialog", "Save As"))
         self.Open_Image_Button.clicked.connect(self.File_Select)
         self.Save_As.clicked.connect(self.Save_Directory)
@@ -124,12 +124,23 @@ class Ui_Dialog(object):
             # # closing all open windows
             # cv2.destroyAllWindows()
 
+    def Save_Directory(self):
+        if self.counter == 1:
+            self.label_5.setText("")
+            image_downsize = cv2.imread(r"All_Project_Files\Final_Project_Files\Cam_Media\Down_Sized_Img\Down_Sized_Image.png")
+            option = QFileDialog.Options()
+            save_as_path = QFileDialog.getSaveFileName(None, 'Open Image File', r"Image", "Image files (*.jpg *.jpeg *.gif *.png)")
+            print(save_as_path[0])
+            cv2.imwrite(save_as_path[0], image_downsize)
+        else:
+            self.label_5.setText("Select Image first!")
+
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     Dialog = QtWidgets.QDialog()
-    ui = Ui_Dialog()
+    ui = Ui_Dialog_1()
     ui.setupUi(Dialog)
     Dialog.show()
     sys.exit(app.exec_())
