@@ -68,10 +68,11 @@ class Ui_Dialog_8(object):
         Dialog_8.setWindowTitle(_translate("Dialog_8", "Dialog"))
         self.Open_Image_Button.setText(_translate("Dialog_8", "Open Image"))
         self.label_3.setText(_translate("Dialog_8", "=>"))
-        self.label_4.setText(_translate("Dialog_8", "Output Image"))
 
-
+        self.Open_Image_Button.setText(_translate("Dialog_8", "Open Image"))
+        self.Save_As.setText(_translate("Dialog_8", "Save As"))
         self.Open_Image_Button.clicked.connect(self.File_Select)
+        self.Save_As.clicked.connect(self.Save_Directory)
 
 
     def laplacian_filter(self, img, kernel_size=3):
