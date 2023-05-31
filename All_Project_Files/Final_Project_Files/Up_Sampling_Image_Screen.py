@@ -75,7 +75,7 @@ class Ui_Dialog_1(object):
 
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
-        Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
+        Dialog.setWindowTitle(_translate("Dialog", "Up Sampling"))
         self.label_3.setText(_translate("Dialog", "=>"))
         self.lineEdit.setPlaceholderText(_translate("Dialog", "Enter Up Sampling Value..."))
         
