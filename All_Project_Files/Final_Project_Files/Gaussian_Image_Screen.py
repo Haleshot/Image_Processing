@@ -98,7 +98,34 @@ class Ui_Dialog_6(object):
         
         cv2.imwrite(r"All_Project_Files\Final_Project_Files\Cam_Media\Gaussian_Image\Gaussian_Image.png", Gaussian_Image)
         Gaussian_Image_File_Name = r"All_Project_Files\Final_Project_Files\Cam_Media\Gaussian_Image\Gaussian_Image.png"
+        # self.label_2.setPixmap(QPixmap(Gaussian_Image_File_Name))
+
+        lay = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents)
+        lay_2 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents_2)
+    
+        lay.setContentsMargins(0, 0, 0, 0)
+        lay_2.setContentsMargins(0, 0, 0, 0)
+
+        lay.addWidget(self.label)
+        lay_2.addWidget(self.label_2)
+
+        self.label.setPixmap(QPixmap(file_name))
         self.label_2.setPixmap(QPixmap(Gaussian_Image_File_Name))
+
+        # self.scrollArea.setWidgetResizable(True)
+        # self.scrollArea_2.setWidgetResizable(True)
+
+        self.label.setAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
+        self.label_2.setAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
+
+        self.Open_Image_Button.setEnabled(False)
+
+    def Save_Directory(self):
+        image_downsize = cv2.imread(r"All_Project_Files\Final_Project_Files\Cam_Media\Gaussian_Image\Gaussian_Image.png")
+        option = QFileDialog.Options()
+        save_as_path = QFileDialog.getSaveFileName(None, 'Open Image File', r"Down Sized Image", "Image files (*.jpg *.jpeg *.gif *.png)")
+
+        cv2.imwrite(save_as_path[0], image_downsize)
 
 
         # If you want these to display these in separate windows other than GUI.
