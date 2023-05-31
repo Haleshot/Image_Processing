@@ -90,6 +90,7 @@ class Ui_Dialog_1(object):
         if not (int(Up_Sampling_Value.isdigit())):
             self.label_5.setText("Please enter an integer value!")
         else:
+            self.counter += 1
             self.label_5.setText("")
             # fname = QFileDialog.getOpenFileName(self, "Open File", "All_Project_Files\Final_Project_Files\Cam_Media", "Images (*.png *.xpm *.jpg)")
             # # Opening the Image
@@ -111,7 +112,27 @@ class Ui_Dialog_1(object):
             Up_File_Name = r"All_Project_Files\Final_Project_Files\Cam_Media\Up_Sized_Img\Up_Sized_Image.png"
             
             
+            # self.label_2.setPixmap(QPixmap(Up_File_Name))
+
+            lay = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents)
+            lay_2 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents_2)
+        
+            lay.setContentsMargins(0, 0, 0, 0)
+            lay_2.setContentsMargins(0, 0, 0, 0)
+
+            lay.addWidget(self.label)
+            lay_2.addWidget(self.label_2)
+
+            self.label.setPixmap(QPixmap(file_name))
             self.label_2.setPixmap(QPixmap(Up_File_Name))
+
+            # self.scrollArea.setWidgetResizable(True)
+            # self.scrollArea_2.setWidgetResizable(True)
+
+            self.label.setAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
+            self.label_2.setAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
+
+            self.Open_Image_Button.setEnabled(False)
 
 
             # If you want these to display these in separate windows other than GUI.
