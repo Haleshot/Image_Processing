@@ -106,6 +106,7 @@ class Ui_Dialog_2(object):
         if not (int(Lower_Limit.isdigit() and Upper_Limit.isdigit())):
             self.label_5.setText("Please enter an integer value!")
         else:
+            self.counter += 1
             self.label_5.setText("")
             # fname = QFileDialog.getOpenFileName(self, "Open File", "All_Project_Files\Final_Project_Files\Cam_Media", "Images (*.png *.xpm *.jpg)")
             # # Opening the Image
