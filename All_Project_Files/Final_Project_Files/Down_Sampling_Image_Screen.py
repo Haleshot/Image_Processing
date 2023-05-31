@@ -101,46 +101,48 @@ class Ui_Dialog(object):
             Down_Sampling_Value = int(self.lineEdit.text())
             file_name, _ = QFileDialog.getOpenFileName(None, 'Open Image File', r"<Default dir>", "Image files (*.jpg *.jpeg *.gif *.png)")
             # self.label.setPixmap(QPixmap(file_name))
-            img = cv2.imread(file_name)
-            m, n, c = img.shape
-            print("The original size of the image is ", m, " x ", n)
-            self.image_downsize = img[::Down_Sampling_Value, ::Down_Sampling_Value]
-            m, n, c = self.image_downsize.shape
-            print("The new size of the image is ", m, " x ", n)
+            if file_name:
+                self.counter += 1
+                img = cv2.imread(file_name)
+                m, n, c = img.shape
+                print("The original size of the image is ", m, " x ", n)
+                self.image_downsize = img[::Down_Sampling_Value, ::Down_Sampling_Value]
+                m, n, c = self.image_downsize.shape
+                print("The new size of the image is ", m, " x ", n)
 
+                
+                cv2.imwrite(r"All_Project_Files\Final_Project_Files\Cam_Media\Down_Sized_Img\Down_Sized_Image.png", self.image_downsize)
+                Downsized_File_Name = r"All_Project_Files\Final_Project_Files\Cam_Media\Down_Sized_Img\Down_Sized_Image.png"
+                # self.label_2.setPixmap(QPixmap(Downsized_File_Name))
+
+                lay = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents)
+                lay_2 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents_2)
             
-            cv2.imwrite(r"All_Project_Files\Final_Project_Files\Cam_Media\Down_Sized_Img\Down_Sized_Image.png", self.image_downsize)
-            Downsized_File_Name = r"All_Project_Files\Final_Project_Files\Cam_Media\Down_Sized_Img\Down_Sized_Image.png"
-            # self.label_2.setPixmap(QPixmap(Downsized_File_Name))
+                lay.setContentsMargins(0, 0, 0, 0)
+                lay_2.setContentsMargins(0, 0, 0, 0)
 
-            lay = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents)
-            lay_2 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents_2)
-        
-            lay.setContentsMargins(0, 0, 0, 0)
-            lay_2.setContentsMargins(0, 0, 0, 0)
+                lay.addWidget(self.label)
+                lay_2.addWidget(self.label_2)
 
-            lay.addWidget(self.label)
-            lay_2.addWidget(self.label_2)
+                self.label.setPixmap(QPixmap(file_name))
+                self.label_2.setPixmap(QPixmap(Downsized_File_Name))
 
-            self.label.setPixmap(QPixmap(file_name))
-            self.label_2.setPixmap(QPixmap(Downsized_File_Name))
+                # self.scrollArea.setWidgetResizable(True)
+                # self.scrollArea_2.setWidgetResizable(True)
 
-            # self.scrollArea.setWidgetResizable(True)
-            # self.scrollArea_2.setWidgetResizable(True)
+                self.label.setAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
+                self.label_2.setAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
 
-            self.label.setAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
-            self.label_2.setAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
-
-            self.Open_Image_Button.setEnabled(False)
+                self.Open_Image_Button.setEnabled(False)
     
     def Save_Directory(self):
-        if self.counter == 1:
+        if self.counter > 0:
             self.label_5.setText("")
             image_downsize = cv2.imread(r"All_Project_Files\Final_Project_Files\Cam_Media\Down_Sized_Img\Down_Sized_Image.png")
             option = QFileDialog.Options()
             save_as_path = QFileDialog.getSaveFileName(None, 'Open Image File', r"Down Sized Image", "Image files (*.jpg *.jpeg *.gif *.png)")
-
-            cv2.imwrite(save_as_path[0], image_downsize)
+            if option:
+                cv2.imwrite(save_as_path[0], image_downsize)
         else:
             self.label_5.setText("Select Image first!")
 
