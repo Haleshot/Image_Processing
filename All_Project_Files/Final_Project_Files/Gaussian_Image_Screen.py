@@ -65,12 +65,13 @@ class Ui_Dialog_6(object):
         _translate = QtCore.QCoreApplication.translate
         Dialog_6.setWindowTitle(_translate("Dialog_6", "Dialog"))
         self.Open_Image_Button.setText(_translate("Dialog_6", "Open Image"))
-        self.label_4.setText(_translate("Dialog_6", "Output Image"))
         self.label_3.setText(_translate("Dialog_6", "=>"))
 
-
-
+        self.Open_Image_Button.setText(_translate("Dialog_6", "Open Image"))
+        self.Save_As.setText(_translate("Dialog_6", "Save As"))
         self.Open_Image_Button.clicked.connect(self.File_Select)
+        self.Save_As.clicked.connect(self.Save_Directory)
+
 
 
     def File_Select(self):
