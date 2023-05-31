@@ -137,7 +137,7 @@ class Ui_Dialog(object):
             self.label_5.setText("")
             image_downsize = cv2.imread(r"All_Project_Files\Final_Project_Files\Cam_Media\Down_Sized_Img\Down_Sized_Image.png")
             option = QFileDialog.Options()
-            save_as_path = QFileDialog.getSaveFileName(None, 'Open Image File', r"Image", "Image files (*.jpg *.jpeg *.gif *.png)")
+            save_as_path = QFileDialog.getSaveFileName(None, 'Open Image File', r"Down Sized Image", "Image files (*.jpg *.jpeg *.gif *.png)")
             print(save_as_path[0])
             cv2.imwrite(save_as_path[0], image_downsize)
         else:
