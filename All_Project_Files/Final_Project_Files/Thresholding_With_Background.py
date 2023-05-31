@@ -9,10 +9,24 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5 import QtCore, QtGui, QtWidgets, uic
+from PyQt5.QtGui import *
+from PyQt5.QtWidgets import *
+from PyQt5.QtCore import *
+from PyQt5.uic import loadUi
+from PyQt5 import QtWidgets
+from PyQt5.QtWidgets import QDialog, QApplication, QWidget, QStackedWidget, QComboBox, QPushButton, QVBoxLayout, QLabel
+from PyQt5.QtGui import QPixmap
+from PyQt5.QtWidgets import QFileDialog
+import cv2
+from skimage.util import random_noise
+import numpy as np
+
 
 
 class Ui_Dialog_3(object):
     def setupUi(self, Dialog_3):
+        self.counter = 0
         Dialog_3.setObjectName("Dialog_3")
         Dialog_3.resize(1366, 801)
         self.lineEdit = QtWidgets.QLineEdit(Dialog_3)
@@ -94,6 +108,91 @@ class Ui_Dialog_3(object):
         self.Open_Image_Button.clicked.connect(self.File_Select)
         self.Save_As.clicked.connect(self.Save_Directory)
         
+    def File_Select(self):
+        Lower_Limit = self.lineEdit.text() # Accessing the lower limit value entered by the user.
+        Upper_Limit = self.lineEdit_2.text() # Accessing the upper limit value entered by the user.
+        
+        if not (int(Lower_Limit.isdigit() and Upper_Limit.isdigit())):
+            self.label_5.setText("Please enter an integer value!")
+        else:
+            self.counter += 1
+            self.label_5.setText("")
+            # fname = QFileDialog.getOpenFileName(self, "Open File", "All_Project_Files\Final_Project_Files\Cam_Media", "Images (*.png *.xpm *.jpg)")
+            # # Opening the Image
+            # self.pixmap = QPixmap(fname[0]) # This returns a tuple and hence we mention [0].
+            # # Adding the picture to the Label.
+            # self.label.setPixmap(self.pixmap)
+            Lower_Limit = int(self.lineEdit.text())
+            Upper_Limit = int(self.lineEdit_2.text())
+            file_name, _ = QFileDialog.getOpenFileName(None, 'Open Image File', r"<Default dir>", "Image files (*.jpg *.jpeg *.gif *.png)")
+            self.label.setPixmap(QPixmap(file_name))
+            img = cv2.imread(file_name, 0)
+            m, n = img.shape
+            print("The original size of the image is ", m, " x ", n)
+
+
+            threshold_image = []
+            a = Lower_Limit
+            b = Upper_Limit
+            for i in range(len(img)):
+                temp = []
+                for j in range(len(img)):
+                    if img[i][j] > a and img[i][j] < b:
+                        temp.append(255)
+                    else:
+                        temp.append(img[i][j])
+                threshold_image.append(temp)
+
+            threshold_image = np.array(threshold_image)
+
+            m, n= threshold_image.shape
+            print("The new size of the image is ", m, " x ", n)
+
+            cv2.imwrite(r"All_Project_Files\Final_Project_Files\Cam_Media\Thresholding_With\Threshold_With_Image.png", threshold_image)
+            Thresholding_With_File_Name = r"All_Project_Files\Final_Project_Files\Cam_Media\Thresholding_With\Threshold_With_Image.png"
+            # self.label_2.setPixmap(QPixmap(Thresholding_With_File_Name))
+
+            lay = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents)
+            lay_2 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents_2)
+        
+            lay.setContentsMargins(0, 0, 0, 0)
+            lay_2.setContentsMargins(0, 0, 0, 0)
+
+            lay.addWidget(self.label)
+            lay_2.addWidget(self.label_2)
+
+            self.label.setPixmap(QPixmap(file_name))
+            self.label_2.setPixmap(QPixmap(Thresholding_With_File_Name))
+
+            # self.scrollArea.setWidgetResizable(True)
+            # self.scrollArea_2.setWidgetResizable(True)
+
+            self.label.setAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
+            self.label_2.setAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
+
+            self.Open_Image_Button.setEnabled(False)
+
+
+            # If you want these to display these in separate windows other than GUI.
+            # cv2.imshow("Negative Image", negative_img)
+
+
+            # cv2.imshow("Image", img)
+            # cv2.waitKey(0)
+    
+            # # closing all open windows
+            # cv2.destroyAllWindows()
+
+    def Save_Directory(self):
+        if self.counter == 1:
+            self.label_5.setText("")
+            image_downsize = cv2.imread(r"All_Project_Files\Final_Project_Files\Cam_Media\Thresholding_With\Threshold_With_Image.png")
+            option = QFileDialog.Options()
+            save_as_path = QFileDialog.getSaveFileName(None, 'Open Image File', r"Thresholding With Background", "Image files (*.jpg *.jpeg *.gif *.png)")
+
+            cv2.imwrite(save_as_path[0], image_downsize)
+        else:
+            self.label_5.setText("Select Image first!")
 
 
 if __name__ == "__main__":
