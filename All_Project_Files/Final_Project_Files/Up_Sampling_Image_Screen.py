@@ -78,10 +78,10 @@ class Ui_Dialog(object):
         self.Open_Image_Button.setText(_translate("Dialog", "Open Image"))
         self.label_3.setText(_translate("Dialog", "=>"))
         self.lineEdit.setPlaceholderText(_translate("Dialog", "Enter Up Sampling Value..."))
-
-
-
+        self.Save_As.setText(_translate("Dialog", "Save As"))
         self.Open_Image_Button.clicked.connect(self.File_Select)
+        self.Save_As.clicked.connect(self.Save_Directory)
+
 
 
     def File_Select(self):

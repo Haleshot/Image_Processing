@@ -78,6 +78,7 @@ class Ui_Dialog(object):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Down Sampling"))
         self.lineEdit.setPlaceholderText(_translate("Dialog", "Enter Downsampling Value..."))
+        self.label_3.setText(_translate("Dialog", "=>"))
         self.Open_Image_Button.setText(_translate("Dialog", "Open Image"))
         self.Save_As.setText(_translate("Dialog", "Save As"))
         self.Open_Image_Button.clicked.connect(self.File_Select)
