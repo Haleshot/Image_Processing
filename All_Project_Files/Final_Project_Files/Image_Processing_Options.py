@@ -87,12 +87,12 @@ class Ui_Image_Processing_Options(object):
 "background-color: rgb(0, 255, 0);\n"
 "")
         self.Facial_Feature_Detection_Button.setObjectName("Facial_Feature_Detection_Button")
-        self.Gaussian_Button_2 = QtWidgets.QPushButton(Image_Processing_Options)
-        self.Gaussian_Button_2.setGeometry(QtCore.QRect(770, 660, 211, 61))
-        self.Gaussian_Button_2.setStyleSheet("font: 16pt \"MS Shell Dlg 2\";\n"
+        self.Laplace_Button = QtWidgets.QPushButton(Image_Processing_Options)
+        self.Laplace_Button.setGeometry(QtCore.QRect(770, 660, 211, 61))
+        self.Laplace_Button.setStyleSheet("font: 16pt \"MS Shell Dlg 2\";\n"
 "background-color: rgb(0, 255, 0);\n"
 "")
-        self.Gaussian_Button_2.setObjectName("Gaussian_Button_2")
+        self.Laplace_Button.setObjectName("Laplace_Button")
 
         self.retranslateUi(Image_Processing_Options)
         QtCore.QMetaObject.connectSlotsByName(Image_Processing_Options)
@@ -110,7 +110,7 @@ class Ui_Image_Processing_Options(object):
         self.Gaussian_Button.setText(_translate("Image_Processing_Options", "Gaussian Noise"))
         self.Title.setText(_translate("Image_Processing_Options", "Image Processing Options:"))
         self.Facial_Feature_Detection_Button.setText(_translate("Image_Processing_Options", "Facial Feature Detection"))
-        self.Gaussian_Button_2.setText(_translate("Image_Processing_Options", "Laplace Edge"))
+        self.Laplace_Button.setText(_translate("Image_Processing_Options", "Laplace Edge"))
 
 
         # When user clicks the Down Sampling button:

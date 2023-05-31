@@ -195,7 +195,7 @@ background-color: rgb(0, 255, 0);
     <string>Facial Feature Detection</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="Gaussian_Button_2">
+  <widget class="QPushButton" name="Laplace_Button">
    <property name="geometry">
     <rect>
      <x>770</x>
