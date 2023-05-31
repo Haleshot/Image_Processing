@@ -77,7 +77,7 @@ class Ui_Dialog_4(object):
 
     def retranslateUi(self, Dialog_4):
         _translate = QtCore.QCoreApplication.translate
-        Dialog_4.setWindowTitle(_translate("Dialog_4", "Dialog"))
+        Dialog_4.setWindowTitle(_translate("Dialog_4", "Blur Image"))
         self.Open_Image_Button.setText(_translate("Dialog_4", "Open Image"))
         self.lineEdit.setPlaceholderText(_translate("Dialog_4", "Enter Degree of Blurring..."))
         self.label_3.setText(_translate("Dialog_4", "=>"))
