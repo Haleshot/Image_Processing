@@ -121,11 +121,11 @@ class Ui_Dialog_6(object):
         self.Open_Image_Button.setEnabled(False)
 
     def Save_Directory(self):
-        image_downsize = cv2.imread(r"All_Project_Files\Final_Project_Files\Cam_Media\Gaussian_Image\Gaussian_Image.png")
+        image_gaussian = cv2.imread(r"All_Project_Files\Final_Project_Files\Cam_Media\Gaussian_Image\Gaussian_Image.png")
         option = QFileDialog.Options()
         save_as_path = QFileDialog.getSaveFileName(None, 'Open Image File', r"Gaussian Image", "Image files (*.jpg *.jpeg *.gif *.png)")
 
-        cv2.imwrite(save_as_path[0], image_downsize)
+        cv2.imwrite(save_as_path[0], image_gaussian)
 
 
         # If you want these to display these in separate windows other than GUI.
