@@ -15,6 +15,7 @@ import numpy as np
 
 class Ui_Dialog_5(object):
     def setupUi(self, Dialog_5):
+        self.counter = 0
         Dialog_5.setObjectName("Dialog_5")
         Dialog_5.resize(1366, 801)
         self.lineEdit = QtWidgets.QLineEdit(Dialog_5)
@@ -77,13 +78,14 @@ class Ui_Dialog_5(object):
         _translate = QtCore.QCoreApplication.translate
         Dialog_5.setWindowTitle(_translate("Dialog_5", "Dialog"))
         self.lineEdit.setPlaceholderText(_translate("Dialog_5", "Enter Mask Size..."))
-        self.Open_Image_Button.setText(_translate("Dialog_5", "Open Image"))
-        self.label_4.setText(_translate("Dialog_5", "Output Image"))
         self.label_3.setText(_translate("Dialog_5", "=>"))
 
-
-
+        self.Open_Image_Button.setText(_translate("Dialog_5", "Open Image"))
+        self.Save_As.setText(_translate("Dialog_5", "Save As"))
         self.Open_Image_Button.clicked.connect(self.File_Select)
+        self.Save_As.clicked.connect(self.Save_Directory)
+
+
 
 
     def File_Select(self):
@@ -95,6 +97,7 @@ class Ui_Dialog_5(object):
         if not (int(Mask_Size) % 2 == 1):
             self.label_5.setText("Mask Size can only be odd!")
         else:
+            self.counter += 1
             self.label_5.setText("")
             # fname = QFileDialog.getOpenFileName(self, "Open File", "All_Project_Files\Final_Project_Files\Cam_Media", "Images (*.png *.xpm *.jpg)")
             # # Opening the Image
@@ -127,7 +130,27 @@ class Ui_Dialog_5(object):
             
             cv2.imwrite(r"All_Project_Files\Final_Project_Files\Cam_Media\LPF_Img\LPF_Image.png", LPF_Image)
             LPF_Image_File_Name = r"All_Project_Files\Final_Project_Files\Cam_Media\LPF_Img\LPF_Image.png"
+            # self.label_2.setPixmap(QPixmap(LPF_Image_File_Name))
+
+            lay = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents)
+            lay_2 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents_2)
+        
+            lay.setContentsMargins(0, 0, 0, 0)
+            lay_2.setContentsMargins(0, 0, 0, 0)
+
+            lay.addWidget(self.label)
+            lay_2.addWidget(self.label_2)
+
+            self.label.setPixmap(QPixmap(file_name))
             self.label_2.setPixmap(QPixmap(LPF_Image_File_Name))
+
+            # self.scrollArea.setWidgetResizable(True)
+            # self.scrollArea_2.setWidgetResizable(True)
+
+            self.label.setAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
+            self.label_2.setAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
+
+            self.Open_Image_Button.setEnabled(False)
 
 
             # If you want these to display these in separate windows other than GUI.
@@ -140,6 +163,16 @@ class Ui_Dialog_5(object):
             # # closing all open windows
             # cv2.destroyAllWindows()
 
+    def Save_Directory(self):
+        if self.counter == 1:
+            self.label_5.setText("")
+            image_downsize = cv2.imread(r"All_Project_Files\Final_Project_Files\Cam_Media\Down_Sized_Img\Down_Sized_Image.png")
+            option = QFileDialog.Options()
+            save_as_path = QFileDialog.getSaveFileName(None, 'Open Image File', r"Down Sized Image", "Image files (*.jpg *.jpeg *.gif *.png)")
+
+            cv2.imwrite(save_as_path[0], image_downsize)
+        else:
+            self.label_5.setText("Select Image first!")
 
 
 
