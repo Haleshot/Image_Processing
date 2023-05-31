@@ -16,6 +16,7 @@ import numpy as np
 
 class Ui_Dialog_4(object):
     def setupUi(self, Dialog_4):
+        self.counter = 0
         Dialog_4.setObjectName("Dialog_4")
         Dialog_4.resize(1366, 800)
         self.lineEdit = QtWidgets.QLineEdit(Dialog_4)
@@ -79,11 +80,13 @@ class Ui_Dialog_4(object):
         Dialog_4.setWindowTitle(_translate("Dialog_4", "Dialog"))
         self.Open_Image_Button.setText(_translate("Dialog_4", "Open Image"))
         self.lineEdit.setPlaceholderText(_translate("Dialog_4", "Enter Degree of Blurring..."))
-        self.label_4.setText(_translate("Dialog_4", "Output Image"))
         self.label_3.setText(_translate("Dialog_4", "=>"))
 
 
+        self.Open_Image_Button.setText(_translate("Dialog_4", "Open Image"))
+        self.Save_As.setText(_translate("Dialog_4", "Save As"))
         self.Open_Image_Button.clicked.connect(self.File_Select)
+        self.Save_As.clicked.connect(self.Save_Directory)
 
     def File_Select(self):
         Blurring_Degree = self.lineEdit.text() # Accessing the value entered by the user.
@@ -91,6 +94,7 @@ class Ui_Dialog_4(object):
         if not (int(Blurring_Degree.isdigit())):
             self.label_5.setText("Please enter an integer value!")
         else:
+            self.counter += 1
             self.label_5.setText("")
             # fname = QFileDialog.getOpenFileName(self, "Open File", "All_Project_Files\Final_Project_Files\Cam_Media", "Images (*.png *.xpm *.jpg)")
             # # Opening the Image
@@ -122,6 +126,17 @@ class Ui_Dialog_4(object):
     
             # # closing all open windows
             # cv2.destroyAllWindows()
+
+    def Save_Directory(self):
+        if self.counter == 1:
+            self.label_5.setText("")
+            image_downsize = cv2.imread(r"All_Project_Files\Final_Project_Files\Cam_Media\Blurred_Images\Blurred_Image.png")
+            option = QFileDialog.Options()
+            save_as_path = QFileDialog.getSaveFileName(None, 'Open Image File', r"Blurred Image", "Image files (*.jpg *.jpeg *.gif *.png)")
+
+            cv2.imwrite(save_as_path[0], image_downsize)
+        else:
+            self.label_5.setText("Select Image first!")
 
 
 if __name__ == "__main__":
