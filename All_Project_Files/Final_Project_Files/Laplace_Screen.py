@@ -108,7 +108,34 @@ class Ui_Dialog_8(object):
 
         cv2.imwrite(r"All_Project_Files\Final_Project_Files\Cam_Media\Laplacian_Images\Laplacian_Image.png", filtered_img)
         Laplacian_File_Name = r"All_Project_Files\Final_Project_Files\Cam_Media\Laplacian_Images\Laplacian_Image.png"
+        # self.label_2.setPixmap(QPixmap(Laplacian_File_Name))
+
+        lay = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents)
+        lay_2 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents_2)
+    
+        lay.setContentsMargins(0, 0, 0, 0)
+        lay_2.setContentsMargins(0, 0, 0, 0)
+
+        lay.addWidget(self.label)
+        lay_2.addWidget(self.label_2)
+
+        self.label.setPixmap(QPixmap(file_name))
         self.label_2.setPixmap(QPixmap(Laplacian_File_Name))
+
+        # self.scrollArea.setWidgetResizable(True)
+        # self.scrollArea_2.setWidgetResizable(True)
+
+        self.label.setAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
+        self.label_2.setAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
+
+        self.Open_Image_Button.setEnabled(False)
+
+    def Save_Directory(self):
+        image_downsize = cv2.imread(r"All_Project_Files\Final_Project_Files\Cam_Media\Laplacian_Images\Laplacian_Image.png")
+        option = QFileDialog.Options()
+        save_as_path = QFileDialog.getSaveFileName(None, 'Open Image File', r"Laplacian Image", "Image files (*.jpg *.jpeg *.gif *.png)")
+
+        cv2.imwrite(save_as_path[0], image_downsize)
 
 
 
