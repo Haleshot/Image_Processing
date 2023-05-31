@@ -76,7 +76,7 @@ class Ui_Dialog_5(object):
 
     def retranslateUi(self, Dialog_5):
         _translate = QtCore.QCoreApplication.translate
-        Dialog_5.setWindowTitle(_translate("Dialog_5", "Dialog"))
+        Dialog_5.setWindowTitle(_translate("Dialog_5", "LPF Image"))
         self.lineEdit.setPlaceholderText(_translate("Dialog_5", "Enter Mask Size..."))
         self.label_3.setText(_translate("Dialog_5", "=>"))
 
