@@ -94,7 +94,7 @@ class Ui_Dialog_5(object):
         if not (int(Mask_Size.isdigit())):
             self.label_5.setText("Please enter an integer value!")
 
-        if not (int(Mask_Size) % 2 == 1):
+        elif not (int(Mask_Size) % 2 == 1):
             self.label_5.setText("Mask Size can only be odd!")
         else:
             self.counter += 1
