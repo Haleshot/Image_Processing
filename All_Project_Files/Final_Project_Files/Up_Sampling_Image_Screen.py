@@ -151,7 +151,6 @@ class Ui_Dialog_1(object):
             image_downsize = cv2.imread(r"All_Project_Files\Final_Project_Files\Cam_Media\Up_Sized_Img\Up_Sized_Image.png")
             option = QFileDialog.Options()
             save_as_path = QFileDialog.getSaveFileName(None, 'Open Image File', r"Up Sized Image", "Image files (*.jpg *.jpeg *.gif *.png)")
-            print(save_as_path[0])
             cv2.imwrite(save_as_path[0], image_downsize)
         else:
             self.label_5.setText("Select Image first!")
