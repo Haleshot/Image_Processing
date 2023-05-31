@@ -15,6 +15,7 @@ import numpy as np
 
 class Ui_Dialog_2(object):
     def setupUi(self, Dialog_2):
+        self.counter = 0
         Dialog_2.setObjectName("Dialog_2")
         Dialog_2.resize(1366, 800)
         self.scrollArea_2 = QtWidgets.QScrollArea(Dialog_2)
@@ -87,12 +88,14 @@ class Ui_Dialog_2(object):
     def retranslateUi(self, Dialog_2):
         _translate = QtCore.QCoreApplication.translate
         Dialog_2.setWindowTitle(_translate("Dialog_2", "Dialog"))
-        self.Open_Image_Button.setText(_translate("Dialog_2", "Open Image"))
         self.label_3.setText(_translate("Dialog_2", "=>"))
         self.lineEdit.setPlaceholderText(_translate("Dialog_2", "Enter Lower Limit..."))
         self.lineEdit_2.setPlaceholderText(_translate("Dialog_2", "Enter Upper Limit..."))
 
+        self.Open_Image_Button.setText(_translate("Dialog_2", "Open Image"))
+        self.Save_As.setText(_translate("Dialog_2", "Save As"))
         self.Open_Image_Button.clicked.connect(self.File_Select)
+        self.Save_As.clicked.connect(self.Save_Directory)
 
 
 
@@ -137,7 +140,28 @@ class Ui_Dialog_2(object):
 
             cv2.imwrite(r"All_Project_Files\Final_Project_Files\Cam_Media\Thresholding_Without\Threshold_Without_Image.png", threshold_image)
             Thresholding_Without_File_Name = r"All_Project_Files\Final_Project_Files\Cam_Media\Thresholding_Without\Threshold_Without_Image.png"
+            # self.label_2.setPixmap(QPixmap(Thresholding_Without_File_Name))
+
+
+            lay = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents)
+            lay_2 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents_2)
+        
+            lay.setContentsMargins(0, 0, 0, 0)
+            lay_2.setContentsMargins(0, 0, 0, 0)
+
+            lay.addWidget(self.label)
+            lay_2.addWidget(self.label_2)
+
+            self.label.setPixmap(QPixmap(file_name))
             self.label_2.setPixmap(QPixmap(Thresholding_Without_File_Name))
+
+            # self.scrollArea.setWidgetResizable(True)
+            # self.scrollArea_2.setWidgetResizable(True)
+
+            self.label.setAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
+            self.label_2.setAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
+
+            self.Open_Image_Button.setEnabled(False)
 
 
             # If you want these to display these in separate windows other than GUI.
@@ -149,6 +173,17 @@ class Ui_Dialog_2(object):
     
             # # closing all open windows
             # cv2.destroyAllWindows()
+
+    def Save_Directory(self):
+        if self.counter == 1:
+            self.label_5.setText("")
+            image_downsize = cv2.imread(r"All_Project_Files\Final_Project_Files\Cam_Media\Thresholding_Without\Threshold_Without_Image.png")
+            option = QFileDialog.Options()
+            save_as_path = QFileDialog.getSaveFileName(None, 'Open Image File', r"Down Sized Image", "Image files (*.jpg *.jpeg *.gif *.png)")
+
+            cv2.imwrite(save_as_path[0], image_downsize)
+        else:
+            self.label_5.setText("Select Image first!")
 
 
 if __name__ == "__main__":
