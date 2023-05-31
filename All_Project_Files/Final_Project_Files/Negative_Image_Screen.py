@@ -64,7 +64,7 @@ class Ui_Background(object):
 
     def retranslateUi(self, Background):
         _translate = QtCore.QCoreApplication.translate
-        Background.setWindowTitle(_translate("Background", "Dialog"))
+        Background.setWindowTitle(_translate("Background", "Negative Image"))
         self.label_3.setText(_translate("Background", "=>"))
 
         self.Open_Image_Button.setText(_translate("Dialog", "Open Image"))
