@@ -78,6 +78,7 @@ class Ui_Dialog_1(object):
         Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
         self.label_3.setText(_translate("Dialog", "=>"))
         self.lineEdit.setPlaceholderText(_translate("Dialog", "Enter Up Sampling Value..."))
+        
         self.Open_Image_Button.setText(_translate("Dialog", "Open Image"))
         self.Save_As.setText(_translate("Dialog", "Save As"))
         self.Open_Image_Button.clicked.connect(self.File_Select)
