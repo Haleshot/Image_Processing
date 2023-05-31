@@ -150,10 +150,10 @@ class Ui_Dialog_1(object):
     def Save_Directory(self):
         if self.counter == 1:
             self.label_5.setText("")
-            image_downsize = cv2.imread(r"All_Project_Files\Final_Project_Files\Cam_Media\Up_Sized_Img\Up_Sized_Image.png")
+            image_upsize = cv2.imread(r"All_Project_Files\Final_Project_Files\Cam_Media\Up_Sized_Img\Up_Sized_Image.png")
             option = QFileDialog.Options()
             save_as_path = QFileDialog.getSaveFileName(None, 'Open Image File', r"Up Sized Image", "Image files (*.jpg *.jpeg *.gif *.png)")
-            cv2.imwrite(save_as_path[0], image_downsize)
+            cv2.imwrite(save_as_path[0], image_upsize)
         else:
             self.label_5.setText("Select Image first!")
 
