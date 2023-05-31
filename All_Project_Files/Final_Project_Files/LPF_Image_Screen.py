@@ -166,9 +166,9 @@ class Ui_Dialog_5(object):
     def Save_Directory(self):
         if self.counter == 1:
             self.label_5.setText("")
-            image_downsize = cv2.imread(r"All_Project_Files\Final_Project_Files\Cam_Media\Down_Sized_Img\Down_Sized_Image.png")
+            image_downsize = cv2.imread(r"All_Project_Files\Final_Project_Files\Cam_Media\LPF_Img\LPF_Image.png")
             option = QFileDialog.Options()
-            save_as_path = QFileDialog.getSaveFileName(None, 'Open Image File', r"Down Sized Image", "Image files (*.jpg *.jpeg *.gif *.png)")
+            save_as_path = QFileDialog.getSaveFileName(None, 'Open Image File', r"LPF Image", "Image files (*.jpg *.jpeg *.gif *.png)")
 
             cv2.imwrite(save_as_path[0], image_downsize)
         else:
