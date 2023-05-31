@@ -87,7 +87,7 @@ class Ui_Dialog_2(object):
 
     def retranslateUi(self, Dialog_2):
         _translate = QtCore.QCoreApplication.translate
-        Dialog_2.setWindowTitle(_translate("Dialog_2", "Dialog"))
+        Dialog_2.setWindowTitle(_translate("Dialog_2", "Thresholding Without Background"))
         self.label_3.setText(_translate("Dialog_2", "=>"))
         self.lineEdit.setPlaceholderText(_translate("Dialog_2", "Enter Lower Limit..."))
         self.lineEdit_2.setPlaceholderText(_translate("Dialog_2", "Enter Upper Limit..."))
