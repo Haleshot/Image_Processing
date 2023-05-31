@@ -64,7 +64,7 @@ class Ui_Dialog_7(object):
 
     def retranslateUi(self, Dialog_7):
         _translate = QtCore.QCoreApplication.translate
-        Dialog_7.setWindowTitle(_translate("Dialog_7", "Dialog"))
+        Dialog_7.setWindowTitle(_translate("Dialog_7", "Facial Features Detection"))
         self.Open_Image_Button.setText(_translate("Dialog_7", "Open Image"))
         self.label_3.setText(_translate("Dialog_7", "=>"))
 
