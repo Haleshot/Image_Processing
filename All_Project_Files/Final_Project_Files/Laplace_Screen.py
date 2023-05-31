@@ -65,7 +65,7 @@ class Ui_Dialog_8(object):
 
     def retranslateUi(self, Dialog_8):
         _translate = QtCore.QCoreApplication.translate
-        Dialog_8.setWindowTitle(_translate("Dialog_8", "Dialog"))
+        Dialog_8.setWindowTitle(_translate("Dialog_8", "Laplace Edge Detection"))
         self.Open_Image_Button.setText(_translate("Dialog_8", "Open Image"))
         self.label_3.setText(_translate("Dialog_8", "=>"))
 
