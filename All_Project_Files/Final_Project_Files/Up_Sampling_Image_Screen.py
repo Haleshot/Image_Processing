@@ -15,6 +15,7 @@ import numpy as np
 
 class Ui_Dialog_1(object):
     def setupUi(self, Dialog):
+        self.counter = 0
         Dialog.setObjectName("Dialog")
         Dialog.resize(1366, 800)
         self.lineEdit = QtWidgets.QLineEdit(Dialog)
