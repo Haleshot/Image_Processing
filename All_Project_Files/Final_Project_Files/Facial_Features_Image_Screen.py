@@ -90,62 +90,63 @@ class Ui_Dialog_7(object):
         # self.label.setPixmap(self.pixmap)
         
         file_name, _ = QFileDialog.getOpenFileName(None, 'Open Image File', r"<Default dir>", "Image files (*.jpg *.jpeg *.gif *.png)")
-        self.label.setPixmap(QPixmap(file_name))
-        img = cv2.imread(file_name)
-        m, n, c = img.shape
-        print("The original size of the image is ", m, " x ", n)
-        Face_Detected_img = img.copy()
-        
-        # Convert the image to grayscale
-        gray = cv2.cvtColor(Face_Detected_img, cv2.COLOR_BGR2GRAY)
-
-        # Detect faces
-        faces = face_cascade.detectMultiScale(gray, 1.3, 5)
-
-        # Iterate over each face
-        for (x, y, w, h) in faces:
-            # Draw a rectangle around the face
-            cv2.rectangle(Face_Detected_img, (x, y), (x+w, y+h), (255, 0, 0), 2)
-
-            # Detect eyes
-            roi_gray = gray[y:y+h, x:x+w]
-            eyes = eye_cascade.detectMultiScale(roi_gray)
-            for (ex, ey, ew, eh) in eyes:
-                # Draw a rectangle around the eyes
-                cv2.rectangle(Face_Detected_img, (x+ex, y+ey), (x+ex+ew, y+ey+eh), (0, 255, 0), 2)
+        if file_name:
+            self.label.setPixmap(QPixmap(file_name))
+            img = cv2.imread(file_name)
+            m, n, c = img.shape
+            print("The original size of the image is ", m, " x ", n)
+            Face_Detected_img = img.copy()
             
+            # Convert the image to grayscale
+            gray = cv2.cvtColor(Face_Detected_img, cv2.COLOR_BGR2GRAY)
+
+            # Detect faces
+            faces = face_cascade.detectMultiScale(gray, 1.3, 5)
+
+            # Iterate over each face
+            for (x, y, w, h) in faces:
+                # Draw a rectangle around the face
+                cv2.rectangle(Face_Detected_img, (x, y), (x+w, y+h), (255, 0, 0), 2)
+
+                # Detect eyes
+                roi_gray = gray[y:y+h, x:x+w]
+                eyes = eye_cascade.detectMultiScale(roi_gray)
+                for (ex, ey, ew, eh) in eyes:
+                    # Draw a rectangle around the eyes
+                    cv2.rectangle(Face_Detected_img, (x+ex, y+ey), (x+ex+ew, y+ey+eh), (0, 255, 0), 2)
+                
 
 
 
+            
+            m, n, c = Face_Detected_img.shape
+            print("The new size of the image is ", m, " x ", n)
+
+            
+            cv2.imwrite(r"All_Project_Files\Final_Project_Files\Cam_Media\Face_Detection_Images\Face_Detected_Image.png", Face_Detected_img)
+            Face_Detected_Image_File_Name = r"All_Project_Files\Final_Project_Files\Cam_Media\Face_Detection_Images\Face_Detected_Image.png"
+            
+            # self.label_2.setPixmap(QPixmap(Face_Detected_Image_File_Name))
+
+            lay = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents)
+            lay_2 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents_2)
         
-        m, n, c = Face_Detected_img.shape
-        print("The new size of the image is ", m, " x ", n)
+            lay.setContentsMargins(0, 0, 0, 0)
+            lay_2.setContentsMargins(0, 0, 0, 0)
 
-        
-        cv2.imwrite(r"All_Project_Files\Final_Project_Files\Cam_Media\Face_Detection_Images\Face_Detected_Image.png", Face_Detected_img)
-        Face_Detected_Image_File_Name = r"All_Project_Files\Final_Project_Files\Cam_Media\Face_Detection_Images\Face_Detected_Image.png"
-        
-        # self.label_2.setPixmap(QPixmap(Face_Detected_Image_File_Name))
+            lay.addWidget(self.label)
+            lay_2.addWidget(self.label_2)
 
-        lay = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents)
-        lay_2 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents_2)
-    
-        lay.setContentsMargins(0, 0, 0, 0)
-        lay_2.setContentsMargins(0, 0, 0, 0)
+            self.label.setPixmap(QPixmap(file_name))
+            self.label_2.setPixmap(QPixmap(Face_Detected_Image_File_Name))
 
-        lay.addWidget(self.label)
-        lay_2.addWidget(self.label_2)
+            # self.scrollArea.setWidgetResizable(True)
+            # self.scrollArea_2.setWidgetResizable(True)
 
-        self.label.setPixmap(QPixmap(file_name))
-        self.label_2.setPixmap(QPixmap(Face_Detected_Image_File_Name))
+            self.label.setAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
+            self.label_2.setAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
 
-        # self.scrollArea.setWidgetResizable(True)
-        # self.scrollArea_2.setWidgetResizable(True)
-
-        self.label.setAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
-        self.label_2.setAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
-
-        self.Open_Image_Button.setEnabled(False)
+            self.Open_Image_Button.setEnabled(False)
 
 
         # If you want these to display these in separate windows other than GUI.
@@ -163,7 +164,8 @@ class Ui_Dialog_7(object):
         option = QFileDialog.Options()
         save_as_path = QFileDialog.getSaveFileName(None, 'Open Image File', r"Facial Features Detected Image", "Image files (*.jpg *.jpeg *.gif *.png)")
 
-        cv2.imwrite(save_as_path[0], image_facial_feature_detection)
+        if option:
+            cv2.imwrite(save_as_path[0], image_facial_feature_detection)
 
 
 if __name__ == "__main__":

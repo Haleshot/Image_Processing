@@ -82,50 +82,51 @@ class Ui_Dialog_6(object):
         # # Adding the picture to the Label.
         # self.label.setPixmap(self.pixmap)
         file_name, _ = QFileDialog.getOpenFileName(None, 'Open Image File', r"<Default dir>", "Image files (*.jpg *.jpeg *.gif *.png)")
-        self.label.setPixmap(QPixmap(file_name))
-        img = cv2.imread(file_name, 0)
-        converted_img = cv2.cvtColor(img, cv2.COLOR_GRAY2BGR)
+        if file_name:
+            self.label.setPixmap(QPixmap(file_name))
+            img = cv2.imread(file_name, 0)
+            converted_img = cv2.cvtColor(img, cv2.COLOR_GRAY2BGR)
 
-        m, n = img.shape
-        print("The original size of the image is ", m, " x ", n)
+            m, n = img.shape
+            print("The original size of the image is ", m, " x ", n)
 
-        Gaussian_Image = cv2.fastNlMeansDenoisingColored(converted_img, None, 20, 20, 7, 21) 
+            Gaussian_Image = cv2.fastNlMeansDenoisingColored(converted_img, None, 20, 20, 7, 21) 
+            
+
+            # m, n = Gaussian_Image.shape
+            print("The new size of the image is ", m, " x ", n)
+
+            
+            cv2.imwrite(r"All_Project_Files\Final_Project_Files\Cam_Media\Gaussian_Image\Gaussian_Image.png", Gaussian_Image)
+            Gaussian_Image_File_Name = r"All_Project_Files\Final_Project_Files\Cam_Media\Gaussian_Image\Gaussian_Image.png"
+            # self.label_2.setPixmap(QPixmap(Gaussian_Image_File_Name))
+
+            lay = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents)
+            lay_2 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents_2)
         
+            lay.setContentsMargins(0, 0, 0, 0)
+            lay_2.setContentsMargins(0, 0, 0, 0)
 
-        # m, n = Gaussian_Image.shape
-        print("The new size of the image is ", m, " x ", n)
+            lay.addWidget(self.label)
+            lay_2.addWidget(self.label_2)
 
-        
-        cv2.imwrite(r"All_Project_Files\Final_Project_Files\Cam_Media\Gaussian_Image\Gaussian_Image.png", Gaussian_Image)
-        Gaussian_Image_File_Name = r"All_Project_Files\Final_Project_Files\Cam_Media\Gaussian_Image\Gaussian_Image.png"
-        # self.label_2.setPixmap(QPixmap(Gaussian_Image_File_Name))
+            self.label.setPixmap(QPixmap(file_name))
+            self.label_2.setPixmap(QPixmap(Gaussian_Image_File_Name))
 
-        lay = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents)
-        lay_2 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents_2)
-    
-        lay.setContentsMargins(0, 0, 0, 0)
-        lay_2.setContentsMargins(0, 0, 0, 0)
+            # self.scrollArea.setWidgetResizable(True)
+            # self.scrollArea_2.setWidgetResizable(True)
 
-        lay.addWidget(self.label)
-        lay_2.addWidget(self.label_2)
+            self.label.setAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
+            self.label_2.setAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
 
-        self.label.setPixmap(QPixmap(file_name))
-        self.label_2.setPixmap(QPixmap(Gaussian_Image_File_Name))
-
-        # self.scrollArea.setWidgetResizable(True)
-        # self.scrollArea_2.setWidgetResizable(True)
-
-        self.label.setAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
-        self.label_2.setAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
-
-        self.Open_Image_Button.setEnabled(False)
+            self.Open_Image_Button.setEnabled(False)
 
     def Save_Directory(self):
         image_gaussian = cv2.imread(r"All_Project_Files\Final_Project_Files\Cam_Media\Gaussian_Image\Gaussian_Image.png")
         option = QFileDialog.Options()
         save_as_path = QFileDialog.getSaveFileName(None, 'Open Image File', r"Gaussian Image", "Image files (*.jpg *.jpeg *.gif *.png)")
-
-        cv2.imwrite(save_as_path[0], image_gaussian)
+        if option:
+            cv2.imwrite(save_as_path[0], image_gaussian)
 
 
         # If you want these to display these in separate windows other than GUI.
