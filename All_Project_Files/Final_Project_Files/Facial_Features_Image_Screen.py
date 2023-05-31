@@ -53,10 +53,12 @@ class Ui_Dialog_7(object):
         _translate = QtCore.QCoreApplication.translate
         Dialog_7.setWindowTitle(_translate("Dialog_7", "Dialog"))
         self.Open_Image_Button.setText(_translate("Dialog_7", "Open Image"))
-        self.label_4.setText(_translate("Dialog_7", "Output Image"))
         self.label_3.setText(_translate("Dialog_7", "=>"))
 
+        self.Open_Image_Button.setText(_translate("Dialog", "Open Image"))
+        self.Save_As.setText(_translate("Dialog", "Save As"))
         self.Open_Image_Button.clicked.connect(self.File_Select)
+        self.Save_As.clicked.connect(self.Save_Directory)
 
 
     def File_Select(self):
@@ -110,7 +112,27 @@ class Ui_Dialog_7(object):
         cv2.imwrite(r"All_Project_Files\Final_Project_Files\Cam_Media\Face_Detection_Images\Face_Detected_Image.png", Face_Detected_img)
         Face_Detected_Image_File_Name = r"All_Project_Files\Final_Project_Files\Cam_Media\Face_Detection_Images\Face_Detected_Image.png"
         
+        # self.label_2.setPixmap(QPixmap(Face_Detected_Image_File_Name))
+
+        lay = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents)
+        lay_2 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents_2)
+    
+        lay.setContentsMargins(0, 0, 0, 0)
+        lay_2.setContentsMargins(0, 0, 0, 0)
+
+        lay.addWidget(self.label)
+        lay_2.addWidget(self.label_2)
+
+        self.label.setPixmap(QPixmap(file_name))
         self.label_2.setPixmap(QPixmap(Face_Detected_Image_File_Name))
+
+        # self.scrollArea.setWidgetResizable(True)
+        # self.scrollArea_2.setWidgetResizable(True)
+
+        self.label.setAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
+        self.label_2.setAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
+
+        self.Open_Image_Button.setEnabled(False)
 
 
         # If you want these to display these in separate windows other than GUI.
