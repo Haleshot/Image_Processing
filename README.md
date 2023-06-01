@@ -507,7 +507,8 @@ Simple terms:
 <li><a href="##Down Sampling">  Down Sampling </a></li>
 <li><a href="#Up Sampling">  Up Sampling </a></li>
 <li><a href="#Negative of an Image">  Negative of an Image </a></li>
-<li><a href="#Thresholding">  Thresholding </a></li>
+<li><a href="#Thresholding With Background">  Thresholding </a></li>
+<li><a href="#Thresholding Without Background">  Thresholding </a></li>
 <li><a href="#Blurring">  Blurring </a></li>
 <li><a href="#Low Pass Filtering (LPF)">  Low Pass Filtering (LPF) </a></li>
 <li><a href="#Gaussian Noise">  Gaussian Noise </a></li>
@@ -516,7 +517,42 @@ Simple terms:
 
 
 <h3 id="#Down Sampling"> Down Sampling </h3>
-
 ![Down_Sampling_Demo](https://github.com/Haleshot/Image_Processing/assets/57552973/382ed130-5229-4f8b-8df5-1a02af4e71ed)
+
+<h3 id="#Up Sampling"> Up Sampling </h3>
+![Up_Sampling_Demo](https://github.com/Haleshot/Image_Processing/assets/57552973/00875f15-96bf-4644-a8f9-ead2a79441b5)
+
+<h3 id="#Negative of an Image"> Negative of an Image </h3>
+![Negative_Image_Sampling_Demo](https://github.com/Haleshot/Image_Processing/assets/57552973/5646e806-2f16-4db0-b39b-e2035c4d8292)
+
+<h3 id="#Thresholding With Background"> Thresholding With Background </h3>
+![Thresholding_With_Background_Demo](https://github.com/Haleshot/Image_Processing/assets/57552973/d1acc2cc-148c-4815-872c-8563376e395f)
+
+<h3 id="#Thresholding Without Background"> Thresholding Without Background </h3>
+![Thresholding_Without_Background_Demo](https://github.com/Haleshot/Image_Processing/assets/57552973/f6c14cf6-ca6a-47e4-85c0-884db070a56e)
+
+<h3 id="#Blurring"> Blurring </h3>
+![Blurring_Demo](https://github.com/Haleshot/Image_Processing/assets/57552973/6040b8f9-efa2-47a8-8563-594603b1e9f6)
+
+<h3 id="#Low Pass Filtering (LPF)"> Low Pass Filtering (LPF) </h3>
+![LPF_Demo](https://github.com/Haleshot/Image_Processing/assets/57552973/a78b0123-a14a-4353-8585-077001bde157)
+
+<h3 id="#Gaussian Noise"> Gaussian Noise </h3>
+![Gaussian_Demo](https://github.com/Haleshot/Image_Processing/assets/57552973/c0284caf-6092-4182-a36a-e92d20832bf7)
+
+<h3 id="#Facial Feature Detection"> Facial Feature Detection </h3>
+![Facial_Feature_Detection_Demo](https://github.com/Haleshot/Image_Processing/assets/57552973/1eb2dfcd-7310-45d3-a4af-141575447767)
+
+<h3 id="#Laplacian Edge Detection"> Laplacian Edge Detection </h3>
+![Laplace_Edge_Detection_Demo](https://github.com/Haleshot/Image_Processing/assets/57552973/eed16965-d6d1-4760-b51f-64b9231d17f9)
+
+
+
+
+
+
+
+
+
 
 
