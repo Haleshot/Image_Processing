@@ -505,7 +505,7 @@ Simple terms:
 <img src="https://media.tenor.com/hB9OTbewrikAAAAi/work-work-in-progress.gif" width="200" height="300" />
 </p> -->
   <ul>
-  <li><a href="##Down Sampling">  Down Sampling </a></li>
+  <li>[Down Sampling](#Down Sampling)</li>
   <li><a href="#Up Sampling">  Up Sampling </a></li>
   <li><a href="#Negative of an Image">  Negative of an Image </a></li>
   <li><a href="#Thresholding">  Thresholding </a></li>
