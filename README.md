@@ -477,7 +477,6 @@ Simple terms:
 
 <p align="justify">
 
-- [ ] Add a Video demo in the form of Gif Link for viewers to easily see the working.
 
 - [ ] Refine UI more, add Video processing and Erosion/Dilation features
   - [ ] PyQt5 Editor
@@ -485,6 +484,7 @@ Simple terms:
 ### In Progress
 
 - [ ] Improve README guides, contributing guides, etc.
+- [ ] Add a Video demo in the form of Gif Link for viewers to easily see the working.
 
 - [ ] Showing user, which file to run as main file - portraying user flow.
 - [ ] Adding Save as button
