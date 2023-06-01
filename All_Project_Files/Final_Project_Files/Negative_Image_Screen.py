@@ -1,19 +1,25 @@
-from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5 import QtCore, QtGui, QtWidgets, uic
-from PyQt5.QtGui import *
-from PyQt5.QtWidgets import *
-from PyQt5.QtCore import *
-from PyQt5.uic import loadUi
-from PyQt5 import QtWidgets
-from PyQt5.QtWidgets import QDialog, QApplication, QWidget, QStackedWidget, QComboBox, QPushButton, QVBoxLayout, QLabel
-from PyQt5.QtGui import QPixmap
-from PyQt5.QtWidgets import QFileDialog
 import cv2
-from skimage.util import random_noise
 import numpy as np
+import os
+import tempfile
+from PyQt5 import QtCore, QtGui, QtWidgets, uic
+from PyQt5.QtGui import QPixmap
+from PyQt5.QtWidgets import (QApplication, QComboBox, QDialog, QFileDialog,
+                             QLabel, QPushButton, QStackedWidget, QVBoxLayout,
+                             QWidget)
+from PyQt5.uic import loadUi
+from skimage.util import random_noise
+
 
 
 class Ui_Background(object):
+    def __init__(self):
+        self.output_image = None
+        with tempfile.NamedTemporaryFile(suffix=".png") as f:
+            self.buffer_image_filename = f.name
+    def __del__(self):
+        if self.output_image is not None:
+            os.remove(self.buffer_image_filename)
     def setupUi(self, Background):
         Background.setObjectName("Background")
         Background.resize(1366, 801)
@@ -84,15 +90,15 @@ class Ui_Background(object):
             self.label.setPixmap(QPixmap(file_name))
             img = cv2.imread(file_name)
             maximum = np.amax(img)
-            negative_img = maximum - img
-            cv2.imwrite(r"All_Project_Files\Final_Project_Files\Cam_Media\Negative_Images\Negative_Image.png", negative_img)
-            Negative_File_Name = r"All_Project_Files\Final_Project_Files\Cam_Media\Negative_Images\Negative_Image.png"
+            self.output_image = maximum - img
+            Negative_File_Name = self.buffer_image_filename
+            cv2.imwrite(Negative_File_Name, self.output_image)
             # self.label_2.setPixmap(QPixmap(Negative_File_Name))
 
 
             lay = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents)
             lay_2 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents_2)
-        
+
             lay.setContentsMargins(0, 0, 0, 0)
             lay_2.setContentsMargins(0, 0, 0, 0)
 
@@ -118,17 +124,16 @@ class Ui_Background(object):
 
         # cv2.imshow("Image", img)
         # cv2.waitKey(0)
-  
+
         # # closing all open windows
         # cv2.destroyAllWindows()
 
     def Save_Directory(self):
-        image_negative = cv2.imread(r"All_Project_Files\Final_Project_Files\Cam_Media\Negative_Images\Negative_Image.png")
         option = QFileDialog.Options()
         save_as_path = QFileDialog.getSaveFileName(None, 'Open Image File', r"Negative Image", "Image files (*.jpg *.jpeg *.gif *.png)")
 
-        if option:
-            cv2.imwrite(save_as_path[0], image_negative)
+        if save_as_path.__len__() > 0:
+            cv2.imwrite(save_as_path[0], self.output_image)
 
 
 if __name__ == "__main__":
