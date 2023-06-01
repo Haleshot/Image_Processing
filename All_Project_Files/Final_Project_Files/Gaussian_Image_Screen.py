@@ -129,9 +129,8 @@ class Ui_Dialog_6(object):
     def Save_Directory(self):
         option = QFileDialog.Options()
         save_as_path = QFileDialog.getSaveFileName(None, 'Open Image File', r"Gaussian Image", "Image files (*.jpg *.jpeg *.gif *.png)")
-        if save_as_path.__len__() > 0:
+        if save_as_path[0].__len__() > 0:
             cv2.imwrite(save_as_path[0], self.output_image)
-
 
         # If you want these to display these in separate windows other than GUI.
         # cv2.imshow("Negative Image", negative_img)
