@@ -1,18 +1,23 @@
-from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5 import QtCore, QtGui, QtWidgets, uic
-from PyQt5.QtGui import *
-from PyQt5.QtWidgets import *
-from PyQt5.QtCore import *
-from PyQt5.uic import loadUi
-from PyQt5 import QtWidgets
-from PyQt5.QtWidgets import QDialog, QApplication, QWidget, QStackedWidget, QComboBox, QPushButton, QVBoxLayout, QLabel
-from PyQt5.QtGui import QPixmap
-from PyQt5.QtWidgets import QFileDialog
 import cv2
-from skimage.util import random_noise
 import numpy as np
+import os
+import tempfile
+from PyQt5 import QtCore, QtGui, QtWidgets, uic
+from PyQt5.QtGui import QPixmap
+from PyQt5.QtWidgets import (QApplication, QComboBox, QDialog, QFileDialog,
+                             QLabel, QPushButton, QStackedWidget, QVBoxLayout,
+                             QWidget)
+from PyQt5.uic import loadUi
+from skimage.util import random_noise
 
 class Ui_Dialog_6(object):
+    def __init__(self):
+        self.output_image = None
+        with tempfile.NamedTemporaryFile(suffix=".png") as f:
+            self.buffer_image_filename = f.name
+    def __del__(self):
+        if self.output_image is not None:
+            os.remove(self.buffer_image_filename)
     def setupUi(self, Dialog_6):
         Dialog_6.setObjectName("Dialog_6")
         Dialog_6.resize(1366, 800)
@@ -75,7 +80,7 @@ class Ui_Dialog_6(object):
 
 
     def File_Select(self):
-        
+
         # fname = QFileDialog.getOpenFileName(self, "Open File", "All_Project_Files\Final_Project_Files\Cam_Media", "Images (*.png *.xpm *.jpg)")
         # # Opening the Image
         # self.pixmap = QPixmap(fname[0]) # This returns a tuple and hence we mention [0].
@@ -85,25 +90,25 @@ class Ui_Dialog_6(object):
         if file_name:
             self.label.setPixmap(QPixmap(file_name))
             img = cv2.imread(file_name, 0)
-            converted_img = cv2.cvtColor(img, cv2.COLOR_GRAY2BGR)
+            converted_image = cv2.cvtColor(img, cv2.COLOR_GRAY2BGR)
 
             m, n = img.shape
             print("The original size of the image is ", m, " x ", n)
 
-            Gaussian_Image = cv2.fastNlMeansDenoisingColored(converted_img, None, 20, 20, 7, 21) 
-            
+            self.output_image = cv2.fastNlMeansDenoisingColored(converted_image, None, 20, 20, 7, 21)
+
 
             # m, n = Gaussian_Image.shape
             print("The new size of the image is ", m, " x ", n)
 
-            
-            cv2.imwrite(r"All_Project_Files\Final_Project_Files\Cam_Media\Gaussian_Image\Gaussian_Image.png", Gaussian_Image)
-            Gaussian_Image_File_Name = r"All_Project_Files\Final_Project_Files\Cam_Media\Gaussian_Image\Gaussian_Image.png"
+
+            Gaussian_Image_File_Name = self.buffer_image_filename
+            cv2.imwrite(Gaussian_Image_File_Name, self.output_image)
             # self.label_2.setPixmap(QPixmap(Gaussian_Image_File_Name))
 
             lay = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents)
             lay_2 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents_2)
-        
+
             lay.setContentsMargins(0, 0, 0, 0)
             lay_2.setContentsMargins(0, 0, 0, 0)
 
@@ -122,11 +127,10 @@ class Ui_Dialog_6(object):
             self.Open_Image_Button.setEnabled(False)
 
     def Save_Directory(self):
-        image_gaussian = cv2.imread(r"All_Project_Files\Final_Project_Files\Cam_Media\Gaussian_Image\Gaussian_Image.png")
         option = QFileDialog.Options()
         save_as_path = QFileDialog.getSaveFileName(None, 'Open Image File', r"Gaussian Image", "Image files (*.jpg *.jpeg *.gif *.png)")
-        if option:
-            cv2.imwrite(save_as_path[0], image_gaussian)
+        if save_as_path.__len__() > 0:
+            cv2.imwrite(save_as_path[0], self.output_image)
 
 
         # If you want these to display these in separate windows other than GUI.
