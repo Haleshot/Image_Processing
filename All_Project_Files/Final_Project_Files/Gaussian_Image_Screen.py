@@ -117,6 +117,9 @@ class Ui_Dialog_6(object):
             lay.addWidget(self.label)
             lay_2.addWidget(self.label_2)
 
+            
+            self.label_5.setText("")
+
             self.label.setPixmap(QPixmap(file_name))
             self.label_2.setPixmap(QPixmap(Gaussian_Image_File_Name))
 
@@ -134,7 +137,6 @@ class Ui_Dialog_6(object):
         if self.counter > 0:
             save_as_path = QFileDialog.getSaveFileName(None, 'Open Image File', r"Gaussian Image", "Image files (*.jpg *.jpeg *.gif *.png)")
             if save_as_path[0].__len__() > 0:
-                self.label_5.setText("")
                 cv2.imwrite(save_as_path[0], self.output_image)
         else:
             self.label_5.setText("Please select a file first!")
