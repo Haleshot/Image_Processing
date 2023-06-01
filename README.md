@@ -3,8 +3,8 @@
 <details open="open">
   <summary>Table of Contents</summary>
   <ol>
-    <li><a href="#Installation">  Installation </a></li>
-    <li><a href="#Introduction">  Introduction </a></li>
+    <li><a href="#Installation"> Installation </a></li>
+    <li><a href="#Introduction"> Introduction </a></li>
     <li><a href="#Objectives and scope">  Objectives and scope </a></li>
     <li><a href="#Methodology">  Methodology </a></li>
     <ul>
