@@ -514,7 +514,7 @@ Simple terms:
     <li><a href="#Laplacian Edge Detection">  Laplacian Filter </a></li>
 </ul>
   
-[Down Sampling](#Down Sampling)>  
+##Down Sampling
 <!-- <img src="https://github.com/Haleshot/Image_Processing/assets/57552973/382ed130-5229-4f8b-8df5-1a02af4e71ed" /> -->
 
 ![Down_Sampling_Demo](https://github.com/Haleshot/Image_Processing/assets/57552973/382ed130-5229-4f8b-8df5-1a02af4e71ed)
