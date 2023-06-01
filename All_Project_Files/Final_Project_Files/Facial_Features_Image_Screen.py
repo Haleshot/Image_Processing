@@ -1,19 +1,24 @@
-from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5 import QtCore, QtGui, QtWidgets, uic
-from PyQt5.QtGui import *
-from PyQt5.QtWidgets import *
-from PyQt5.QtCore import *
-from PyQt5.uic import loadUi
-from PyQt5 import QtWidgets
-from PyQt5.QtWidgets import QDialog, QApplication, QWidget, QStackedWidget, QComboBox, QPushButton, QVBoxLayout, QLabel
-from PyQt5.QtGui import QPixmap
-from PyQt5.QtWidgets import QFileDialog
 import cv2
-from skimage.util import random_noise
 import numpy as np
+import os
+import tempfile
+from PyQt5 import QtCore, QtGui, QtWidgets, uic
+from PyQt5.QtGui import QPixmap
+from PyQt5.QtWidgets import (QApplication, QComboBox, QDialog, QFileDialog,
+                             QLabel, QPushButton, QStackedWidget, QVBoxLayout,
+                             QWidget)
+from PyQt5.uic import loadUi
+from skimage.util import random_noise
 
 
 class Ui_Dialog_7(object):
+    def __init__(self):
+        self.output_image = None
+        with tempfile.NamedTemporaryFile(suffix=".png") as f:
+            self.buffer_image_filename = f.name
+    def __del__(self):
+        if self.output_image is not None:
+            os.remove(self.buffer_image_filename)
     def setupUi(self, Dialog_7):
         self.counter = 0
         Dialog_7.setObjectName("Dialog_7")
@@ -76,11 +81,11 @@ class Ui_Dialog_7(object):
 
 
     def File_Select(self):
-        
-        
+
+
         # Load the classifier
-        face_cascade = cv2.CascadeClassifier("All_Project_Files\haarcascade_frontalface_default.xml")
-        eye_cascade = cv2.CascadeClassifier("All_Project_Files\haarcascade_eye.xml")
+        face_cascade = cv2.CascadeClassifier(os.curdir + "\..\haarcascade_frontalface_default.xml")
+        eye_cascade = cv2.CascadeClassifier(os.curdir + "\..\haarcascade_eye.xml")
 
 
         self.label_5.setText("")
@@ -89,7 +94,7 @@ class Ui_Dialog_7(object):
         # self.pixmap = QPixmap(fname[0]) # This returns a tuple and hence we mention [0].
         # # Adding the picture to the Label.
         # self.label.setPixmap(self.pixmap)
-        
+
         file_name, _ = QFileDialog.getOpenFileName(None, 'Open Image File', r"<Default dir>", "Image files (*.jpg *.jpeg *.gif *.png)")
         if file_name:
             self.label.setPixmap(QPixmap(file_name))
@@ -97,10 +102,10 @@ class Ui_Dialog_7(object):
             img = cv2.imread(file_name)
             m, n, c = img.shape
             print("The original size of the image is ", m, " x ", n)
-            Face_Detected_img = img.copy()
-            
+            self.output_image = img.copy()
+
             # Convert the image to grayscale
-            gray = cv2.cvtColor(Face_Detected_img, cv2.COLOR_BGR2GRAY)
+            gray = cv2.cvtColor(self.output_image, cv2.COLOR_BGR2GRAY)
 
             # Detect faces
             faces = face_cascade.detectMultiScale(gray, 1.3, 5)
@@ -108,31 +113,31 @@ class Ui_Dialog_7(object):
             # Iterate over each face
             for (x, y, w, h) in faces:
                 # Draw a rectangle around the face
-                cv2.rectangle(Face_Detected_img, (x, y), (x+w, y+h), (255, 0, 0), 2)
+                cv2.rectangle(self.output_image, (x, y), (x+w, y+h), (255, 0, 0), 2)
 
                 # Detect eyes
                 roi_gray = gray[y:y+h, x:x+w]
                 eyes = eye_cascade.detectMultiScale(roi_gray)
                 for (ex, ey, ew, eh) in eyes:
                     # Draw a rectangle around the eyes
-                    cv2.rectangle(Face_Detected_img, (x+ex, y+ey), (x+ex+ew, y+ey+eh), (0, 255, 0), 2)
-                
+                    cv2.rectangle(self.output_image, (x+ex, y+ey), (x+ex+ew, y+ey+eh), (0, 255, 0), 2)
 
 
 
-            
-            m, n, c = Face_Detected_img.shape
+
+
+            m, n, c = self.output_image.shape
             print("The new size of the image is ", m, " x ", n)
 
-            
-            cv2.imwrite(r"All_Project_Files\Final_Project_Files\Cam_Media\Face_Detection_Images\Face_Detected_Image.png", Face_Detected_img)
-            Face_Detected_Image_File_Name = r"All_Project_Files\Final_Project_Files\Cam_Media\Face_Detection_Images\Face_Detected_Image.png"
-            
+
+            Face_Detected_Image_File_Name = self.buffer_image_filename
+            cv2.imwrite(Face_Detected_Image_File_Name, self.output_image)
+
             # self.label_2.setPixmap(QPixmap(Face_Detected_Image_File_Name))
 
             lay = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents)
             lay_2 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents_2)
-        
+
             lay.setContentsMargins(0, 0, 0, 0)
             lay_2.setContentsMargins(0, 0, 0, 0)
 
@@ -164,13 +169,12 @@ class Ui_Dialog_7(object):
         # cv2.destroyAllWindows()
 
     def Save_Directory(self):
-        image_facial_feature_detection = cv2.imread(r"All_Project_Files\Final_Project_Files\Cam_Media\Face_Detection_Images\Face_Detected_Image.png")
         option = QFileDialog.Options()
-        
+
         if self.counter > 0:
             save_as_path = QFileDialog.getSaveFileName(None, 'Open Image File', r"Facial Features Detected Image", "Image files (*.jpg *.jpeg *.gif *.png)")
-            if option:
-                cv2.imwrite(save_as_path[0], image_facial_feature_detection)
+            if save_as_path[0].__len__() > 0:
+                cv2.imwrite(save_as_path[0], self.output_image)
         else:
             self.label_5.setText("Please select a file first!")
 

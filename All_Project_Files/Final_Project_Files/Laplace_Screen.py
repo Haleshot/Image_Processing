@@ -1,20 +1,25 @@
-from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5 import QtCore, QtGui, QtWidgets, uic
-from PyQt5.QtGui import *
-from PyQt5.QtWidgets import *
-from PyQt5.QtCore import *
-from PyQt5.uic import loadUi
-from PyQt5 import QtWidgets
-from PyQt5.QtWidgets import QDialog, QApplication, QWidget, QStackedWidget, QComboBox, QPushButton, QVBoxLayout, QLabel
-from PyQt5.QtGui import QPixmap
-from PyQt5.QtWidgets import QFileDialog
 import cv2
-from skimage.util import random_noise
 import numpy as np
+import os
+import tempfile
+from PyQt5 import QtCore, QtGui, QtWidgets, uic
+from PyQt5.QtGui import QPixmap
+from PyQt5.QtWidgets import (QApplication, QComboBox, QDialog, QFileDialog,
+                             QLabel, QPushButton, QStackedWidget, QVBoxLayout,
+                             QWidget)
+from PyQt5.uic import loadUi
+from skimage.util import random_noise
 
 
 
 class Ui_Dialog_8(object):
+    def __init__(self):
+        self.output_image = None
+        with tempfile.NamedTemporaryFile(suffix=".png") as f:
+            self.buffer_image_filename = f.name
+    def __del__(self):
+        if self.output_image is not None:
+            os.remove(self.buffer_image_filename)
     def setupUi(self, Dialog_8):
         self.counter = 0
         Dialog_8.setObjectName("Dialog_8")
@@ -83,19 +88,19 @@ class Ui_Dialog_8(object):
             [1, -4, 1],
             [0, 1, 0]
         ], dtype=np.float32)
-        
+
         # Pad the image with zeros
         padded_img = np.pad(img, pad_width=kernel_size//2, mode='constant')
-        
+
         # Apply the Laplacian filter to the image
         filtered_img = np.zeros_like(img, dtype=np.float32)
         for i in range(img.shape[0]):
             for j in range(img.shape[1]):
                 filtered_img[i, j] = np.sum(padded_img[i:i+kernel_size, j:j+kernel_size] * kernel)
-        
+
         # Normalize the filtered image to the range [0, 255]
         filtered_img = cv2.normalize(filtered_img, None, alpha=0, beta=255, norm_type=cv2.NORM_MINMAX, dtype=cv2.CV_8U)
-        
+
         return filtered_img
 
 
@@ -107,15 +112,15 @@ class Ui_Dialog_8(object):
             img = cv2.imread(file_name, cv2.IMREAD_GRAYSCALE)
 
             # Apply the Laplacian filter to the image
-            filtered_img = self.laplacian_filter(img)
+            self.output_image = self.laplacian_filter(img)
 
-            cv2.imwrite(r"All_Project_Files\Final_Project_Files\Cam_Media\Laplacian_Images\Laplacian_Image.png", filtered_img)
-            Laplacian_File_Name = r"All_Project_Files\Final_Project_Files\Cam_Media\Laplacian_Images\Laplacian_Image.png"
+            Laplacian_File_Name = self.buffer_image_filename
+            cv2.imwrite(Laplacian_File_Name, self.output_image)
             # self.label_2.setPixmap(QPixmap(Laplacian_File_Name))
 
             lay = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents)
             lay_2 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents_2)
-        
+
             lay.setContentsMargins(0, 0, 0, 0)
             lay_2.setContentsMargins(0, 0, 0, 0)
 
@@ -136,14 +141,13 @@ class Ui_Dialog_8(object):
             self.Open_Image_Button.setEnabled(False)
 
     def Save_Directory(self):
-        image_laplace = cv2.imread(r"All_Project_Files\Final_Project_Files\Cam_Media\Laplacian_Images\Laplacian_Image.png")
         option = QFileDialog.Options()
-        
+
         if self.counter > 0:
             save_as_path = QFileDialog.getSaveFileName(None, 'Open Image File', r"Laplacian Image", "Image files (*.jpg *.jpeg *.gif *.png)")
 
-            if option:
-                cv2.imwrite(save_as_path[0], image_laplace)
+            if save_as_path[0].__len__() > 0:
+                cv2.imwrite(save_as_path[0], self.output_image)
 
         else:
             self.label_5.setText("Please select a file first!")
