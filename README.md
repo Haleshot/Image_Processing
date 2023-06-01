@@ -519,6 +519,8 @@ Simple terms:
 <h3 id="#Down Sampling"> Down Sampling </h3>
 ![Down_Sampling_Demo](https://github.com/Haleshot/Image_Processing/assets/57552973/382ed130-5229-4f8b-8df5-1a02af4e71ed)
 
+<br>
+
 <h3 id="#Up Sampling"> Up Sampling </h3>
 ![Up_Sampling_Demo](https://github.com/Haleshot/Image_Processing/assets/57552973/00875f15-96bf-4644-a8f9-ead2a79441b5)
 
