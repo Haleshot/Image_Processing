@@ -16,7 +16,7 @@
     <li><a href="#Low Pass Filtering (LPF)">  Low Pass Filtering (LPF) </a></li>
     <li><a href="#Gaussian Noise">  Gaussian Noise </a></li>
     <li><a href="#Facial Feature Detection">  Facial Feature Detection </a></li>
-    <li><a href="#Laplacian Filter">  Laplacian Filter </a></li>
+    <li><a href="#Laplacian Edge Detection">  Laplacian Filter </a></li>
     </ul>
     <li><a href="#Conclusion"> Conclusion </a></li>
     <li><a href="#Contributing">  Contributing </a></li>
