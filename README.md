@@ -505,15 +505,15 @@ Simple terms:
 
 
 <li><a href="##Down Sampling">  Down Sampling </a></li>
-<li><a href="#Up Sampling">  Up Sampling </a></li>
-<li><a href="#Negative of an Image">  Negative of an Image </a></li>
-<li><a href="#Thresholding With Background">  Thresholding </a></li>
-<li><a href="#Thresholding Without Background">  Thresholding </a></li>
-<li><a href="#Blurring">  Blurring </a></li>
-<li><a href="#Low Pass Filtering (LPF)">  Low Pass Filtering (LPF) </a></li>
-<li><a href="#Gaussian Noise">  Gaussian Noise </a></li>
-<li><a href="#Facial Feature Detection">  Facial Feature Detection </a></li>
-<li><a href="#Laplacian Edge Detection">  Laplacian Filter </a></li>
+<li><a href="##Up Sampling">  Up Sampling </a></li>
+<li><a href="##Negative of an Image">  Negative of an Image </a></li>
+<li><a href="##Thresholding With Background">  Thresholding </a></li>
+<li><a href="##Thresholding Without Background">  Thresholding </a></li>
+<li><a href="##Blurring">  Blurring </a></li>
+<li><a href="##Low Pass Filtering (LPF)">  Low Pass Filtering (LPF) </a></li>
+<li><a href="##Gaussian Noise">  Gaussian Noise </a></li>
+<li><a href="##Facial Feature Detection">  Facial Feature Detection </a></li>
+<li><a href="##Laplacian Edge Detection">  Laplacian Filter </a></li>
 
 
 <h3 id="#Down Sampling"> Down Sampling </h3>
