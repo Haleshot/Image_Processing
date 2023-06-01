@@ -1,19 +1,24 @@
-from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5 import QtCore, QtGui, QtWidgets, uic
-from PyQt5.QtGui import *
-from PyQt5.QtWidgets import *
-from PyQt5.QtCore import *
-from PyQt5.uic import loadUi
-from PyQt5 import QtWidgets
-from PyQt5.QtWidgets import QDialog, QApplication, QWidget, QStackedWidget, QComboBox, QPushButton, QVBoxLayout, QLabel
-from PyQt5.QtGui import QPixmap
-from PyQt5.QtWidgets import QFileDialog
 import cv2
-from skimage.util import random_noise
 import numpy as np
+import os
+import tempfile
+from PyQt5 import QtCore, QtGui, QtWidgets, uic
+from PyQt5.QtGui import QPixmap
+from PyQt5.QtWidgets import (QApplication, QComboBox, QDialog, QFileDialog,
+                             QLabel, QPushButton, QStackedWidget, QVBoxLayout,
+                             QWidget)
+from PyQt5.uic import loadUi
+from skimage.util import random_noise
 
 
 class Ui_Dialog_1(object):
+    def __init__(self):
+        self.output_image = None
+        with tempfile.NamedTemporaryFile(suffix=".png") as f:
+            self.buffer_image_filename = f.name
+    def __del__(self):
+        if self.output_image is not None:
+            os.remove(self.buffer_image_filename)
     def setupUi(self, Dialog):
         self.counter = 0
         Dialog.setObjectName("Dialog")
@@ -78,7 +83,7 @@ class Ui_Dialog_1(object):
         Dialog.setWindowTitle(_translate("Dialog", "Up Sampling"))
         self.label_3.setText(_translate("Dialog", "=>"))
         self.lineEdit.setPlaceholderText(_translate("Dialog", "Enter Up Sampling Value..."))
-        
+
         self.Open_Image_Button.setText(_translate("Dialog", "Open Image"))
         self.Save_As.setText(_translate("Dialog", "Save As"))
         self.Open_Image_Button.clicked.connect(self.File_Select)
@@ -88,7 +93,7 @@ class Ui_Dialog_1(object):
 
     def File_Select(self):
         Up_Sampling_Value = self.lineEdit.text() # Accessing the value entered by the user.
-        
+
         if not (int(Up_Sampling_Value.isdigit())):
             self.label_5.setText("Please enter an integer value!")
         else:
@@ -107,20 +112,19 @@ class Ui_Dialog_1(object):
                 img = cv2.imread(file_name)
                 m, n, c = img.shape
                 print("The original size of the image is ", m, " x ", n)
-                img_double = cv2.resize(img, (0, 0), fx = Up_Sampling_Value, fy = Up_Sampling_Value)
-                m, n, c = img_double.shape
+                self.output_image = cv2.resize(img, (0, 0), fx = Up_Sampling_Value, fy = Up_Sampling_Value)
+                m, n, c = self.output_image.shape
                 print("The new size of the image is ", m, " x ", n)
 
+                Up_File_Name = self.buffer_image_filename
+                cv2.imwrite(Up_File_Name, self.output_image)
 
-                cv2.imwrite(r"All_Project_Files\Final_Project_Files\Cam_Media\Up_Sized_Img\Up_Sized_Image.png", img_double)
-                Up_File_Name = r"All_Project_Files\Final_Project_Files\Cam_Media\Up_Sized_Img\Up_Sized_Image.png"
-                
-                
+
                 # self.label_2.setPixmap(QPixmap(Up_File_Name))
 
                 lay = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents)
                 lay_2 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents_2)
-            
+
                 lay.setContentsMargins(0, 0, 0, 0)
                 lay_2.setContentsMargins(0, 0, 0, 0)
 
@@ -145,19 +149,18 @@ class Ui_Dialog_1(object):
 
                 # cv2.imshow("Image", img)
                 # cv2.waitKey(0)
-        
+
                 # # closing all open windows
                 # cv2.destroyAllWindows()
 
     def Save_Directory(self):
         if self.counter > 0:
             self.label_5.setText("")
-            image_upsize = cv2.imread(r"All_Project_Files\Final_Project_Files\Cam_Media\Up_Sized_Img\Up_Sized_Image.png")
             option = QFileDialog.Options()
             save_as_path = QFileDialog.getSaveFileName(None, 'Open Image File', r"Up Sized Image", "Image files (*.jpg *.jpeg *.gif *.png)")
-            
-            if option:
-                cv2.imwrite(save_as_path[0], image_upsize)
+
+            if save_as_path.__len__() > 0:
+                cv2.imwrite(save_as_path[0], self.output_image)
         else:
             self.label_5.setText("Select Image first!")
 
