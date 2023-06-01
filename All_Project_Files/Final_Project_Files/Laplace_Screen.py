@@ -16,6 +16,7 @@ import numpy as np
 
 class Ui_Dialog_8(object):
     def setupUi(self, Dialog_8):
+        self.counter = 0
         Dialog_8.setObjectName("Dialog_8")
         Dialog_8.resize(1366, 800)
         self.scrollArea = QtWidgets.QScrollArea(Dialog_8)
@@ -102,6 +103,7 @@ class Ui_Dialog_8(object):
         file_name, _ = QFileDialog.getOpenFileName(None, 'Open Image File', r"<Default dir>", "Image files (*.jpg *.jpeg *.gif *.png)")
         if file_name:
             self.label.setPixmap(QPixmap(file_name))
+            self.counter += 1
             img = cv2.imread(file_name, cv2.IMREAD_GRAYSCALE)
 
             # Apply the Laplacian filter to the image
@@ -123,6 +125,8 @@ class Ui_Dialog_8(object):
             self.label.setPixmap(QPixmap(file_name))
             self.label_2.setPixmap(QPixmap(Laplacian_File_Name))
 
+            self.label_5.setText("")
+
             # self.scrollArea.setWidgetResizable(True)
             # self.scrollArea_2.setWidgetResizable(True)
 
@@ -134,10 +138,15 @@ class Ui_Dialog_8(object):
     def Save_Directory(self):
         image_laplace = cv2.imread(r"All_Project_Files\Final_Project_Files\Cam_Media\Laplacian_Images\Laplacian_Image.png")
         option = QFileDialog.Options()
-        save_as_path = QFileDialog.getSaveFileName(None, 'Open Image File', r"Laplacian Image", "Image files (*.jpg *.jpeg *.gif *.png)")
+        
+        if self.counter > 0:
+            save_as_path = QFileDialog.getSaveFileName(None, 'Open Image File', r"Laplacian Image", "Image files (*.jpg *.jpeg *.gif *.png)")
 
-        if option:
-            cv2.imwrite(save_as_path[0], image_laplace)
+            if option:
+                cv2.imwrite(save_as_path[0], image_laplace)
+
+        else:
+            self.label_5.setText("Please select a file first!")
 
 
 
