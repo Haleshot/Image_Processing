@@ -84,8 +84,10 @@ class Ui_Dialog_7(object):
 
 
         # Load the classifier
-        face_cascade = cv2.CascadeClassifier(os.curdir + "\..\haarcascade_frontalface_default.xml")
-        eye_cascade = cv2.CascadeClassifier(os.curdir + "\..\haarcascade_eye.xml")
+        face_cascade1 = cv2.CascadeClassifier(os.curdir + "\..\Face_Models\haarcascade_frontalface_default.xml")
+        face_cascade2 = cv2.CascadeClassifier(os.curdir + "\..\Face_Models\haarcascade_frontalface_alt.xml")
+        face_cascade3 = cv2.CascadeClassifier(os.curdir + "\..\Face_Models\haarcascade_frontalface_alt2.xml")
+        eye_cascade = cv2.CascadeClassifier(os.curdir + "\..\Face_Models\haarcascade_eye.xml")
 
 
         self.label_5.setText("")
@@ -107,8 +109,20 @@ class Ui_Dialog_7(object):
             # Convert the image to grayscale
             gray = cv2.cvtColor(self.output_image, cv2.COLOR_BGR2GRAY)
 
-            # Detect faces
-            faces = face_cascade.detectMultiScale(gray, 1.3, 5)
+            # Detect faces; tweak these values as needed
+            faces1 = face_cascade1.detectMultiScale(gray, 1.1, 7)
+            faces2 = face_cascade2.detectMultiScale(gray, 1.1, 7)
+            faces3 = face_cascade3.detectMultiScale(gray, 1.1, 7)
+
+            # Decide which set of matches to use; change order as needed
+            if len(faces1) >= len(faces2): faces = faces1
+            if len(faces1) >= len(faces3): faces = faces1
+            if len(faces2) >= len(faces1): faces = faces2
+            if len(faces2) >= len(faces3): faces = faces2
+            if len(faces3) >= len(faces1): faces = faces3
+            if len(faces3) >= len(faces2): faces = faces3
+
+            print('Face count: ' + str(len(faces)))
 
             # Iterate over each face
             for (x, y, w, h) in faces:
