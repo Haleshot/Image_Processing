@@ -19,6 +19,7 @@ class Ui_Dialog_6(object):
         if self.output_image is not None:
             os.remove(self.buffer_image_filename)
     def setupUi(self, Dialog_6):
+        self.counter = 0
         Dialog_6.setObjectName("Dialog_6")
         Dialog_6.resize(1366, 800)
         self.Save_As = QtWidgets.QPushButton(Dialog_6)
@@ -89,6 +90,7 @@ class Ui_Dialog_6(object):
         file_name, _ = QFileDialog.getOpenFileName(None, 'Open Image File', r"<Default dir>", "Image files (*.jpg *.jpeg *.gif *.png)")
         if file_name:
             self.label.setPixmap(QPixmap(file_name))
+            self.counter += 1
             img = cv2.imread(file_name, 0)
             converted_image = cv2.cvtColor(img, cv2.COLOR_GRAY2BGR)
 
@@ -128,19 +130,16 @@ class Ui_Dialog_6(object):
 
     def Save_Directory(self):
         option = QFileDialog.Options()
-        save_as_path = QFileDialog.getSaveFileName(None, 'Open Image File', r"Gaussian Image", "Image files (*.jpg *.jpeg *.gif *.png)")
-        if save_as_path[0].__len__() > 0:
-            cv2.imwrite(save_as_path[0], self.output_image)
+        
+        if self.counter > 0:
+            save_as_path = QFileDialog.getSaveFileName(None, 'Open Image File', r"Gaussian Image", "Image files (*.jpg *.jpeg *.gif *.png)")
+            if save_as_path[0].__len__() > 0:
+                self.label_5.setText("")
+                cv2.imwrite(save_as_path[0], self.output_image)
 
-        # If you want these to display these in separate windows other than GUI.
-        # cv2.imshow("Negative Image", negative_img)
 
-
-        # cv2.imshow("Image", img)
-        # cv2.waitKey(0)
-
-        # # closing all open windows
-        # cv2.destroyAllWindows()
+            else:
+                self.label_5.setText("Please select a file first!")
 
 if __name__ == "__main__":
     import sys

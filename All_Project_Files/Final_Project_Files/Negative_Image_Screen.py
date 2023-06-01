@@ -21,6 +21,7 @@ class Ui_Background(object):
         if self.output_image is not None:
             os.remove(self.buffer_image_filename)
     def setupUi(self, Background):
+        self.counter = 0
         Background.setObjectName("Background")
         Background.resize(1366, 801)
         self.label_5 = QtWidgets.QLabel(Background)
@@ -88,6 +89,7 @@ class Ui_Background(object):
         file_name, _ = QFileDialog.getOpenFileName(None, 'Open Image File', r"<Default dir>", "Image files (*.jpg *.jpeg *.gif *.png)")
         if file_name:
             self.label.setPixmap(QPixmap(file_name))
+            self.counter += 1
             img = cv2.imread(file_name)
             maximum = np.amax(img)
             self.output_image = maximum - img
@@ -130,10 +132,15 @@ class Ui_Background(object):
 
     def Save_Directory(self):
         option = QFileDialog.Options()
-        save_as_path = QFileDialog.getSaveFileName(None, 'Open Image File', r"Negative Image", "Image files (*.jpg *.jpeg *.gif *.png)")
+        if self.counter > 0:
+            save_as_path = QFileDialog.getSaveFileName(None, 'Open Image File', r"Negative Image", "Image files (*.jpg *.jpeg *.gif *.png)")
 
-        if save_as_path[0].__len__() > 0:
-            cv2.imwrite(save_as_path[0], self.output_image)
+            if save_as_path[0].__len__() > 0:
+                self.label_5.setText("")
+                cv2.imwrite(save_as_path[0], self.output_image)
+        else:
+            self.label_5.setText("Please select a file first!")
+        
 
 
 if __name__ == "__main__":
