@@ -507,7 +507,7 @@ Simple terms:
 
 </p> -->
     <ul>
-    <li><a href="Down Sampling">  Down Sampling </a></li>
+    <li><a href="##Down Sampling">  Down Sampling </a></li>
     <li><a href="#Up Sampling">  Up Sampling </a></li>
     <li><a href="#Negative of an Image">  Negative of an Image </a></li>
     <li><a href="#Thresholding">  Thresholding </a></li>
@@ -518,7 +518,7 @@ Simple terms:
     <li><a href="#Laplacian Edge Detection">  Laplacian Filter </a></li>
     </ul>
   
-<h2 id="Down Sampling"> Down Sampling </h2>
+<h3 id="Down Sampling"> Down Sampling </h3>
 <!-- <img src="https://github.com/Haleshot/Image_Processing/assets/57552973/382ed130-5229-4f8b-8df5-1a02af4e71ed" /> -->
 
 ![Down_Sampling_Demo](https://github.com/Haleshot/Image_Processing/assets/57552973/382ed130-5229-4f8b-8df5-1a02af4e71ed)
