@@ -99,7 +99,7 @@ class Ui_Image_Processing_Options(object):
 
     def retranslateUi(self, Image_Processing_Options):
         _translate = QtCore.QCoreApplication.translate
-        Image_Processing_Options.setWindowTitle(_translate("Image_Processing_Options", "Dialog"))
+        Image_Processing_Options.setWindowTitle(_translate("Image_Processing_Options", "Image Processing Options"))
         self.DownSampling_Button.setText(_translate("Image_Processing_Options", "Down Sampling"))
         self.UpSampling_Button.setText(_translate("Image_Processing_Options", "Up Sampling"))
         self.Negative_Button.setText(_translate("Image_Processing_Options", "Negative of the Image"))
