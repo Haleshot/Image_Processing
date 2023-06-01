@@ -136,10 +136,8 @@ class Ui_Dialog_6(object):
             if save_as_path[0].__len__() > 0:
                 self.label_5.setText("")
                 cv2.imwrite(save_as_path[0], self.output_image)
-
-
-            else:
-                self.label_5.setText("Please select a file first!")
+        else:
+            self.label_5.setText("Please select a file first!")
 
 if __name__ == "__main__":
     import sys
