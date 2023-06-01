@@ -15,6 +15,7 @@ import numpy as np
 
 class Ui_Dialog_7(object):
     def setupUi(self, Dialog_7):
+        self.counter = 0
         Dialog_7.setObjectName("Dialog_7")
         Dialog_7.resize(1366, 801)
         self.Open_Image_Button = QtWidgets.QPushButton(Dialog_7)
@@ -92,6 +93,7 @@ class Ui_Dialog_7(object):
         file_name, _ = QFileDialog.getOpenFileName(None, 'Open Image File', r"<Default dir>", "Image files (*.jpg *.jpeg *.gif *.png)")
         if file_name:
             self.label.setPixmap(QPixmap(file_name))
+            self.counter += 1
             img = cv2.imread(file_name)
             m, n, c = img.shape
             print("The original size of the image is ", m, " x ", n)
@@ -137,6 +139,8 @@ class Ui_Dialog_7(object):
             lay.addWidget(self.label)
             lay_2.addWidget(self.label_2)
 
+            self.label_5.setText("")
+
             self.label.setPixmap(QPixmap(file_name))
             self.label_2.setPixmap(QPixmap(Face_Detected_Image_File_Name))
 
@@ -162,11 +166,13 @@ class Ui_Dialog_7(object):
     def Save_Directory(self):
         image_facial_feature_detection = cv2.imread(r"All_Project_Files\Final_Project_Files\Cam_Media\Face_Detection_Images\Face_Detected_Image.png")
         option = QFileDialog.Options()
-        save_as_path = QFileDialog.getSaveFileName(None, 'Open Image File', r"Facial Features Detected Image", "Image files (*.jpg *.jpeg *.gif *.png)")
-
-        if option:
-            cv2.imwrite(save_as_path[0], image_facial_feature_detection)
-
+        
+        if self.counter > 0:
+            save_as_path = QFileDialog.getSaveFileName(None, 'Open Image File', r"Facial Features Detected Image", "Image files (*.jpg *.jpeg *.gif *.png)")
+            if option:
+                cv2.imwrite(save_as_path[0], image_facial_feature_detection)
+        else:
+            self.label_5.setText("Please select a file first!")
 
 if __name__ == "__main__":
     import sys
