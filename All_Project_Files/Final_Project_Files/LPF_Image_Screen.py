@@ -1,19 +1,25 @@
-from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5 import QtCore, QtGui, QtWidgets, uic
-from PyQt5.QtGui import *
-from PyQt5.QtWidgets import *
-from PyQt5.QtCore import *
-from PyQt5.uic import loadUi
-from PyQt5 import QtWidgets
-from PyQt5.QtWidgets import QDialog, QApplication, QWidget, QStackedWidget, QComboBox, QPushButton, QVBoxLayout, QLabel
-from PyQt5.QtGui import QPixmap
-from PyQt5.QtWidgets import QFileDialog
 import cv2
-from skimage.util import random_noise
 import numpy as np
+import os
+import tempfile
+from PyQt5 import QtCore, QtGui, QtWidgets, uic
+from PyQt5.QtGui import QPixmap
+from PyQt5.QtWidgets import (QApplication, QComboBox, QDialog, QFileDialog,
+                             QLabel, QPushButton, QStackedWidget, QVBoxLayout,
+                             QWidget)
+from PyQt5.uic import loadUi
+from skimage.util import random_noise
+
 
 
 class Ui_Dialog_5(object):
+    def __init__(self):
+        self.output_image = None
+        with tempfile.NamedTemporaryFile(suffix=".png") as f:
+            self.buffer_image_filename = f.name
+    def __del__(self):
+        if self.output_image is not None:
+            os.remove(self.buffer_image_filename)
     def setupUi(self, Dialog_5):
         self.counter = 0
         Dialog_5.setObjectName("Dialog_5")
@@ -90,7 +96,7 @@ class Ui_Dialog_5(object):
 
     def File_Select(self):
         Mask_Size = self.lineEdit.text() # Accessing the value entered by the user.
-        
+
         if not (int(Mask_Size.isdigit())):
             self.label_5.setText("Please enter an integer value!")
 
@@ -115,7 +121,7 @@ class Ui_Dialog_5(object):
 
                 # Averaging/Low Pass Filtering without using the Formula:
                 size_of_mask = Mask_Size
-                LPF_Image = img.copy()
+                self.output_image = img.copy()
                 m, n = img.shape
                 print("You have requested for ", size_of_mask ,"x", size_of_mask)
                 a = size_of_mask//2
@@ -123,20 +129,20 @@ class Ui_Dialog_5(object):
                 for i in range(a, m - a):
                     for j in range(a, n - a):
                         temp = np.sum(img[i - a:i + a + 1, j - a:j + a + 1])
-                        LPF_Image[i, j] = temp//size_of_mask**2
+                        self.output_image[i, j] = temp//size_of_mask**2
 
-                
-                m, n = LPF_Image.shape
+
+                m, n = self.output_image.shape
                 print("The new size of the image is ", m, " x ", n)
 
-                
-                cv2.imwrite(r"All_Project_Files\Final_Project_Files\Cam_Media\LPF_Img\LPF_Image.png", LPF_Image)
-                LPF_Image_File_Name = r"All_Project_Files\Final_Project_Files\Cam_Media\LPF_Img\LPF_Image.png"
+
+                LPF_Image_File_Name = self.buffer_image_filename
+                cv2.imwrite(LPF_Image_File_Name, self.output_image)
                 # self.label_2.setPixmap(QPixmap(LPF_Image_File_Name))
 
                 lay = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents)
                 lay_2 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents_2)
-            
+
                 lay.setContentsMargins(0, 0, 0, 0)
                 lay_2.setContentsMargins(0, 0, 0, 0)
 
@@ -161,19 +167,17 @@ class Ui_Dialog_5(object):
 
                 # cv2.imshow("Image", img)
                 # cv2.waitKey(0)
-        
+
                 # # closing all open windows
                 # cv2.destroyAllWindows()
 
     def Save_Directory(self):
-        if self.counter == 1:
+        if self.counter > 0:
             self.label_5.setText("")
-            image_downsize = cv2.imread(r"All_Project_Files\Final_Project_Files\Cam_Media\LPF_Img\LPF_Image.png")
             option = QFileDialog.Options()
             save_as_path = QFileDialog.getSaveFileName(None, 'Open Image File', r"LPF Image", "Image files (*.jpg *.jpeg *.gif *.png)")
-
-            if option:
-                cv2.imwrite(save_as_path[0], image_downsize)
+            if save_as_path[0].__len__() > 0:
+                cv2.imwrite(save_as_path[0], self.output_image)
         else:
             self.label_5.setText("Select Image first!")
 

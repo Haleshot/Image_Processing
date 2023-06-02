@@ -1,19 +1,24 @@
-from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5 import QtCore, QtGui, QtWidgets, uic
-from PyQt5.QtGui import *
-from PyQt5.QtWidgets import *
-from PyQt5.QtCore import *
-from PyQt5.uic import loadUi
-from PyQt5 import QtWidgets
-from PyQt5.QtWidgets import QDialog, QApplication, QWidget, QStackedWidget, QComboBox, QPushButton, QVBoxLayout, QLabel
-from PyQt5.QtGui import QPixmap
-from PyQt5.QtWidgets import QFileDialog
 import cv2
-from skimage.util import random_noise
 import numpy as np
+import os
+import tempfile
+from PyQt5 import QtCore, QtGui, QtWidgets, uic
+from PyQt5.QtGui import QPixmap
+from PyQt5.QtWidgets import (QApplication, QComboBox, QDialog, QFileDialog,
+                             QLabel, QPushButton, QStackedWidget, QVBoxLayout,
+                             QWidget)
+from PyQt5.uic import loadUi
+from skimage.util import random_noise
 
 
 class Ui_Dialog_2(object):
+    def __init__(self):
+        self.output_image = None
+        with tempfile.NamedTemporaryFile(suffix=".png") as f:
+            self.buffer_image_filename = f.name
+    def __del__(self):
+        if self.output_image is not None:
+            os.remove(self.buffer_image_filename)
     def setupUi(self, Dialog_2):
         self.counter = 0
         Dialog_2.setObjectName("Dialog_2")
@@ -102,7 +107,7 @@ class Ui_Dialog_2(object):
     def File_Select(self):
         Lower_Limit = self.lineEdit.text() # Accessing the lower limit value entered by the user.
         Upper_Limit = self.lineEdit_2.text() # Accessing the upper limit value entered by the user.
-        
+
         if not (int(Lower_Limit.isdigit() and Upper_Limit.isdigit())):
             self.label_5.setText("Please enter an integer value!")
         else:
@@ -124,7 +129,7 @@ class Ui_Dialog_2(object):
                 print("The original size of the image is ", m, " x ", n)
 
 
-                threshold_image = []
+                self.output_image = []
                 a = Lower_Limit
                 b = Upper_Limit
                 for i in range(len(img)):
@@ -134,21 +139,21 @@ class Ui_Dialog_2(object):
                             temp.append(255)
                         else:
                             temp.append(0)
-                    threshold_image.append(temp)
+                    self.output_image.append(temp)
 
-                threshold_image = np.array(threshold_image)
+                self.output_image = np.array(self.output_image)
 
-                m, n= threshold_image.shape
+                m, n= self.output_image.shape
                 print("The new size of the image is ", m, " x ", n)
 
-                cv2.imwrite(r"All_Project_Files\Final_Project_Files\Cam_Media\Thresholding_Without\Threshold_Without_Image.png", threshold_image)
-                Thresholding_Without_File_Name = r"All_Project_Files\Final_Project_Files\Cam_Media\Thresholding_Without\Threshold_Without_Image.png"
+                Thresholding_Without_File_Name = self.buffer_image_filename
+                cv2.imwrite(Thresholding_Without_File_Name, self.output_image)
                 # self.label_2.setPixmap(QPixmap(Thresholding_Without_File_Name))
 
 
                 lay = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents)
                 lay_2 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents_2)
-            
+
                 lay.setContentsMargins(0, 0, 0, 0)
                 lay_2.setContentsMargins(0, 0, 0, 0)
 
@@ -173,19 +178,18 @@ class Ui_Dialog_2(object):
 
                 # cv2.imshow("Image", img)
                 # cv2.waitKey(0)
-        
+
                 # # closing all open windows
                 # cv2.destroyAllWindows()
 
     def Save_Directory(self):
         if self.counter > 0:
             self.label_5.setText("")
-            image_thresholding_without_background = cv2.imread(r"All_Project_Files\Final_Project_Files\Cam_Media\Thresholding_Without\Threshold_Without_Image.png")
             option = QFileDialog.Options()
             save_as_path = QFileDialog.getSaveFileName(None, 'Open Image File', r"Thresholding Without Background", "Image files (*.jpg *.jpeg *.gif *.png)")
-            
-            if option:
-                cv2.imwrite(save_as_path[0], image_thresholding_without_background)
+
+            if save_as_path[0].__len__() > 0:
+                cv2.imwrite(save_as_path[0], self.output_image)
         else:
             self.label_5.setText("Select Image first!")
 
