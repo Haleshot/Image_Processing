@@ -84,10 +84,10 @@ class Ui_Dialog_7(object):
 
 
         # Load the classifier
-        face_cascade1 = cv2.CascadeClassifier(os.curdir + "\..\Face_Models\haarcascade_frontalface_default.xml")
-        face_cascade2 = cv2.CascadeClassifier(os.curdir + "\..\Face_Models\haarcascade_frontalface_alt.xml")
-        face_cascade3 = cv2.CascadeClassifier(os.curdir + "\..\Face_Models\haarcascade_frontalface_alt2.xml")
-        eye_cascade = cv2.CascadeClassifier(os.curdir + "\..\Face_Models\haarcascade_eye.xml")
+        face_cascade1 = cv2.CascadeClassifier("All_Project_Files\Face_Models\haarcascade_frontalface_default.xml")
+        face_cascade2 = cv2.CascadeClassifier( "All_Project_Files\Face_Models\haarcascade_frontalface_alt.xml")
+        face_cascade3 = cv2.CascadeClassifier("All_Project_Files\Face_Models\haarcascade_frontalface_alt2.xml")
+        eye_cascade = cv2.CascadeClassifier("All_Project_Files\Face_Models\haarcascade_eye.xml")
 
 
         self.label_5.setText("")
