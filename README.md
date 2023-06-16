@@ -375,7 +375,7 @@ Facial feature detection is a computer vision technique that identifies and loca
 <hr>
 
 <!-- Laplace Edge Detection -->
-<h2 id="Laplacian Filter"> :small_orange_diamond: Laplacian Filter </h2>
+<h2 id="Laplacian Edge Detection"> :small_orange_diamond: Laplacian Filter </h2>
 
 <p align="justify">
 Laplacian Filter:
