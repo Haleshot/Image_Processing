@@ -81,7 +81,7 @@ techniques such as low pass filtering (LPF), high pass filtering (HPF), and thre
 are commonly used to enhance images and remove noise, while thresholding is used to binarize an
 image into black and white pixels based on a certain threshold value.
 
-The project will involve implementing these techniques using MATLAB and applying them to various
+The project will involve implementing these techniques and applying them to various
 test images to demonstrate their effectiveness in edge detection. The results will be analyzed and
 compared to determine the most effective approach for edge detection in different scenarios.
 The objectives of this project are to gain a deeper understanding of image processing techniques,
