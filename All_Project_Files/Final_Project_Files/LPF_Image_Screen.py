@@ -90,6 +90,10 @@ class Ui_Dialog_5(object):
         QtCore.QMetaObject.connectSlotsByName(Dialog_5)
 
     def retranslateUi(self, Dialog_5):
+        """
+        Setting the UI layouts and components - labels, textfields, pushbuttons, etc.
+        Also adding functionality for redirecting buttons to respective functions on being clicked.
+        """
         _translate = QtCore.QCoreApplication.translate
         Dialog_5.setWindowTitle(_translate("Dialog_5", "LPF Image"))
         self.lineEdit.setPlaceholderText(_translate("Dialog_5", "Enter Mask Size..."))
@@ -104,6 +108,13 @@ class Ui_Dialog_5(object):
 
 
     def File_Select(self):
+        """
+        Main Logical function which does the following:
+        1. Helps user in choosing input for image file (supported file formats - .jpg, .jpeg, .gif, .png)
+        2. Error handling if user doesn't choose supported file.
+        3. Displays the image onto the GUI label layout (if size exceeds, then scroll bars appear in the Label).
+        4. The user can Save the generated image in the directory they want on the machine.
+        """
         Mask_Size = self.lineEdit.text() # Accessing the value entered by the user.
 
         if not (int(Mask_Size.isdigit())):
@@ -181,6 +192,9 @@ class Ui_Dialog_5(object):
                 # cv2.destroyAllWindows()
 
     def Save_Directory(self):
+        """
+        Helps in saving and writing the image in the directory the user wants to save in.
+        """
         if self.counter > 0:
             self.label_5.setText("")
             option = QFileDialog.Options()
