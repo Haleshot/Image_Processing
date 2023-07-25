@@ -97,6 +97,9 @@ class Ui_Dialog_8(object):
     def laplacian_filter(self, img, kernel_size=3):
         """
         Laplace Filter applied to user input image when the function gets called.
+
+        Returns:
+        img: An image which contains the Laplacian edge of the user input image.
         """
         # Define the Laplacian kernel
         kernel = np.array([
