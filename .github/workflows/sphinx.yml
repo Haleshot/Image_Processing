@@ -40,7 +40,7 @@ jobs:
       - name: Build HTML
         run: | 
           cd docs/
-          make html
+          .\make.bat html
       - name: Run ghp-import
         run: | 
           ghp-import -n -p -f docs/_build/html
