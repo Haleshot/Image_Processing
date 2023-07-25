@@ -14,10 +14,16 @@ from skimage.util import random_noise
 
 class Ui_Dialog_5(object):
     def __init__(self):
+        """
+        Creation of a temporary image which helps in displaying the given image onto the GUI label.
+        """
         self.output_image = None
         with tempfile.NamedTemporaryFile(suffix=".png") as f:
             self.buffer_image_filename = f.name
     def __del__(self):
+        """
+        Deletion of the temporary image which helped in displaying the given image onto the GUI label.
+        """
         if self.output_image is not None:
             os.remove(self.buffer_image_filename)
     def setupUi(self, Dialog_5):
