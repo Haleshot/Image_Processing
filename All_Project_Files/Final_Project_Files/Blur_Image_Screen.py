@@ -90,6 +90,10 @@ class Ui_Dialog_4(object):
         QtCore.QMetaObject.connectSlotsByName(Dialog_4)
 
     def retranslateUi(self, Dialog_4):
+        """
+        Setting the UI layouts and components - labels, textfields, pushbuttons, etc.
+        Also adding functionality for redirecting buttons to respective functions on being clicked.
+        """
         _translate = QtCore.QCoreApplication.translate
         Dialog_4.setWindowTitle(_translate("Dialog_4", "Blur Image"))
         self.Open_Image_Button.setText(_translate("Dialog_4", "Open Image"))
@@ -103,6 +107,13 @@ class Ui_Dialog_4(object):
         self.Save_As.clicked.connect(self.Save_Directory)
 
     def File_Select(self):
+        """
+        Main Logical function which does the following:
+        1. Helps user in choosing input for image file (supported file formats - .jpg, .jpeg, .gif, .png)
+        2. Error handling if user doesn't choose supported file.
+        3. Displays the image onto the GUI label layout (if size exceeds, then scroll bars appear in the Label).
+        4. The user can Save the generated image in the directory they want on the machine.
+        """
         Blurring_Degree = self.lineEdit.text() # Accessing the value entered by the user.
 
         if not (int(Blurring_Degree.isdigit())):
