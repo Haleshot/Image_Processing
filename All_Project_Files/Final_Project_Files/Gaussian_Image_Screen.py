@@ -77,6 +77,10 @@ class Ui_Dialog_6(object):
         QtCore.QMetaObject.connectSlotsByName(Dialog_6)
 
     def retranslateUi(self, Dialog_6):
+        """
+        Setting the UI layouts and components - labels, textfields, pushbuttons, etc.
+        Also adding functionality for redirecting buttons to respective functions on being clicked.
+        """
         _translate = QtCore.QCoreApplication.translate
         Dialog_6.setWindowTitle(_translate("Dialog_6", "Gaussian Image"))
         self.Open_Image_Button.setText(_translate("Dialog_6", "Open Image"))
@@ -90,6 +94,13 @@ class Ui_Dialog_6(object):
 
 
     def File_Select(self):
+        """
+        Main Logical function which does the following:
+        1. Helps user in choosing input for image file (supported file formats - .jpg, .jpeg, .gif, .png)
+        2. Error handling if user doesn't choose supported file.
+        3. Displays the image onto the GUI label layout (if size exceeds, then scroll bars appear in the Label).
+        4. The user can Save the generated image in the directory they want on the machine.
+        """
 
         # fname = QFileDialog.getOpenFileName(self, "Open File", "All_Project_Files\Final_Project_Files\Cam_Media", "Images (*.png *.xpm *.jpg)")
         # # Opening the Image
@@ -141,6 +152,9 @@ class Ui_Dialog_6(object):
             self.Open_Image_Button.setEnabled(False)
 
     def Save_Directory(self):
+        """
+        Helps in saving and writing the image in the directory the user wants to save in.
+        """
         option = QFileDialog.Options()
         
         if self.counter > 0:
