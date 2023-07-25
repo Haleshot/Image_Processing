@@ -88,6 +88,10 @@ class Ui_Dialog(object):
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
     def retranslateUi(self, Dialog):
+        """
+        Setting the UI layouts and components - labels, textfields, pushbuttons, etc.
+        Also adding functionality for redirecting buttons to respective functions on being clicked.
+        """
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Down Sampling"))
         self.lineEdit.setPlaceholderText(_translate("Dialog", "Enter Downsampling Value..."))
