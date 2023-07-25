@@ -266,6 +266,9 @@ class Ui_Image_Processing_Options(object):
         self.window.show()
 
     def Laplace_Function(self):
+        """
+        Function which opens and adds a new window (takes window priority) which is the Laplace edge detection screen (gets redirected from the Image Preocessing Options screen)
+        """
         
         self.window = QtWidgets.QMainWindow()
         self.ui = Ui_Dialog_8()
