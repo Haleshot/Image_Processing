@@ -154,6 +154,9 @@ class Ui_Background(object):
         # cv2.destroyAllWindows()
 
     def Save_Directory(self):
+        """
+        Helps in saving and writing the image in the directory the user wants to save in.
+        """
         option = QFileDialog.Options()
         if self.counter > 0:
             save_as_path = QFileDialog.getSaveFileName(None, 'Open Image File', r"Negative Image", "Image files (*.jpg *.jpeg *.gif *.png)")
