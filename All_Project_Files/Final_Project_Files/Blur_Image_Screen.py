@@ -175,6 +175,9 @@ class Ui_Dialog_4(object):
             # cv2.destroyAllWindows()
 
     def Save_Directory(self):
+        """
+        Helps in saving and writing the image in the directory the user wants to save in.
+        """
         if self.counter > 0:
             self.label_5.setText("")
             option = QFileDialog.Options()
