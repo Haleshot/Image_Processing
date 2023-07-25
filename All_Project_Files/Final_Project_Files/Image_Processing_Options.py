@@ -230,6 +230,9 @@ class Ui_Image_Processing_Options(object):
         self.window.show()
 
     def LPF_Function(self):
+        """
+        Function which opens and adds a new window (takes window priority) which is the Low Pass Filter screen (gets redirected from the Image Preocessing Options screen)
+        """
         
         self.window = QtWidgets.QMainWindow()
         self.ui = Ui_Dialog_5()
@@ -239,6 +242,9 @@ class Ui_Image_Processing_Options(object):
         self.window.show()
 
     def Gaussian_Function(self):
+        """
+        Function which opens and adds a new window (takes window priority) which is the Gaussian Image rectification screen (gets redirected from the Image Preocessing Options screen)
+        """
         
         self.window = QtWidgets.QMainWindow()
         self.ui = Ui_Dialog_6()
