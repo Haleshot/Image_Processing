@@ -156,6 +156,10 @@ class Ui_Image_Processing_Options(object):
 
 
     def DownSamplingFunction(self):
+        """
+        Function which opens and adds a new window (takes window priority) which is the Down Sampling screen (gets redirected from the Image Preocessing Options screen)
+        """
+        
         self.window = QtWidgets.QMainWindow()
         self.ui = Ui_Dialog()
         self.ui.setupUi(self.window)
@@ -164,6 +168,9 @@ class Ui_Image_Processing_Options(object):
         self.window.show()
 
     def UpSamplingFunction(self):
+        """
+        Function which opens and adds a new window (takes window priority) which is the Up Sampling screen (gets redirected from the Image Preocessing Options screen)
+        """
         self.window = QtWidgets.QMainWindow()
         self.ui = Ui_Dialog_1()
         self.ui.setupUi(self.window)
@@ -172,6 +179,9 @@ class Ui_Image_Processing_Options(object):
         self.window.show()
 
     def NegativeFunction(self):
+        """
+        Function which opens and adds a new window (takes window priority) which is the Negative Imag Conversion screen (gets redirected from the Image Preocessing Options screen)
+        """
 
         self.window = QtWidgets.QMainWindow()
         self.ui = Ui_Background()
@@ -184,6 +194,9 @@ class Ui_Image_Processing_Options(object):
 
 
     def Threshold_WithFunction(self):
+        """
+        Function which opens and adds a new window (takes window priority) which is the Thresholding with background screen (gets redirected from the Image Preocessing Options screen)
+        """
         
         self.window = QtWidgets.QMainWindow()
         self.ui = Ui_Dialog_3()
@@ -193,6 +206,9 @@ class Ui_Image_Processing_Options(object):
         self.window.show()
 
     def Threshold_WithoutFunction(self):
+        """
+        Function which opens and adds a new window (takes window priority) which is the Down Sampling screen (gets redirected from the Image Preocessing Options screen)
+        """
         
         self.window = QtWidgets.QMainWindow()
         self.ui = Ui_Dialog_2()
