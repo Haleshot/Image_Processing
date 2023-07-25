@@ -78,6 +78,10 @@ class Ui_Dialog_7(object):
         QtCore.QMetaObject.connectSlotsByName(Dialog_7)
 
     def retranslateUi(self, Dialog_7):
+        """
+        Setting the UI layouts and components - labels, textfields, pushbuttons, etc.
+        Also adding functionality for redirecting buttons to respective functions on being clicked.
+        """
         _translate = QtCore.QCoreApplication.translate
         Dialog_7.setWindowTitle(_translate("Dialog_7", "Facial Features Detection"))
         self.Open_Image_Button.setText(_translate("Dialog_7", "Open Image"))
@@ -91,7 +95,13 @@ class Ui_Dialog_7(object):
 
     def File_Select(self):
 
-
+        """
+        Main Logical function which does the following:
+        1. Helps user in choosing input for image file (supported file formats - .jpg, .jpeg, .gif, .png)
+        2. Error handling if user doesn't choose supported file.
+        3. Displays the image onto the GUI label layout (if size exceeds, then scroll bars appear in the Label).
+        4. The user can Save the generated image in the directory they want on the machine.
+        """
         # Load the classifier
         face_cascade1 = cv2.CascadeClassifier("All_Project_Files\Face_Models\haarcascade_frontalface_default.xml")
         face_cascade2 = cv2.CascadeClassifier( "All_Project_Files\Face_Models\haarcascade_frontalface_alt.xml")
@@ -192,6 +202,9 @@ class Ui_Dialog_7(object):
         # cv2.destroyAllWindows()
 
     def Save_Directory(self):
+        """
+        Helps in saving and writing the image in the directory the user wants to save in.
+        """
         option = QFileDialog.Options()
 
         if self.counter > 0:
