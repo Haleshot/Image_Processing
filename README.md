@@ -81,7 +81,7 @@ techniques such as low pass filtering (LPF), high pass filtering (HPF), and thre
 are commonly used to enhance images and remove noise, while thresholding is used to binarize an
 image into black and white pixels based on a certain threshold value.
 
-The project will involve implementing these techniques using MATLAB and applying them to various
+The project will involve implementing these techniques and applying them to various
 test images to demonstrate their effectiveness in edge detection. The results will be analyzed and
 compared to determine the most effective approach for edge detection in different scenarios.
 The objectives of this project are to gain a deeper understanding of image processing techniques,
@@ -375,7 +375,7 @@ Facial feature detection is a computer vision technique that identifies and loca
 <hr>
 
 <!-- Laplace Edge Detection -->
-<h2 id="Laplacian Filter"> :small_orange_diamond: Laplacian Filter </h2>
+<h2 id="Laplacian Edge Detection"> :small_orange_diamond: Laplacian Filter </h2>
 
 <p align="justify">
 Laplacian Filter:
@@ -448,7 +448,7 @@ Laplacian filter, LPF, HPF, and thresholding.
 
 See [the contributing guide](CONTRIBUTING.md) for detailed instructions on how to get started with our project.
 
-If you're looking for a way to contribute, you can scan through our [existing issues](https://github.com/Haleshot/Projects/issues) for something to work on. When ready, check out [Getting Started with Contributing](CONTRIBUTING.md) for detailed instructions.
+If you're looking for a way to contribute, you can scan through our [existing issues](https://github.com/Haleshot/Image_Processing/issues) for something to work on. When ready, check out [Getting Started with Contributing](CONTRIBUTING.md) for detailed instructions.
 
 
 Click on these badges to see how you might be able to help:
@@ -483,15 +483,14 @@ Simple terms:
 
 ### In Progress
 
-- [ ] Improve README guides, contributing guides, etc.
-- [ ] Add a Video demo in the form of Gif Link for viewers to easily see the working.
-
 - [ ] Showing user, which file to run as main file - portraying user flow.
-- [ ] Adding Save as button
 
 ### Done ✓
 - [x] Add exceptions to prevent program from crashing when user opens window to select input image but clicks on the close button of the window; same with Save as button.
 - [x] Add Facial Feature Detection Button.
+- [x] Add a Video demo in the form of Gif Link for viewers to easily see the working.
+- [x] Adding Save as button
+- [x] Improve README guides, contributing guides, etc.
 
 </p>
 <hr>
@@ -504,16 +503,16 @@ Simple terms:
 <p align="center"> <img src="https://media.tenor.com/hB9OTbewrikAAAAi/work-work-in-progress.gif" width="200" height="300" /> </p> -->
 The entire project demo can be seen here - https://youtu.be/O-x44AT6ylU
 
-<li><a href="##Down Sampling">  Down Sampling </a></li>
-<li><a href="##Up Sampling">  Up Sampling </a></li>
-<li><a href="##Negative of an Image">  Negative of an Image </a></li>
-<li><a href="##Thresholding With Background">  Thresholding With Background </a></li>
-<li><a href="##Thresholding Without Background">  Thresholding Without Background </a></li>
-<li><a href="##Blurring">  Blurring </a></li>
-<li><a href="##Low Pass Filtering (LPF)">  Low Pass Filtering (LPF) </a></li>
-<li><a href="##Gaussian Noise">  Gaussian Noise </a></li>
-<li><a href="##Facial Feature Detection">  Facial Feature Detection </a></li>
-<li><a href="##Laplacian Edge Detection">  Laplacian Filter </a></li>
+<li><a href="##Down Sampling"> Down Sampling </a></li>
+<li><a href="##Up Sampling"> Up Sampling </a></li>
+<li><a href="##Negative of an Image"> Negative of an Image </a></li>
+<li><a href="##Thresholding With Background"> Thresholding With Background </a></li>
+<li><a href="##Thresholding Without Background"> Thresholding Without Background </a></li>
+<li><a href="##Blurring"> Blurring </a></li>
+<li><a href="##Low Pass Filtering (LPF)"> Low Pass Filtering (LPF) </a></li>
+<li><a href="##Gaussian Noise"> Gaussian Noise </a></li>
+<li><a href="##Facial Feature Detection"> Facial Feature Detection </a></li>
+<li><a href="##Laplacian Edge Detection"> Laplacian Filter </a></li>
 
 
 <h3 id="#Down Sampling"> Down Sampling </h3>
