@@ -122,6 +122,8 @@ class Ui_Dialog_3(object):
         2. Error handling if user doesn't choose supported file.
         3. Displays the image onto the GUI label layout (if size exceeds, then scroll bars appear in the Label).
         4. The user can Save the generated image in the directory they want on the machine.
+
+        Returns: None
         """
         Lower_Limit = self.lineEdit.text() # Accessing the lower limit value entered by the user.
         Upper_Limit = self.lineEdit_2.text() # Accessing the upper limit value entered by the user.
