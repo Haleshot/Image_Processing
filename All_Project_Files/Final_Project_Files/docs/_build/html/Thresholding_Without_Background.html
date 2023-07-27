@@ -134,7 +134,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -170,7 +170,6 @@
 <li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Thresholding_Without_Background module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Up_Sampling_Image_Screen.html">Up_Sampling_Image_Screen module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Up_Sampling_Image_Screen_ui.html">Up_Sampling_Image_Screen_ui module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="test.html">test module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ui_Blur_Image_Screen.html">ui_Blur_Image_Screen module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ui_Down_Sampling_Image_Screen.html">ui_Down_Sampling_Image_Screen module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ui_Facial_Features_Image_Screen.html">ui_Facial_Features_Image_Screen module</a></li>
@@ -212,49 +211,14 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main">
-          <section id="module-Thresholding_Without_Background">
-<span id="thresholding-without-background-module"></span><h1>Thresholding_Without_Background module<a class="headerlink" href="#module-Thresholding_Without_Background" title="Permalink to this heading">#</a></h1>
-<dl class="py class">
-<dt class="sig sig-object py" id="Thresholding_Without_Background.Ui_Dialog_2">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">Thresholding_Without_Background.</span></span><span class="sig-name descname"><span class="pre">Ui_Dialog_2</span></span><a class="reference internal" href="_modules/Thresholding_Without_Background.html#Ui_Dialog_2"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#Thresholding_Without_Background.Ui_Dialog_2" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<dl class="py method">
-<dt class="sig sig-object py" id="Thresholding_Without_Background.Ui_Dialog_2.File_Select">
-<span class="sig-name descname"><span class="pre">File_Select</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/Thresholding_Without_Background.html#Ui_Dialog_2.File_Select"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#Thresholding_Without_Background.Ui_Dialog_2.File_Select" title="Permalink to this definition">#</a></dt>
-<dd><p>Main Logical function which does the following:
-1. Helps user in choosing input for image file (supported file formats - .jpg, .jpeg, .gif, .png)
-2. Error handling if user doesn’t choose supported file.
-3. Displays the image onto the GUI label layout (if size exceeds, then scroll bars appear in the Label).
-4. The user can Save the generated image in the directory they want on the machine.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="Thresholding_Without_Background.Ui_Dialog_2.Save_Directory">
-<span class="sig-name descname"><span class="pre">Save_Directory</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/Thresholding_Without_Background.html#Ui_Dialog_2.Save_Directory"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#Thresholding_Without_Background.Ui_Dialog_2.Save_Directory" title="Permalink to this definition">#</a></dt>
-<dd><p>Helps in saving and writing the image in the directory the user wants to save in.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="Thresholding_Without_Background.Ui_Dialog_2.retranslateUi">
-<span class="sig-name descname"><span class="pre">retranslateUi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Dialog_2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Thresholding_Without_Background.html#Ui_Dialog_2.retranslateUi"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#Thresholding_Without_Background.Ui_Dialog_2.retranslateUi" title="Permalink to this definition">#</a></dt>
-<dd><p>Setting the UI layouts and components - labels, textfields, pushbuttons, etc.
-Also adding functionality for redirecting buttons to respective functions on being clicked.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="Thresholding_Without_Background.Ui_Dialog_2.setupUi">
-<span class="sig-name descname"><span class="pre">setupUi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Dialog_2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Thresholding_Without_Background.html#Ui_Dialog_2.setupUi"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#Thresholding_Without_Background.Ui_Dialog_2.setupUi" title="Permalink to this definition">#</a></dt>
-<dd><p>setupUI defined for the screen auto-generated by the PyQt5 editor.</p>
-</dd></dl>
-
-</dd></dl>
-
+          <section id="thresholding-without-background-module">
+<h1>Thresholding_Without_Background module<a class="headerlink" href="#thresholding-without-background-module" title="Permalink to this heading">#</a></h1>
 </section>
 
         </article>
@@ -300,33 +264,8 @@ Also adding functionality for redirecting buttons to respective functions on bei
         
       </footer>
     </div>
-    <aside class="toc-drawer">
+    <aside class="toc-drawer no-toc">
       
-      
-      <div class="toc-sticky toc-scroll">
-        <div class="toc-title-container">
-          <span class="toc-title">
-            On this page
-          </span>
-        </div>
-        <div class="toc-tree-container">
-          <div class="toc-tree">
-            <ul>
-<li><a class="reference internal" href="#">Thresholding_Without_Background module</a><ul>
-<li><a class="reference internal" href="#Thresholding_Without_Background.Ui_Dialog_2"><code class="docutils literal notranslate"><span class="pre">Ui_Dialog_2</span></code></a><ul>
-<li><a class="reference internal" href="#Thresholding_Without_Background.Ui_Dialog_2.File_Select"><code class="docutils literal notranslate"><span class="pre">Ui_Dialog_2.File_Select()</span></code></a></li>
-<li><a class="reference internal" href="#Thresholding_Without_Background.Ui_Dialog_2.Save_Directory"><code class="docutils literal notranslate"><span class="pre">Ui_Dialog_2.Save_Directory()</span></code></a></li>
-<li><a class="reference internal" href="#Thresholding_Without_Background.Ui_Dialog_2.retranslateUi"><code class="docutils literal notranslate"><span class="pre">Ui_Dialog_2.retranslateUi()</span></code></a></li>
-<li><a class="reference internal" href="#Thresholding_Without_Background.Ui_Dialog_2.setupUi"><code class="docutils literal notranslate"><span class="pre">Ui_Dialog_2.setupUi()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-          </div>
-        </div>
-      </div>
       
       
     </aside>

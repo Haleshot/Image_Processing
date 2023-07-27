@@ -134,7 +134,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -170,7 +170,6 @@
 <li class="toctree-l2"><a class="reference internal" href="Thresholding_Without_Background.html">Thresholding_Without_Background module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Up_Sampling_Image_Screen.html">Up_Sampling_Image_Screen module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Up_Sampling_Image_Screen_ui.html">Up_Sampling_Image_Screen_ui module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="test.html">test module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ui_Blur_Image_Screen.html">ui_Blur_Image_Screen module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ui_Down_Sampling_Image_Screen.html">ui_Down_Sampling_Image_Screen module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ui_Facial_Features_Image_Screen.html">ui_Facial_Features_Image_Screen module</a></li>
@@ -212,93 +211,14 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main">
-          <section id="module-Image_Processing_Options">
-<span id="image-processing-options-module"></span><h1>Image_Processing_Options module<a class="headerlink" href="#module-Image_Processing_Options" title="Permalink to this heading">#</a></h1>
-<dl class="py class">
-<dt class="sig sig-object py" id="Image_Processing_Options.Ui_Image_Processing_Options">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">Image_Processing_Options.</span></span><span class="sig-name descname"><span class="pre">Ui_Image_Processing_Options</span></span><a class="reference internal" href="_modules/Image_Processing_Options.html#Ui_Image_Processing_Options"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#Image_Processing_Options.Ui_Image_Processing_Options" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<dl class="py method">
-<dt class="sig sig-object py" id="Image_Processing_Options.Ui_Image_Processing_Options.Blur_Function">
-<span class="sig-name descname"><span class="pre">Blur_Function</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/Image_Processing_Options.html#Ui_Image_Processing_Options.Blur_Function"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#Image_Processing_Options.Ui_Image_Processing_Options.Blur_Function" title="Permalink to this definition">#</a></dt>
-<dd><p>Function which opens and adds a new window (takes window priority) which is the Blurring image screen (gets redirected from the Image Preocessing Options screen)</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="Image_Processing_Options.Ui_Image_Processing_Options.DownSamplingFunction">
-<span class="sig-name descname"><span class="pre">DownSamplingFunction</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/Image_Processing_Options.html#Ui_Image_Processing_Options.DownSamplingFunction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#Image_Processing_Options.Ui_Image_Processing_Options.DownSamplingFunction" title="Permalink to this definition">#</a></dt>
-<dd><p>Function which opens and adds a new window (takes window priority) which is the Down Sampling screen (gets redirected from the Image Preocessing Options screen)</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="Image_Processing_Options.Ui_Image_Processing_Options.Facial_Feature_Detection_Function">
-<span class="sig-name descname"><span class="pre">Facial_Feature_Detection_Function</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/Image_Processing_Options.html#Ui_Image_Processing_Options.Facial_Feature_Detection_Function"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#Image_Processing_Options.Ui_Image_Processing_Options.Facial_Feature_Detection_Function" title="Permalink to this definition">#</a></dt>
-<dd><p>Function which opens and adds a new window (takes window priority) which is the Facial Feature Detection screen (gets redirected from the Image Preocessing Options screen)</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="Image_Processing_Options.Ui_Image_Processing_Options.Gaussian_Function">
-<span class="sig-name descname"><span class="pre">Gaussian_Function</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/Image_Processing_Options.html#Ui_Image_Processing_Options.Gaussian_Function"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#Image_Processing_Options.Ui_Image_Processing_Options.Gaussian_Function" title="Permalink to this definition">#</a></dt>
-<dd><p>Function which opens and adds a new window (takes window priority) which is the Gaussian Image rectification screen (gets redirected from the Image Preocessing Options screen)</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="Image_Processing_Options.Ui_Image_Processing_Options.LPF_Function">
-<span class="sig-name descname"><span class="pre">LPF_Function</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/Image_Processing_Options.html#Ui_Image_Processing_Options.LPF_Function"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#Image_Processing_Options.Ui_Image_Processing_Options.LPF_Function" title="Permalink to this definition">#</a></dt>
-<dd><p>Function which opens and adds a new window (takes window priority) which is the Low Pass Filter screen (gets redirected from the Image Preocessing Options screen)</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="Image_Processing_Options.Ui_Image_Processing_Options.Laplace_Function">
-<span class="sig-name descname"><span class="pre">Laplace_Function</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/Image_Processing_Options.html#Ui_Image_Processing_Options.Laplace_Function"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#Image_Processing_Options.Ui_Image_Processing_Options.Laplace_Function" title="Permalink to this definition">#</a></dt>
-<dd><p>Function which opens and adds a new window (takes window priority) which is the Laplace edge detection screen (gets redirected from the Image Preocessing Options screen)</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="Image_Processing_Options.Ui_Image_Processing_Options.NegativeFunction">
-<span class="sig-name descname"><span class="pre">NegativeFunction</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/Image_Processing_Options.html#Ui_Image_Processing_Options.NegativeFunction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#Image_Processing_Options.Ui_Image_Processing_Options.NegativeFunction" title="Permalink to this definition">#</a></dt>
-<dd><p>Function which opens and adds a new window (takes window priority) which is the Negative Imag Conversion screen (gets redirected from the Image Preocessing Options screen)</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="Image_Processing_Options.Ui_Image_Processing_Options.Threshold_WithFunction">
-<span class="sig-name descname"><span class="pre">Threshold_WithFunction</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/Image_Processing_Options.html#Ui_Image_Processing_Options.Threshold_WithFunction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#Image_Processing_Options.Ui_Image_Processing_Options.Threshold_WithFunction" title="Permalink to this definition">#</a></dt>
-<dd><p>Function which opens and adds a new window (takes window priority) which is the Thresholding with background screen (gets redirected from the Image Preocessing Options screen)</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="Image_Processing_Options.Ui_Image_Processing_Options.Threshold_WithoutFunction">
-<span class="sig-name descname"><span class="pre">Threshold_WithoutFunction</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/Image_Processing_Options.html#Ui_Image_Processing_Options.Threshold_WithoutFunction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#Image_Processing_Options.Ui_Image_Processing_Options.Threshold_WithoutFunction" title="Permalink to this definition">#</a></dt>
-<dd><p>Function which opens and adds a new window (takes window priority) which is the Thresholding without background screen (gets redirected from the Image Preocessing Options screen)</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="Image_Processing_Options.Ui_Image_Processing_Options.UpSamplingFunction">
-<span class="sig-name descname"><span class="pre">UpSamplingFunction</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/Image_Processing_Options.html#Ui_Image_Processing_Options.UpSamplingFunction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#Image_Processing_Options.Ui_Image_Processing_Options.UpSamplingFunction" title="Permalink to this definition">#</a></dt>
-<dd><p>Function which opens and adds a new window (takes window priority) which is the Up Sampling screen (gets redirected from the Image Preocessing Options screen)</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="Image_Processing_Options.Ui_Image_Processing_Options.retranslateUi">
-<span class="sig-name descname"><span class="pre">retranslateUi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Image_Processing_Options</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Image_Processing_Options.html#Ui_Image_Processing_Options.retranslateUi"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#Image_Processing_Options.Ui_Image_Processing_Options.retranslateUi" title="Permalink to this definition">#</a></dt>
-<dd><p>Setting the UI layouts and components - labels, textfields, pushbuttons, etc.
-Also adding functionality for redirecting buttons to respective functions on being clicked.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="Image_Processing_Options.Ui_Image_Processing_Options.setupUi">
-<span class="sig-name descname"><span class="pre">setupUi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Image_Processing_Options</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Image_Processing_Options.html#Ui_Image_Processing_Options.setupUi"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#Image_Processing_Options.Ui_Image_Processing_Options.setupUi" title="Permalink to this definition">#</a></dt>
-<dd><p>setupUI defined for the Image Processing Options screen auto-generated by the PyQt5 editor.</p>
-</dd></dl>
-
-</dd></dl>
-
+          <section id="image-processing-options-module">
+<h1>Image_Processing_Options module<a class="headerlink" href="#image-processing-options-module" title="Permalink to this heading">#</a></h1>
 </section>
 
         </article>
@@ -344,41 +264,8 @@ Also adding functionality for redirecting buttons to respective functions on bei
         
       </footer>
     </div>
-    <aside class="toc-drawer">
+    <aside class="toc-drawer no-toc">
       
-      
-      <div class="toc-sticky toc-scroll">
-        <div class="toc-title-container">
-          <span class="toc-title">
-            On this page
-          </span>
-        </div>
-        <div class="toc-tree-container">
-          <div class="toc-tree">
-            <ul>
-<li><a class="reference internal" href="#">Image_Processing_Options module</a><ul>
-<li><a class="reference internal" href="#Image_Processing_Options.Ui_Image_Processing_Options"><code class="docutils literal notranslate"><span class="pre">Ui_Image_Processing_Options</span></code></a><ul>
-<li><a class="reference internal" href="#Image_Processing_Options.Ui_Image_Processing_Options.Blur_Function"><code class="docutils literal notranslate"><span class="pre">Ui_Image_Processing_Options.Blur_Function()</span></code></a></li>
-<li><a class="reference internal" href="#Image_Processing_Options.Ui_Image_Processing_Options.DownSamplingFunction"><code class="docutils literal notranslate"><span class="pre">Ui_Image_Processing_Options.DownSamplingFunction()</span></code></a></li>
-<li><a class="reference internal" href="#Image_Processing_Options.Ui_Image_Processing_Options.Facial_Feature_Detection_Function"><code class="docutils literal notranslate"><span class="pre">Ui_Image_Processing_Options.Facial_Feature_Detection_Function()</span></code></a></li>
-<li><a class="reference internal" href="#Image_Processing_Options.Ui_Image_Processing_Options.Gaussian_Function"><code class="docutils literal notranslate"><span class="pre">Ui_Image_Processing_Options.Gaussian_Function()</span></code></a></li>
-<li><a class="reference internal" href="#Image_Processing_Options.Ui_Image_Processing_Options.LPF_Function"><code class="docutils literal notranslate"><span class="pre">Ui_Image_Processing_Options.LPF_Function()</span></code></a></li>
-<li><a class="reference internal" href="#Image_Processing_Options.Ui_Image_Processing_Options.Laplace_Function"><code class="docutils literal notranslate"><span class="pre">Ui_Image_Processing_Options.Laplace_Function()</span></code></a></li>
-<li><a class="reference internal" href="#Image_Processing_Options.Ui_Image_Processing_Options.NegativeFunction"><code class="docutils literal notranslate"><span class="pre">Ui_Image_Processing_Options.NegativeFunction()</span></code></a></li>
-<li><a class="reference internal" href="#Image_Processing_Options.Ui_Image_Processing_Options.Threshold_WithFunction"><code class="docutils literal notranslate"><span class="pre">Ui_Image_Processing_Options.Threshold_WithFunction()</span></code></a></li>
-<li><a class="reference internal" href="#Image_Processing_Options.Ui_Image_Processing_Options.Threshold_WithoutFunction"><code class="docutils literal notranslate"><span class="pre">Ui_Image_Processing_Options.Threshold_WithoutFunction()</span></code></a></li>
-<li><a class="reference internal" href="#Image_Processing_Options.Ui_Image_Processing_Options.UpSamplingFunction"><code class="docutils literal notranslate"><span class="pre">Ui_Image_Processing_Options.UpSamplingFunction()</span></code></a></li>
-<li><a class="reference internal" href="#Image_Processing_Options.Ui_Image_Processing_Options.retranslateUi"><code class="docutils literal notranslate"><span class="pre">Ui_Image_Processing_Options.retranslateUi()</span></code></a></li>
-<li><a class="reference internal" href="#Image_Processing_Options.Ui_Image_Processing_Options.setupUi"><code class="docutils literal notranslate"><span class="pre">Ui_Image_Processing_Options.setupUi()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-          </div>
-        </div>
-      </div>
       
       
     </aside>
