@@ -6,6 +6,13 @@
 Welcome to Image Processing's documentation!
 ============================================
 
+.. _README:
+.. toctree::
+   :maxdepth: 2
+   :caption: Introduction:
+
+   README
+
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
