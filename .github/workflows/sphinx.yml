@@ -28,10 +28,9 @@ jobs:
 
       - name: Build HTML
         run: |
-          cd All_Project_Files\Final_Project_Files\docs/
-          # make html
-          .\make.bat html  
-          ls -l _build/html  # Debug: List generated files
+          cd All_Project_Files\Final_Project_Files\docs
+
+          .\make.bat html
 
       - name: Configure Git
         run: |
