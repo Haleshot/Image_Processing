@@ -32,7 +32,6 @@
 
 
 
-
 <!-- Installation -->
 <h2 id="Installation"> 📦: Installation </h2>
 
