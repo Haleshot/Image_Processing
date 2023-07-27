@@ -29,13 +29,14 @@ jobs:
         run: |
           cd docs/
           make html
+          ls -l _build/html  # Debug: List generated files
 
-      - name: Debug Outputs
+      - name: Configure Git
         run: |
-          ls -l $GITHUB_WORKSPACE/docs/_build/html  # Ensure HTML files are generated
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
 
       - name: Deploy to gh-pages
         run: |
-          set -x
           pip install ghp-import
-          ghp-import -n -p -f $GITHUB_WORKSPACE/docs/_build/html
+          ghp-import -n -p -f docs/_build/html
