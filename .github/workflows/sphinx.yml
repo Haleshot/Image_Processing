@@ -29,7 +29,7 @@ jobs:
       - name: Build HTML
         run: |
           cd All_Project_Files/Final_Project_Files/docs/
-          .\make.bat html
+          make html
 
       - name: Configure Git
         run: |
