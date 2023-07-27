@@ -1,0 +1,441 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="ui_Blur_Image_Screen module" href="ui_Blur_Image_Screen.html" /><link rel="prev" title="Up_Sampling_Image_Screen_ui module" href="Up_Sampling_Image_Screen_ui.html" />
+
+    <!-- Generated with Sphinx 7.0.1 and Furo 2023.05.20 -->
+        <title>test module - Image Processing 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=e6660623a769aa55fea372102b9bf3151b292993" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">Image Processing 1.0.0 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
+  
+  
+  <span class="sidebar-brand-text">Image Processing 1.0.0 documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current has-children"><a class="reference internal" href="modules.html">Final_Project_Files</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Final_Project_Files</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Blur_Image_Screen.html">Blur_Image_Screen module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Down_Sampling_Image_Screen.html">Down_Sampling_Image_Screen module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Facial_Features_Image_Screen.html">Facial_Features_Image_Screen module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Gaussian_Image_Screen.html">Gaussian_Image_Screen module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Image_Processing_Options.html">Image_Processing_Options module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Image_Processing_Options_ui.html">Image_Processing_Options_ui module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="LPF_Image_Screen.html">LPF_Image_Screen module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Laplace_Screen.html">Laplace_Screen module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Negative_Image_Screen.html">Negative_Image_Screen module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Thresholding_With_Background.html">Thresholding_With_Background module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Thresholding_Without_Background.html">Thresholding_Without_Background module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Up_Sampling_Image_Screen.html">Up_Sampling_Image_Screen module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Up_Sampling_Image_Screen_ui.html">Up_Sampling_Image_Screen_ui module</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">test module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ui_Blur_Image_Screen.html">ui_Blur_Image_Screen module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ui_Down_Sampling_Image_Screen.html">ui_Down_Sampling_Image_Screen module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ui_Facial_Features_Image_Screen.html">ui_Facial_Features_Image_Screen module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ui_Gaussian_Image_Screen.html">ui_Gaussian_Image_Screen module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ui_Image_Processing_Options.html">ui_Image_Processing_Options module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ui_LPF_Image_Screen.html">ui_LPF_Image_Screen module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ui_Laplace_Screen.html">ui_Laplace_Screen module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ui_Negative_Image_Screen.html">ui_Negative_Image_Screen module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ui_Thresholding_With_Background.html">ui_Thresholding_With_Background module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ui_Thresholding_Without_Background.html">ui_Thresholding_Without_Background module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ui_Up_Sampling_Image_Screen.html">ui_Up_Sampling_Image_Screen module</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <section id="module-test">
+<span id="test-module"></span><h1>test module<a class="headerlink" href="#module-test" title="Permalink to this heading">#</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="test.MainWindow">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">test.</span></span><span class="sig-name descname"><span class="pre">MainWindow</span></span><a class="reference internal" href="_modules/test.html#MainWindow"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test.MainWindow" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">QMainWindow</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="test.MainWindow.createActions">
+<span class="sig-name descname"><span class="pre">createActions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">view</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/test.html#MainWindow.createActions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test.MainWindow.createActions" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="test.MainWindow.createMenus">
+<span class="sig-name descname"><span class="pre">createMenus</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/test.html#MainWindow.createMenus"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test.MainWindow.createMenus" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="test.MainWindow.fitToWindow">
+<span class="sig-name descname"><span class="pre">fitToWindow</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/test.html#MainWindow.fitToWindow"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test.MainWindow.fitToWindow" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="test.QImageViewSync">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">test.</span></span><span class="sig-name descname"><span class="pre">QImageViewSync</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">window</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/test.html#QImageViewSync"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test.QImageViewSync" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">QWidget</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="test.QImageViewSync.about">
+<span class="sig-name descname"><span class="pre">about</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/test.html#QImageViewSync.about"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test.QImageViewSync.about" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="test.QImageViewSync.adjustScrollBar">
+<span class="sig-name descname"><span class="pre">adjustScrollBar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scrollBar</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">factor</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/test.html#QImageViewSync.adjustScrollBar"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test.QImageViewSync.adjustScrollBar" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="test.QImageViewSync.mouseMoveEventLeft">
+<span class="sig-name descname"><span class="pre">mouseMoveEventLeft</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/test.html#QImageViewSync.mouseMoveEventLeft"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test.QImageViewSync.mouseMoveEventLeft" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="test.QImageViewSync.mouseMoveEventRight">
+<span class="sig-name descname"><span class="pre">mouseMoveEventRight</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/test.html#QImageViewSync.mouseMoveEventRight"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test.QImageViewSync.mouseMoveEventRight" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="test.QImageViewSync.mousePressEventLeft">
+<span class="sig-name descname"><span class="pre">mousePressEventLeft</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/test.html#QImageViewSync.mousePressEventLeft"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test.QImageViewSync.mousePressEventLeft" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="test.QImageViewSync.mousePressEventRight">
+<span class="sig-name descname"><span class="pre">mousePressEventRight</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/test.html#QImageViewSync.mousePressEventRight"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test.QImageViewSync.mousePressEventRight" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="test.QImageViewSync.mouseReleaseEventLeft">
+<span class="sig-name descname"><span class="pre">mouseReleaseEventLeft</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/test.html#QImageViewSync.mouseReleaseEventLeft"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test.QImageViewSync.mouseReleaseEventLeft" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="test.QImageViewSync.mouseReleaseEventRight">
+<span class="sig-name descname"><span class="pre">mouseReleaseEventRight</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/test.html#QImageViewSync.mouseReleaseEventRight"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test.QImageViewSync.mouseReleaseEventRight" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="test.QImageViewSync.normalSize">
+<span class="sig-name descname"><span class="pre">normalSize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/test.html#QImageViewSync.normalSize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test.QImageViewSync.normalSize" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="test.QImageViewSync.open">
+<span class="sig-name descname"><span class="pre">open</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/test.html#QImageViewSync.open"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test.QImageViewSync.open" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="test.QImageViewSync.openLeft">
+<span class="sig-name descname"><span class="pre">openLeft</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/test.html#QImageViewSync.openLeft"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test.QImageViewSync.openLeft" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="test.QImageViewSync.openRight">
+<span class="sig-name descname"><span class="pre">openRight</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/test.html#QImageViewSync.openRight"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test.QImageViewSync.openRight" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="test.QImageViewSync.printLeft">
+<span class="sig-name descname"><span class="pre">printLeft</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/test.html#QImageViewSync.printLeft"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test.QImageViewSync.printLeft" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="test.QImageViewSync.printRight">
+<span class="sig-name descname"><span class="pre">printRight</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/test.html#QImageViewSync.printRight"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test.QImageViewSync.printRight" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="test.QImageViewSync.scaleImage">
+<span class="sig-name descname"><span class="pre">scaleImage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">factor</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/test.html#QImageViewSync.scaleImage"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test.QImageViewSync.scaleImage" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="test.QImageViewSync.updateActions">
+<span class="sig-name descname"><span class="pre">updateActions</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/test.html#QImageViewSync.updateActions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test.QImageViewSync.updateActions" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="test.QImageViewSync.zoomIn">
+<span class="sig-name descname"><span class="pre">zoomIn</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/test.html#QImageViewSync.zoomIn"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test.QImageViewSync.zoomIn" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="test.QImageViewSync.zoomOut">
+<span class="sig-name descname"><span class="pre">zoomOut</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/test.html#QImageViewSync.zoomOut"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test.QImageViewSync.zoomOut" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="ui_Blur_Image_Screen.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">ui_Blur_Image_Screen module</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="Up_Sampling_Image_Screen_ui.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Up_Sampling_Image_Screen_ui module</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2023, Srihari Thyagarajan
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">test module</a><ul>
+<li><a class="reference internal" href="#test.MainWindow"><code class="docutils literal notranslate"><span class="pre">MainWindow</span></code></a><ul>
+<li><a class="reference internal" href="#test.MainWindow.createActions"><code class="docutils literal notranslate"><span class="pre">MainWindow.createActions()</span></code></a></li>
+<li><a class="reference internal" href="#test.MainWindow.createMenus"><code class="docutils literal notranslate"><span class="pre">MainWindow.createMenus()</span></code></a></li>
+<li><a class="reference internal" href="#test.MainWindow.fitToWindow"><code class="docutils literal notranslate"><span class="pre">MainWindow.fitToWindow()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#test.QImageViewSync"><code class="docutils literal notranslate"><span class="pre">QImageViewSync</span></code></a><ul>
+<li><a class="reference internal" href="#test.QImageViewSync.about"><code class="docutils literal notranslate"><span class="pre">QImageViewSync.about()</span></code></a></li>
+<li><a class="reference internal" href="#test.QImageViewSync.adjustScrollBar"><code class="docutils literal notranslate"><span class="pre">QImageViewSync.adjustScrollBar()</span></code></a></li>
+<li><a class="reference internal" href="#test.QImageViewSync.mouseMoveEventLeft"><code class="docutils literal notranslate"><span class="pre">QImageViewSync.mouseMoveEventLeft()</span></code></a></li>
+<li><a class="reference internal" href="#test.QImageViewSync.mouseMoveEventRight"><code class="docutils literal notranslate"><span class="pre">QImageViewSync.mouseMoveEventRight()</span></code></a></li>
+<li><a class="reference internal" href="#test.QImageViewSync.mousePressEventLeft"><code class="docutils literal notranslate"><span class="pre">QImageViewSync.mousePressEventLeft()</span></code></a></li>
+<li><a class="reference internal" href="#test.QImageViewSync.mousePressEventRight"><code class="docutils literal notranslate"><span class="pre">QImageViewSync.mousePressEventRight()</span></code></a></li>
+<li><a class="reference internal" href="#test.QImageViewSync.mouseReleaseEventLeft"><code class="docutils literal notranslate"><span class="pre">QImageViewSync.mouseReleaseEventLeft()</span></code></a></li>
+<li><a class="reference internal" href="#test.QImageViewSync.mouseReleaseEventRight"><code class="docutils literal notranslate"><span class="pre">QImageViewSync.mouseReleaseEventRight()</span></code></a></li>
+<li><a class="reference internal" href="#test.QImageViewSync.normalSize"><code class="docutils literal notranslate"><span class="pre">QImageViewSync.normalSize()</span></code></a></li>
+<li><a class="reference internal" href="#test.QImageViewSync.open"><code class="docutils literal notranslate"><span class="pre">QImageViewSync.open()</span></code></a></li>
+<li><a class="reference internal" href="#test.QImageViewSync.openLeft"><code class="docutils literal notranslate"><span class="pre">QImageViewSync.openLeft()</span></code></a></li>
+<li><a class="reference internal" href="#test.QImageViewSync.openRight"><code class="docutils literal notranslate"><span class="pre">QImageViewSync.openRight()</span></code></a></li>
+<li><a class="reference internal" href="#test.QImageViewSync.printLeft"><code class="docutils literal notranslate"><span class="pre">QImageViewSync.printLeft()</span></code></a></li>
+<li><a class="reference internal" href="#test.QImageViewSync.printRight"><code class="docutils literal notranslate"><span class="pre">QImageViewSync.printRight()</span></code></a></li>
+<li><a class="reference internal" href="#test.QImageViewSync.scaleImage"><code class="docutils literal notranslate"><span class="pre">QImageViewSync.scaleImage()</span></code></a></li>
+<li><a class="reference internal" href="#test.QImageViewSync.updateActions"><code class="docutils literal notranslate"><span class="pre">QImageViewSync.updateActions()</span></code></a></li>
+<li><a class="reference internal" href="#test.QImageViewSync.zoomIn"><code class="docutils literal notranslate"><span class="pre">QImageViewSync.zoomIn()</span></code></a></li>
+<li><a class="reference internal" href="#test.QImageViewSync.zoomOut"><code class="docutils literal notranslate"><span class="pre">QImageViewSync.zoomOut()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/scripts/furo.js"></script>
+    </body>
+</html>
