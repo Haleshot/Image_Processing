@@ -39,4 +39,4 @@ jobs:
       - name: Deploy to gh-pages
         run: |
           pip install ghp-import
-          ghp-import -n -p -f All_Project_Files\Final_Project_Files\docs\_build\html
+          ghp-import -n -p -f All_Project_Files/Final_Project_Files/docs/_build/html
