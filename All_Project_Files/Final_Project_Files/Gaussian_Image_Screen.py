@@ -154,6 +154,7 @@ class Ui_Dialog_6(object):
     def Save_Directory(self):
         """
         Helps in saving and writing the image in the directory the user wants to save in.
+        
         """
         option = QFileDialog.Options()
         
