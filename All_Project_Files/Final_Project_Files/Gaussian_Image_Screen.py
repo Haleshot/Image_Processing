@@ -10,7 +10,16 @@ from PyQt5.QtWidgets import (QApplication, QComboBox, QDialog, QFileDialog,
 from PyQt5.uic import loadUi
 from skimage.util import random_noise
 
+
+
 class Ui_Dialog_6(object):
+    """Main UI Class for Gaussian Image Screen
+
+    Args:
+        object (object): The base class of the class hierarchy.
+
+When called, it accepts no arguments and returns a new featureless instance that has no instance attributes and cannot be given any.
+    """
     def __init__(self):
         """
         Creation of a temporary image which helps in displaying the given image onto the GUI label.

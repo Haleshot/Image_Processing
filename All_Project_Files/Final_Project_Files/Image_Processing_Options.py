@@ -158,9 +158,8 @@ class Ui_Image_Processing_Options(object):
 
     def DownSamplingFunction(self):
         """
-        Function which opens and adds a new window (takes window priority) which is the Down Sampling screen (gets redirected from the Image Preocessing Options screen)
+        Function which opens and adds a new window (takes window priority) which is the Down Sampling screen (gets redirected from the Image Preocessing Options screen).
         """
-        
         self.window = QtWidgets.QMainWindow()
         self.ui = Ui_Dialog()
         self.ui.setupUi(self.window)
