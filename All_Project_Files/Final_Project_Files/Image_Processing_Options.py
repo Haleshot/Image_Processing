@@ -105,7 +105,10 @@ class Ui_Image_Processing_Options(object):
         QtCore.QMetaObject.connectSlotsByName(Image_Processing_Options)
 
     def retranslateUi(self, Image_Processing_Options):
-        """"""    
+        """
+        Setting the UI layouts and components - labels, textfields, pushbuttons, etc.
+        Also adding functionality for redirecting buttons to respective functions on being clicked.
+        """    
         _translate = QtCore.QCoreApplication.translate
         Image_Processing_Options.setWindowTitle(_translate("Image_Processing_Options", "Image Processing Options"))
         self.DownSampling_Button.setText(_translate("Image_Processing_Options", "Down Sampling"))
