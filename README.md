@@ -478,11 +478,11 @@ Simple terms:
 
 
 - [ ] Refine UI more, add Video processing and Erosion/Dilation features
-  - [ ] PyQt5 Editor
 
 ### In Progress
 
 - [ ] Showing user, which file to run as main file - portraying user flow.
+- [ ] Update documentation
 
 ### Done ✓
 - [x] Add exceptions to prevent program from crashing when user opens window to select input image but clicks on the close button of the window; same with Save as button.
