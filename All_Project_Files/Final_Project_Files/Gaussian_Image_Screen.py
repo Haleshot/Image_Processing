@@ -104,11 +104,17 @@ When called, it accepts no arguments and returns a new featureless instance that
 
     def File_Select(self):
         """
+        
         Main Logical function which does the following:
+
         1. Helps user in choosing input for image file (supported file formats - .jpg, .jpeg, .gif, .png)
+
         2. Error handling if user doesn't choose supported file.
+        
         3. Displays the image onto the GUI label layout (if size exceeds, then scroll bars appear in the Label).
+        
         4. The user can Save the generated image in the directory they want on the machine.
+        
         """
 
         # fname = QFileDialog.getOpenFileName(self, "Open File", "All_Project_Files\Final_Project_Files\Cam_Media", "Images (*.png *.xpm *.jpg)")
