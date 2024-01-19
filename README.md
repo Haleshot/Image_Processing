@@ -478,6 +478,7 @@ Simple terms:
 
 
 - [ ] Refine UI more, add Video processing and Erosion/Dilation features
+- [ ] Improve Documentation, refine Sphinx structure and docs.
 
 ### In Progress
 
