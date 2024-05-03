@@ -415,7 +415,7 @@ Simple terms:
 ### In Progress
 
 - [ ] Showing user, which file to run as main file - portraying user flow.
-- [ ] Update documentation
+- [ ] Update documentation and make it relevant to sphinx comment format.
 
 ### Done ✓
 
