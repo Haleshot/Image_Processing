@@ -1,0 +1,893 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" />
+
+    <!-- Generated with Sphinx 7.0.1 and Furo 2023.05.20 -->
+        <title>test - Image Processing 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=e6660623a769aa55fea372102b9bf3151b292993" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">Image Processing 1.0.0 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  
+  
+  <span class="sidebar-brand-text">Image Processing 1.0.0 documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../modules.html">Final_Project_Files</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Final_Project_Files</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Blur_Image_Screen.html">Blur_Image_Screen module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Down_Sampling_Image_Screen.html">Down_Sampling_Image_Screen module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Facial_Features_Image_Screen.html">Facial_Features_Image_Screen module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Gaussian_Image_Screen.html">Gaussian_Image_Screen module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Image_Processing_Options.html">Image_Processing_Options module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Image_Processing_Options_ui.html">Image_Processing_Options_ui module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../LPF_Image_Screen.html">LPF_Image_Screen module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Laplace_Screen.html">Laplace_Screen module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Negative_Image_Screen.html">Negative_Image_Screen module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Thresholding_With_Background.html">Thresholding_With_Background module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Thresholding_Without_Background.html">Thresholding_Without_Background module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Up_Sampling_Image_Screen.html">Up_Sampling_Image_Screen module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Up_Sampling_Image_Screen_ui.html">Up_Sampling_Image_Screen_ui module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../test.html">test module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ui_Blur_Image_Screen.html">ui_Blur_Image_Screen module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ui_Down_Sampling_Image_Screen.html">ui_Down_Sampling_Image_Screen module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ui_Facial_Features_Image_Screen.html">ui_Facial_Features_Image_Screen module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ui_Gaussian_Image_Screen.html">ui_Gaussian_Image_Screen module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ui_Image_Processing_Options.html">ui_Image_Processing_Options module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ui_LPF_Image_Screen.html">ui_LPF_Image_Screen module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ui_Laplace_Screen.html">ui_Laplace_Screen module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ui_Negative_Image_Screen.html">ui_Negative_Image_Screen module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ui_Thresholding_With_Background.html">ui_Thresholding_With_Background module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ui_Thresholding_Without_Background.html">ui_Thresholding_Without_Background module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ui_Up_Sampling_Image_Screen.html">ui_Up_Sampling_Image_Screen module</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <h1>Source code for test</h1><div class="highlight"><pre>
+<span></span><span class="c1"># # importing the required module  </span>
+<span class="c1"># import sys  </span>
+  
+<span class="c1"># # importing the necessary classes for the project  </span>
+<span class="c1"># from PyQt5.QtCore import Qt, QSize  </span>
+<span class="c1"># from PyQt5.QtWidgets import QApplication, QLabel, QSizePolicy, QScrollArea, QMessageBox, QMainWindow, QMenu, QAction, qApp, QFileDialog, QToolBar, QMenuBar  </span>
+<span class="c1"># from PyQt5.QtWidgets import *</span>
+<span class="c1"># from PyQt5.QtGui import QImage, QPixmap, QPalette, QPainter, QIcon, QKeySequence  </span>
+<span class="c1"># from PyQt5.QtPrintSupport import QPrintDialog, QPrinter  </span>
+  
+<span class="c1"># # defining the child class of the QMainWindow class  </span>
+<span class="c1"># class QImageViewer(QMainWindow):  </span>
+<span class="c1">#     # defining the initializing function  </span>
+<span class="c1">#     def __init__(self):  </span>
+<span class="c1">#         super().__init__()  </span>
+<span class="c1">#                 # creating an object of the QPrinter class  </span>
+<span class="c1">#         self.printerObj = QPrinter()  </span>
+<span class="c1">#         # setting the initial scaling factor  </span>
+<span class="c1">#         self.scale_factor = 0.0  </span>
+  
+<span class="c1">#         # creating an object of the QLabel class to display the label  </span>
+<span class="c1">#         self.image_label = QLabel()  </span>
+<span class="c1">#         # setting the background color of the label to display the image using the setBackgroundRole() method and QPalette class  </span>
+<span class="c1">#         self.image_label.setBackgroundRole(QPalette.Base)  </span>
+<span class="c1">#         # setting the size policy of the label using the setSizePolicy() method and QSizePolicy class  </span>
+<span class="c1">#         self.image_label.setSizePolicy(QSizePolicy.Ignored, QSizePolicy.Ignored)  </span>
+<span class="c1">#         # setting the setScaledContents() method to True  </span>
+<span class="c1">#         # to manually adjust the aspect ratio of the image  </span>
+<span class="c1">#         # in the application  </span>
+<span class="c1">#         self.image_label.setScaledContents(True)  </span>
+  
+<span class="c1">#         # creating an object of the QScrollArea class to display the scroll bar  </span>
+<span class="c1">#         self.scroll_area = QScrollArea()  </span>
+<span class="c1">#         # setting the background color of the scroll bar to display the image using the setBackgroundRole() method and QPalette class  </span>
+<span class="c1">#         self.scroll_area.setBackgroundRole(QPalette.Dark)  </span>
+<span class="c1">#         # setting the scrolling area to the image label using the setWidget() method  </span>
+<span class="c1">#         self.scroll_area.setWidget(self.image_label)  </span>
+<span class="c1">#         # setting the visibility of the scrolling area with the help of the setVisible() method  </span>
+<span class="c1">#         self.scroll_area.setVisible(False)  </span>
+  
+<span class="c1">#         # setting the central widget to the scroll area using the setCentral Widget() method  </span>
+<span class="c1">#         self.setCentralWidget(self.scroll_area)  </span>
+  
+<span class="c1">#         # configuring the title of the window  </span>
+<span class="c1">#         self.setWindowTitle(&quot;Image Viewer - JAVATPOINT&quot;)  </span>
+<span class="c1">#         # configuring the width and height of the window  </span>
+<span class="c1">#         self.window_width, self.window_height = self.geometry().width(), self.geometry().height()  </span>
+<span class="c1">#         # setting the Icon of the window  </span>
+<span class="c1">#         self.setWindowIcon(QIcon(&#39;./icons/imageViewer.ico&#39;))  </span>
+<span class="c1">#         # using the resize() to set the size of the application  </span>
+<span class="c1">#         self.resize(self.window_width * 2, self.window_height * 2)  </span>
+  
+<span class="c1">#         #--------------------------------------  </span>
+<span class="c1">#         # Creating a File Menu  </span>
+<span class="c1">#         #--------------------------------------  </span>
+<span class="c1">#         self.filemenu = self.menuBar().addMenu(&#39;&amp;File&#39;)  </span>
+          
+<span class="c1">#         #--------------------------------------  </span>
+<span class="c1">#         # Creating a File Toolbar  </span>
+<span class="c1">#         #--------------------------------------  </span>
+<span class="c1">#         self.filetoolbar = QToolBar(&#39;File&#39;)  </span>
+<span class="c1">#         self.filetoolbar.setIconSize(QSize(30, 30))  </span>
+<span class="c1">#         self.addToolBar(Qt.ToolBarArea.TopToolBarArea, self.filetoolbar)  </span>
+  
+<span class="c1">#         # creating the menu options like open, save, save as, and print  </span>
+  
+<span class="c1">#         # calling the user-defined makeAction() method to create the action to open the file...  </span>
+<span class="c1">#         self.open_doc_opt = self.makeAction(self, &#39;./icons/openImage.ico&#39;, &#39;Open Image...&#39;, &#39;Open Image...&#39;, self.openImage)  </span>
+<span class="c1">#         # using the setShortcut() method to set a shortcut to execute the &#39;Open&#39; command  </span>
+<span class="c1">#         self.open_doc_opt.setShortcut(QKeySequence.Open)  </span>
+  
+<span class="c1">#         # calling the user-defined makeAction() method to create the action to print the file  </span>
+<span class="c1">#         self.print_opt = self.makeAction(self, &#39;./icons/printer.ico&#39;, &#39;Print&#39;, &#39;Print&#39;, self.printImage)  </span>
+<span class="c1">#         # using the setShortcut() method to set a shortcut to execute the &#39;Print&#39; command  </span>
+<span class="c1">#         self.print_opt.setShortcut(QKeySequence.Print)  </span>
+<span class="c1">#         # initially disabling the action by setting the value of setEnabled() method to False  </span>
+<span class="c1">#         self.print_opt.setEnabled(False)  </span>
+  
+<span class="c1">#         # using the addActions() method to add all the created actions to the &#39;File&#39; menu and toolbar  </span>
+<span class="c1">#         self.filemenu.addActions([self.open_doc_opt, self.print_opt])  </span>
+<span class="c1">#         self.filetoolbar.addActions([self.open_doc_opt, self.print_opt])  </span>
+  
+<span class="c1">#         # adding the separator  </span>
+<span class="c1">#         self.filemenu.addSeparator()  </span>
+  
+<span class="c1">#         # calling the user-defined makeAction() method to create the action to close the application  </span>
+<span class="c1">#         self.exit_opt = self.makeAction(self, &#39;&#39;, &#39;Exit&#39;, &#39;Exit&#39;, self.close)  </span>
+<span class="c1">#         # using the setShortcut() method to set a shortcut to execute the &#39;Close&#39; command  </span>
+<span class="c1">#         self.print_opt.setShortcut(QKeySequence.Close)  </span>
+  
+<span class="c1">#         # using the addActions() method to add all the created actions to the &#39;File&#39; menu and toolbar  </span>
+<span class="c1">#         self.filemenu.addActions([self.exit_opt])  </span>
+  
+<span class="c1">#         #--------------------------------------  </span>
+<span class="c1">#         # Creating a View Menu  </span>
+<span class="c1">#         #--------------------------------------  </span>
+<span class="c1">#         self.viewmenu = self.menuBar().addMenu(&#39;&amp;View&#39;)  </span>
+          
+<span class="c1">#         #--------------------------------------  </span>
+<span class="c1">#         # Creating an View Tool bar  </span>
+<span class="c1">#         #--------------------------------------  </span>
+<span class="c1">#         self.viewtoolbar = QToolBar(&#39;Edit&#39;)  </span>
+<span class="c1">#         self.viewtoolbar.setIconSize(QSize(30, 30))  </span>
+<span class="c1">#         self.addToolBar(Qt.ToolBarArea.TopToolBarArea, self.viewtoolbar)  </span>
+  
+<span class="c1">#         # calling the user-defined makeAction() method to create the action to zoom in the image  </span>
+<span class="c1">#         self.zoomIN_opt = self.makeAction(self, &#39;./icons/zoomIn.ico&#39;, &#39;Zoom In (25%)&#39;, &#39;Zoom In (25%)&#39;, self.zoom_in)  </span>
+<span class="c1">#         # using the setShortcut() method to set a shortcut to execute the &#39;Zoom In&#39; command  </span>
+<span class="c1">#         self.zoomIN_opt.setShortcut(QKeySequence.ZoomIn)  </span>
+<span class="c1">#         # initially disabling the action by setting the value of setEnabled() method to False  </span>
+<span class="c1">#         self.zoomIN_opt.setEnabled(False)  </span>
+          
+<span class="c1">#         # calling the user-defined makeAction() method to create the action to zoom out the image  </span>
+<span class="c1">#         self.zoomOUT_opt = self.makeAction(self, &#39;./icons/zoomOut.ico&#39;, &#39;Zoom Out (25%)&#39;, &#39;Zoom Out (25%)&#39;, self.zoom_out)  </span>
+<span class="c1">#         # using the setShortcut() method to set a shortcut to execute the &#39;Zoom Out&#39; command  </span>
+<span class="c1">#         self.zoomOUT_opt.setShortcut(QKeySequence.ZoomOut)  </span>
+<span class="c1">#         # initially disabling the action by setting the value of setEnabled() method to False  </span>
+<span class="c1">#         self.zoomOUT_opt.setEnabled(False)  </span>
+  
+<span class="c1">#         # calling the user-defined makeAction() method to create the action to set the normal size of the image  </span>
+<span class="c1">#         self.normalSize_opt = self.makeAction(self, &#39;&#39;, &#39;Normal Size&#39;, &#39;Normal Size&#39;, self.normal_size)  </span>
+<span class="c1">#         # using the setShortcut() method to set a shortcut to execute the &#39;Normal Size&#39; command  </span>
+<span class="c1">#         self.normalSize_opt.setShortcut(QKeySequence(&quot;Ctrl+S&quot;))  </span>
+<span class="c1">#         # initially disabling the action by setting the value of setEnabled() method to False  </span>
+<span class="c1">#         self.normalSize_opt.setEnabled(False)  </span>
+<span class="c1">#         # setting the initial value of the setCheckable() method to True  </span>
+<span class="c1">#         self.normalSize_opt.setCheckable(True)  </span>
+  
+<span class="c1">#         # using the addActions() method to add all the created actions to the &#39;View&#39; menu and toolbar  </span>
+<span class="c1">#         self.viewmenu.addActions([self.zoomIN_opt, self.zoomOUT_opt, self.normalSize_opt])  </span>
+<span class="c1">#         self.viewtoolbar.addActions([self.zoomIN_opt, self.zoomOUT_opt])  </span>
+  
+<span class="c1">#         # adding the separator  </span>
+<span class="c1">#         self.viewmenu.addSeparator()  </span>
+<span class="c1">#         self.viewtoolbar.addSeparator()  </span>
+  
+<span class="c1">#         # calling the user-defined makeAction() method to create the action to set the image to window size  </span>
+<span class="c1">#         self.fitToWindow_opt = self.makeAction(self, &#39;./icons/fitToWindow.ico&#39;, &#39;Fit To Window&#39;, &#39;Fit To Window&#39;, self.fit_to_window)  </span>
+<span class="c1">#         # using the setShortcut() method to set a shortcut to execute the &#39;Fit to Window&#39; command  </span>
+<span class="c1">#         self.fitToWindow_opt.setShortcut(QKeySequence(&quot;Ctrl+F&quot;))  </span>
+<span class="c1">#         # initially disabling the action by setting the value of setEnabled() method to False  </span>
+<span class="c1">#         self.fitToWindow_opt.setEnabled(False)  </span>
+  
+<span class="c1">#         # using the addActions() method to add all the created actions to the &#39;View&#39; menu and toolbar  </span>
+<span class="c1">#         self.viewmenu.addActions([self.fitToWindow_opt])  </span>
+<span class="c1">#         self.viewtoolbar.addActions([self.fitToWindow_opt])  </span>
+
+  
+<span class="c1">#     # defining the required methods of the class  </span>
+  
+<span class="c1">#     # defining the method to open the image file   </span>
+<span class="c1">#     def openImage(self):  </span>
+<span class="c1">#         # creating an object of the QFileDialog.Options class  </span>
+<span class="c1">#         selections = QFileDialog.Options()  </span>
+<span class="c1">#         # calling the getOpenFileName() method to browse the image from the directory  </span>
+<span class="c1">#         file_name, _ = QFileDialog.getOpenFileName(  </span>
+<span class="c1">#             self,  </span>
+<span class="c1">#             &#39;QFileDialog.getOpenFileName()&#39;,  </span>
+<span class="c1">#             &#39;&#39;,  </span>
+<span class="c1">#             &#39;Images (*.png *.jpeg *.jpg *.bmp *.gif)&#39;,  </span>
+<span class="c1">#             options = selections  </span>
+<span class="c1">#             )  </span>
+<span class="c1">#         # if the file name is not an empty string  </span>
+<span class="c1">#         if file_name:  </span>
+<span class="c1">#             # creating an object of the QImage class by passing the file name as its parameter  </span>
+<span class="c1">#             image = QImage(file_name)  </span>
+<span class="c1">#             # if the image file is empty, returning the message box displaying information  </span>
+<span class="c1">#             if image.isNull():  </span>
+<span class="c1">#                 QMessageBox.information(self, &quot;Image Viewer&quot;, &quot;Cannot load %s.&quot; % file_name)  </span>
+<span class="c1">#                 return  </span>
+  
+<span class="c1">#             # using the setPixmap() method to create the off-screen image representation that can be used as a paint device  </span>
+<span class="c1">#             self.image_label.setPixmap(QPixmap.fromImage(image))  </span>
+<span class="c1">#             # setting the scale factor to 1.0  </span>
+<span class="c1">#             self.scale_factor = 1.0  </span>
+  
+<span class="c1">#             # enabling the visibility of the scroll area  </span>
+<span class="c1">#             self.scroll_area.setVisible(True)  </span>
+<span class="c1">#             # enabling the &quot;Print&quot; action  </span>
+<span class="c1">#             self.print_opt.setEnabled(True)  </span>
+<span class="c1">#             # calling the fit_to_window() method  </span>
+<span class="c1">#             self.fit_to_window()  </span>
+<span class="c1">#             # enabling the &quot;Fit To Window&quot; action  </span>
+<span class="c1">#             self.fitToWindow_opt.setEnabled(True)  </span>
+<span class="c1">#             # calling the update_actions() method  </span>
+<span class="c1">#             self.update_actions()  </span>
+  
+<span class="c1">#             # if the &quot;Fit To Window&quot; action is not checked  </span>
+<span class="c1">#             if not self.fitToWindow_opt.isChecked():  </span>
+<span class="c1">#                 # calling the adjustSize() method to adjust the size of the image  </span>
+<span class="c1">#                 self.image_label.adjustSize()  </span>
+  
+<span class="c1">#     # defining the method to print the image  </span>
+<span class="c1">#     def printImage(self):  </span>
+<span class="c1">#         # creating an object of the QPrintDialog class  </span>
+<span class="c1">#         print_dialog = QPrintDialog(self.printerObj, self)  </span>
+<span class="c1">#         # if the print action is executed  </span>
+<span class="c1">#         if print_dialog.exec_():  </span>
+<span class="c1">#             # creating an object of the QPainter class by passing the object of the QPrinter class  </span>
+<span class="c1">#             the_painter = QPainter(self.printerObj)  </span>
+<span class="c1">#             # creating a rectangle to place the image  </span>
+<span class="c1">#             rectangle = the_painter.viewport()  </span>
+<span class="c1">#             # defining the size of the image  </span>
+<span class="c1">#             the_size = self.image_label.pixmap().size()  </span>
+<span class="c1">#             # scaling the image to the Aspect Ratio  </span>
+<span class="c1">#             the_size.scale(rectangle.size(), Qt.KeepAspectRatio)  </span>
+<span class="c1">#             # setting the view port of the image by calling the setViewport() method  </span>
+<span class="c1">#             the_painter.setViewport(rectangle.x(), rectangle.y(), the_size.width(), the_size.height())  </span>
+<span class="c1">#             # calling the setWindow() method  </span>
+<span class="c1">#             the_painter.setWindow(self.image_label.pixmap().rect())  </span>
+<span class="c1">#             # calling the drawPixmap() method  </span>
+<span class="c1">#             the_painter.drawPixmap(0, 0, self.image_label.pixmap())  </span>
+  
+<span class="c1">#     # defining the method to zoom in on the image  </span>
+<span class="c1">#     def zoom_in(self):  </span>
+<span class="c1">#         # calling the user-defined scale_image() method passing 1.25 as the scaling factor  </span>
+<span class="c1">#         self.scale_image(1.25)  </span>
+  
+<span class="c1">#     # defining the method to zoom out of the image  </span>
+<span class="c1">#     def zoom_out(self):  </span>
+<span class="c1">#         # calling the user-defined scale_image() method passing 0.8 as the scaling factor  </span>
+<span class="c1">#         self.scale_image(0.8)  </span>
+  
+<span class="c1">#     # defining the method to set the normal size of the image  </span>
+<span class="c1">#     def normal_size(self):  </span>
+<span class="c1">#         # calling the adjustSize() method to adjust the size of the image  </span>
+<span class="c1">#         self.image_label.adjustSize()  </span>
+<span class="c1">#         # calling the user-defined scale_image() method passing 1.0 as the scaling factor  </span>
+<span class="c1">#         self.scale_factor = 1.0  </span>
+  
+<span class="c1">#     # defining the method to set the size of the image fitting to the window  </span>
+<span class="c1">#     def fit_to_window(self):  </span>
+<span class="c1">#         # retrieving the Boolean value from the &quot;Fit To Window&quot; action  </span>
+<span class="c1">#         fitToWindow = self.fitToWindow_opt.isChecked()  </span>
+<span class="c1">#         # configuring the scroll area to resizable  </span>
+<span class="c1">#         self.scroll_area.setWidgetResizable(fitToWindow)  </span>
+<span class="c1">#         # if the retrieved value is False, calling the user-defined normal_size() method   </span>
+<span class="c1">#         if not fitToWindow:  </span>
+<span class="c1">#             self.normal_size()  </span>
+<span class="c1">#         # calling the user-defined update_actions() method  </span>
+<span class="c1">#         self.update_actions()  </span>
+  
+<span class="c1">#     # defining the method to update the actions  </span>
+<span class="c1">#     def update_actions(self):  </span>
+<span class="c1">#         # enabling the &quot;Zoom In&quot;, &quot;Zoom Out&quot;, and &quot;Normal Size&quot; actions,  </span>
+<span class="c1">#         # if the &quot;Fit To Window&quot; is unchecked  </span>
+<span class="c1">#         self.zoomIN_opt.setEnabled(not self.fitToWindow_opt.isChecked())  </span>
+<span class="c1">#         self.zoomOUT_opt.setEnabled(not self.fitToWindow_opt.isChecked())  </span>
+<span class="c1">#         self.normalSize_opt.setEnabled(not self.fitToWindow_opt.isChecked())  </span>
+  
+<span class="c1">#     # defining the method to scale the image  </span>
+<span class="c1">#     def scale_image(self, sf):  </span>
+<span class="c1">#         # defining the scaling factor of the image  </span>
+<span class="c1">#         self.scale_factor *= sf  </span>
+<span class="c1">#         # using the resize() method to resize the image as per the scaling factor  </span>
+<span class="c1">#         self.image_label.resize(self.scale_factor * self.image_label.pixmap().size())  </span>
+  
+<span class="c1">#         # calling the user-defined adjust_scroll_bar() method to adjust the scrollbar as per the scaling factor  </span>
+<span class="c1">#         self.adjust_scroll_bar(self.scroll_area.horizontalScrollBar(), sf)  </span>
+<span class="c1">#         self.adjust_scroll_bar(self.scroll_area.verticalScrollBar(), sf)  </span>
+  
+<span class="c1">#         # toggling the &quot;Zoom In&quot; and &quot;Zoom Out&quot; actions as per the scaling factor   </span>
+<span class="c1">#         self.zoomIN_opt.setEnabled(self.scale_factor &lt; 3.0)  </span>
+<span class="c1">#         self.zoomOUT_opt.setEnabled(self.scale_factor &gt; 0.333)  </span>
+  
+<span class="c1">#     # defining the method to adjust the scroll bar  </span>
+<span class="c1">#     def adjust_scroll_bar(self, scroll_bar, scaleFactor):  </span>
+<span class="c1">#         # using the setValue() method to adjust length of the scrollbar according to the scaling factor  </span>
+<span class="c1">#         scroll_bar.setValue(int(scaleFactor * scroll_bar.value() + ((scaleFactor - 1) * scroll_bar.pageStep() / 2)))  </span>
+  
+<span class="c1">#     # defining the method to create the actions of the menu and toolbar  </span>
+<span class="c1">#     def makeAction(self, parent_obj, icon_destination, name_of_action, status_tip, triggered_method):  </span>
+<span class="c1">#         # creating an object of the QAction() class  </span>
+<span class="c1">#         act = QAction(QIcon(icon_destination), name_of_action, parent_obj)  </span>
+<span class="c1">#         # updating the message in the status bar  </span>
+<span class="c1">#         act.setStatusTip(status_tip)  </span>
+<span class="c1">#         # calling the different functions designated to different actions  </span>
+<span class="c1">#         act.triggered.connect(triggered_method)  </span>
+<span class="c1">#         # returning the action  </span>
+<span class="c1">#         return act  </span>
+  
+<span class="c1"># # main function  </span>
+<span class="c1"># if __name__ == &#39;__main__&#39;:  </span>
+  
+<span class="c1">#     # creating an object of the QApplication class  </span>
+<span class="c1">#     the_app = QApplication(sys.argv)  </span>
+      
+<span class="c1">#     # creating an object of the Application class  </span>
+<span class="c1">#     imageViewerApp = QImageViewer()  </span>
+  
+<span class="c1">#     # using the show() method to display the window  </span>
+<span class="c1">#     imageViewerApp.show()  </span>
+  
+<span class="c1">#     # using the exit() function of the sys module to close the application  </span>
+<span class="c1">#     sys.exit(the_app.exec_())</span>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<span class="kn">from</span> <span class="nn">PyQt5.QtCore</span> <span class="kn">import</span> <span class="n">Qt</span>
+<span class="kn">from</span> <span class="nn">PyQt5.QtGui</span> <span class="kn">import</span> <span class="n">QImage</span><span class="p">,</span> <span class="n">QPixmap</span><span class="p">,</span> <span class="n">QPalette</span><span class="p">,</span> <span class="n">QPainter</span>
+<span class="kn">from</span> <span class="nn">PyQt5.QtPrintSupport</span> <span class="kn">import</span> <span class="n">QPrintDialog</span><span class="p">,</span> <span class="n">QPrinter</span>
+<span class="kn">from</span> <span class="nn">PyQt5.QtWidgets</span> <span class="kn">import</span> <span class="n">QLabel</span><span class="p">,</span> <span class="n">QSizePolicy</span><span class="p">,</span> <span class="n">QScrollArea</span><span class="p">,</span> <span class="n">QMessageBox</span><span class="p">,</span> <span class="n">QMainWindow</span><span class="p">,</span> <span class="n">QMenu</span><span class="p">,</span> <span class="n">QAction</span><span class="p">,</span> \
+    <span class="n">qApp</span><span class="p">,</span> <span class="n">QFileDialog</span><span class="p">,</span> <span class="n">QWidget</span><span class="p">,</span> <span class="n">QHBoxLayout</span>
+
+
+<div class="viewcode-block" id="QImageViewSync"><a class="viewcode-back" href="../test.html#test.QImageViewSync">[docs]</a><span class="k">class</span> <span class="nc">QImageViewSync</span><span class="p">(</span><span class="n">QWidget</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">window</span> <span class="o">=</span> <span class="n">window</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">printer</span> <span class="o">=</span> <span class="n">QPrinter</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">scaleFactor</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">imageLabelLeft</span> <span class="o">=</span> <span class="n">QLabel</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">imageLabelLeft</span><span class="o">.</span><span class="n">setBackgroundRole</span><span class="p">(</span><span class="n">QPalette</span><span class="o">.</span><span class="n">Base</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">imageLabelLeft</span><span class="o">.</span><span class="n">setSizePolicy</span><span class="p">(</span><span class="n">QSizePolicy</span><span class="o">.</span><span class="n">Ignored</span><span class="p">,</span> <span class="n">QSizePolicy</span><span class="o">.</span><span class="n">Ignored</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">imageLabelLeft</span><span class="o">.</span><span class="n">setScaledContents</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">scrollAreaLeft</span> <span class="o">=</span> <span class="n">QScrollArea</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">scrollAreaLeft</span><span class="o">.</span><span class="n">setBackgroundRole</span><span class="p">(</span><span class="n">QPalette</span><span class="o">.</span><span class="n">Dark</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">scrollAreaLeft</span><span class="o">.</span><span class="n">setWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">imageLabelLeft</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">scrollAreaLeft</span><span class="o">.</span><span class="n">setVisible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">imageLabelRight</span> <span class="o">=</span> <span class="n">QLabel</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">imageLabelRight</span><span class="o">.</span><span class="n">setBackgroundRole</span><span class="p">(</span><span class="n">QPalette</span><span class="o">.</span><span class="n">Base</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">imageLabelRight</span><span class="o">.</span><span class="n">setSizePolicy</span><span class="p">(</span><span class="n">QSizePolicy</span><span class="o">.</span><span class="n">Ignored</span><span class="p">,</span> <span class="n">QSizePolicy</span><span class="o">.</span><span class="n">Ignored</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">imageLabelRight</span><span class="o">.</span><span class="n">setScaledContents</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">scrollAreaRight</span> <span class="o">=</span> <span class="n">QScrollArea</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">scrollAreaRight</span><span class="o">.</span><span class="n">setBackgroundRole</span><span class="p">(</span><span class="n">QPalette</span><span class="o">.</span><span class="n">Dark</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">scrollAreaRight</span><span class="o">.</span><span class="n">setWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">imageLabelRight</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">scrollAreaRight</span><span class="o">.</span><span class="n">setVisible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">centralWidget</span> <span class="o">=</span> <span class="n">QWidget</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">layout</span> <span class="o">=</span> <span class="n">QHBoxLayout</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">centralWidget</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">scrollAreaLeft</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">scrollAreaRight</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">scrollAreaLeft</span><span class="o">.</span><span class="n">verticalScrollBar</span><span class="p">()</span><span class="o">.</span><span class="n">valueChanged</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">scrollAreaRight</span><span class="o">.</span><span class="n">verticalScrollBar</span><span class="p">()</span><span class="o">.</span><span class="n">setValue</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">scrollAreaLeft</span><span class="o">.</span><span class="n">horizontalScrollBar</span><span class="p">()</span><span class="o">.</span><span class="n">valueChanged</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">scrollAreaRight</span><span class="o">.</span><span class="n">horizontalScrollBar</span><span class="p">()</span><span class="o">.</span><span class="n">setValue</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">scrollAreaRight</span><span class="o">.</span><span class="n">verticalScrollBar</span><span class="p">()</span><span class="o">.</span><span class="n">valueChanged</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">scrollAreaLeft</span><span class="o">.</span><span class="n">verticalScrollBar</span><span class="p">()</span><span class="o">.</span><span class="n">setValue</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">scrollAreaRight</span><span class="o">.</span><span class="n">horizontalScrollBar</span><span class="p">()</span><span class="o">.</span><span class="n">valueChanged</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">scrollAreaLeft</span><span class="o">.</span><span class="n">horizontalScrollBar</span><span class="p">()</span><span class="o">.</span><span class="n">setValue</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">scrollAreaLeft</span><span class="o">.</span><span class="n">mouseMoveEvent</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mouseMoveEventLeft</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">scrollAreaLeft</span><span class="o">.</span><span class="n">mousePressEvent</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mousePressEventLeft</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">scrollAreaLeft</span><span class="o">.</span><span class="n">mouseReleaseEvent</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mouseReleaseEventLeft</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">scrollAreaRight</span><span class="o">.</span><span class="n">mouseMoveEvent</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mouseMoveEventRight</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">scrollAreaRight</span><span class="o">.</span><span class="n">mousePressEvent</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mousePressEventRight</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">scrollAreaRight</span><span class="o">.</span><span class="n">mouseReleaseEvent</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mouseReleaseEventRight</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">imageLabelLeft</span><span class="o">.</span><span class="n">setCursor</span><span class="p">(</span><span class="n">Qt</span><span class="o">.</span><span class="n">OpenHandCursor</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">imageLabelRight</span><span class="o">.</span><span class="n">setCursor</span><span class="p">(</span><span class="n">Qt</span><span class="o">.</span><span class="n">OpenHandCursor</span><span class="p">)</span>
+
+<div class="viewcode-block" id="QImageViewSync.mousePressEventLeft"><a class="viewcode-back" href="../test.html#test.QImageViewSync.mousePressEventLeft">[docs]</a>    <span class="k">def</span> <span class="nf">mousePressEventLeft</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pressed</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">imageLabelLeft</span><span class="o">.</span><span class="n">setCursor</span><span class="p">(</span><span class="n">Qt</span><span class="o">.</span><span class="n">ClosedHandCursor</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">initialPosX</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">scrollAreaLeft</span><span class="o">.</span><span class="n">horizontalScrollBar</span><span class="p">()</span><span class="o">.</span><span class="n">value</span><span class="p">()</span> <span class="o">+</span> <span class="n">event</span><span class="o">.</span><span class="n">pos</span><span class="p">()</span><span class="o">.</span><span class="n">x</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">initialPosY</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">scrollAreaLeft</span><span class="o">.</span><span class="n">verticalScrollBar</span><span class="p">()</span><span class="o">.</span><span class="n">value</span><span class="p">()</span> <span class="o">+</span> <span class="n">event</span><span class="o">.</span><span class="n">pos</span><span class="p">()</span><span class="o">.</span><span class="n">y</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="QImageViewSync.mouseReleaseEventLeft"><a class="viewcode-back" href="../test.html#test.QImageViewSync.mouseReleaseEventLeft">[docs]</a>    <span class="k">def</span> <span class="nf">mouseReleaseEventLeft</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pressed</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">imageLabelLeft</span><span class="o">.</span><span class="n">setCursor</span><span class="p">(</span><span class="n">Qt</span><span class="o">.</span><span class="n">OpenHandCursor</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">initialPosX</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">scrollAreaLeft</span><span class="o">.</span><span class="n">horizontalScrollBar</span><span class="p">()</span><span class="o">.</span><span class="n">value</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">initialPosY</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">scrollAreaLeft</span><span class="o">.</span><span class="n">verticalScrollBar</span><span class="p">()</span><span class="o">.</span><span class="n">value</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="QImageViewSync.mouseMoveEventLeft"><a class="viewcode-back" href="../test.html#test.QImageViewSync.mouseMoveEventLeft">[docs]</a>    <span class="k">def</span> <span class="nf">mouseMoveEventLeft</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">pressed</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">scrollAreaLeft</span><span class="o">.</span><span class="n">horizontalScrollBar</span><span class="p">()</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">initialPosX</span> <span class="o">-</span> <span class="n">event</span><span class="o">.</span><span class="n">pos</span><span class="p">()</span><span class="o">.</span><span class="n">x</span><span class="p">())</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">scrollAreaLeft</span><span class="o">.</span><span class="n">verticalScrollBar</span><span class="p">()</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">initialPosY</span> <span class="o">-</span> <span class="n">event</span><span class="o">.</span><span class="n">pos</span><span class="p">()</span><span class="o">.</span><span class="n">y</span><span class="p">())</span></div>
+
+<div class="viewcode-block" id="QImageViewSync.mousePressEventRight"><a class="viewcode-back" href="../test.html#test.QImageViewSync.mousePressEventRight">[docs]</a>    <span class="k">def</span> <span class="nf">mousePressEventRight</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pressed</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">imageLabelRight</span><span class="o">.</span><span class="n">setCursor</span><span class="p">(</span><span class="n">Qt</span><span class="o">.</span><span class="n">ClosedHandCursor</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">initialPosX</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">scrollAreaRight</span><span class="o">.</span><span class="n">horizontalScrollBar</span><span class="p">()</span><span class="o">.</span><span class="n">value</span><span class="p">()</span> <span class="o">+</span> <span class="n">event</span><span class="o">.</span><span class="n">pos</span><span class="p">()</span><span class="o">.</span><span class="n">x</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">initialPosY</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">scrollAreaRight</span><span class="o">.</span><span class="n">verticalScrollBar</span><span class="p">()</span><span class="o">.</span><span class="n">value</span><span class="p">()</span> <span class="o">+</span> <span class="n">event</span><span class="o">.</span><span class="n">pos</span><span class="p">()</span><span class="o">.</span><span class="n">y</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="QImageViewSync.mouseReleaseEventRight"><a class="viewcode-back" href="../test.html#test.QImageViewSync.mouseReleaseEventRight">[docs]</a>    <span class="k">def</span> <span class="nf">mouseReleaseEventRight</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pressed</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">imageLabelRight</span><span class="o">.</span><span class="n">setCursor</span><span class="p">(</span><span class="n">Qt</span><span class="o">.</span><span class="n">OpenHandCursor</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">initialPosX</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">scrollAreaRight</span><span class="o">.</span><span class="n">horizontalScrollBar</span><span class="p">()</span><span class="o">.</span><span class="n">value</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">initialPosY</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">scrollAreaRight</span><span class="o">.</span><span class="n">verticalScrollBar</span><span class="p">()</span><span class="o">.</span><span class="n">value</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="QImageViewSync.mouseMoveEventRight"><a class="viewcode-back" href="../test.html#test.QImageViewSync.mouseMoveEventRight">[docs]</a>    <span class="k">def</span> <span class="nf">mouseMoveEventRight</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">pressed</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">scrollAreaRight</span><span class="o">.</span><span class="n">horizontalScrollBar</span><span class="p">()</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">initialPosX</span> <span class="o">-</span> <span class="n">event</span><span class="o">.</span><span class="n">pos</span><span class="p">()</span><span class="o">.</span><span class="n">x</span><span class="p">())</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">scrollAreaRight</span><span class="o">.</span><span class="n">verticalScrollBar</span><span class="p">()</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">initialPosY</span> <span class="o">-</span> <span class="n">event</span><span class="o">.</span><span class="n">pos</span><span class="p">()</span><span class="o">.</span><span class="n">y</span><span class="p">())</span></div>
+
+<div class="viewcode-block" id="QImageViewSync.open"><a class="viewcode-back" href="../test.html#test.QImageViewSync.open">[docs]</a>    <span class="k">def</span> <span class="nf">open</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">options</span> <span class="o">=</span> <span class="n">QFileDialog</span><span class="o">.</span><span class="n">Options</span><span class="p">()</span>
+        <span class="c1"># fileName = QFileDialog.getOpenFileName(self, &quot;Open File&quot;, QDir.currentPath())</span>
+        <span class="n">fileName</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">QFileDialog</span><span class="o">.</span><span class="n">getOpenFileName</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;QFileDialog.getOpenFileName()&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+                                                  <span class="s1">&#39;Images (*.png *.jpeg *.jpg *.bmp *.gif)&#39;</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="n">options</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">fileName</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">fileName</span><span class="p">)</span>
+            <span class="n">image</span> <span class="o">=</span> <span class="n">QImage</span><span class="p">(</span><span class="n">fileName</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">image</span><span class="o">.</span><span class="n">isNull</span><span class="p">():</span>
+                <span class="n">QMessageBox</span><span class="o">.</span><span class="n">information</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;Image Viewer&quot;</span><span class="p">,</span> <span class="s2">&quot;Cannot load </span><span class="si">%s</span><span class="s2">.&quot;</span> <span class="o">%</span> <span class="n">fileName</span><span class="p">)</span>
+                <span class="k">return</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">imageLabelLeft</span><span class="o">.</span><span class="n">setPixmap</span><span class="p">(</span><span class="n">QPixmap</span><span class="o">.</span><span class="n">fromImage</span><span class="p">(</span><span class="n">image</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">imageLabelRight</span><span class="o">.</span><span class="n">setPixmap</span><span class="p">(</span><span class="n">QPixmap</span><span class="o">.</span><span class="n">fromImage</span><span class="p">(</span><span class="n">image</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">scaleFactor</span> <span class="o">=</span> <span class="mf">1.0</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">scrollAreaLeft</span><span class="o">.</span><span class="n">setVisible</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">scrollAreaRight</span><span class="o">.</span><span class="n">setVisible</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">window</span><span class="o">.</span><span class="n">printLeftAct</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">window</span><span class="o">.</span><span class="n">printRightAct</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">window</span><span class="o">.</span><span class="n">fitToWindowAct</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">updateActions</span><span class="p">()</span>
+
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">window</span><span class="o">.</span><span class="n">fitToWindowAct</span><span class="o">.</span><span class="n">isChecked</span><span class="p">():</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">imageLabelLeft</span><span class="o">.</span><span class="n">adjustSize</span><span class="p">()</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">imageLabelRight</span><span class="o">.</span><span class="n">adjustSize</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="QImageViewSync.openLeft"><a class="viewcode-back" href="../test.html#test.QImageViewSync.openLeft">[docs]</a>    <span class="k">def</span> <span class="nf">openLeft</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">options</span> <span class="o">=</span> <span class="n">QFileDialog</span><span class="o">.</span><span class="n">Options</span><span class="p">()</span>
+        <span class="c1"># fileName = QFileDialog.getOpenFileName(self, &quot;Open File&quot;, QDir.currentPath())</span>
+        <span class="n">fileName</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">QFileDialog</span><span class="o">.</span><span class="n">getOpenFileName</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;QFileDialog.getOpenFileName()&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+                                                  <span class="s1">&#39;Images (*.png *.jpeg *.jpg *.bmp *.gif)&#39;</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="n">options</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">fileName</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">fileName</span><span class="p">)</span>
+            <span class="n">image</span> <span class="o">=</span> <span class="n">QImage</span><span class="p">(</span><span class="n">fileName</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">image</span><span class="o">.</span><span class="n">isNull</span><span class="p">():</span>
+                <span class="n">QMessageBox</span><span class="o">.</span><span class="n">information</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;Image Viewer&quot;</span><span class="p">,</span> <span class="s2">&quot;Cannot load </span><span class="si">%s</span><span class="s2">.&quot;</span> <span class="o">%</span> <span class="n">fileName</span><span class="p">)</span>
+                <span class="k">return</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">imageLabelLeft</span><span class="o">.</span><span class="n">setPixmap</span><span class="p">(</span><span class="n">QPixmap</span><span class="o">.</span><span class="n">fromImage</span><span class="p">(</span><span class="n">image</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">scaleFactor</span> <span class="o">=</span> <span class="mf">1.0</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">scrollAreaLeft</span><span class="o">.</span><span class="n">setVisible</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">window</span><span class="o">.</span><span class="n">printLeftAct</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">window</span><span class="o">.</span><span class="n">fitToWindowAct</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">updateActions</span><span class="p">()</span>
+
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">window</span><span class="o">.</span><span class="n">fitToWindowAct</span><span class="o">.</span><span class="n">isChecked</span><span class="p">():</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">imageLabelLeft</span><span class="o">.</span><span class="n">adjustSize</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="QImageViewSync.openRight"><a class="viewcode-back" href="../test.html#test.QImageViewSync.openRight">[docs]</a>    <span class="k">def</span> <span class="nf">openRight</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">options</span> <span class="o">=</span> <span class="n">QFileDialog</span><span class="o">.</span><span class="n">Options</span><span class="p">()</span>
+        <span class="c1"># fileName = QFileDialog.getOpenFileName(self, &quot;Open File&quot;, QDir.currentPath())</span>
+        <span class="n">fileName</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">QFileDialog</span><span class="o">.</span><span class="n">getOpenFileName</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;QFileDialog.getOpenFileName()&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+                                                  <span class="s1">&#39;Images (*.png *.jpeg *.jpg *.bmp *.gif)&#39;</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="n">options</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">fileName</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">fileName</span><span class="p">)</span>
+            <span class="n">image</span> <span class="o">=</span> <span class="n">QImage</span><span class="p">(</span><span class="n">fileName</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">image</span><span class="o">.</span><span class="n">isNull</span><span class="p">():</span>
+                <span class="n">QMessageBox</span><span class="o">.</span><span class="n">information</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;Image Viewer&quot;</span><span class="p">,</span> <span class="s2">&quot;Cannot load </span><span class="si">%s</span><span class="s2">.&quot;</span> <span class="o">%</span> <span class="n">fileName</span><span class="p">)</span>
+                <span class="k">return</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">imageLabelRight</span><span class="o">.</span><span class="n">setPixmap</span><span class="p">(</span><span class="n">QPixmap</span><span class="o">.</span><span class="n">fromImage</span><span class="p">(</span><span class="n">image</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">scaleFactor</span> <span class="o">=</span> <span class="mf">1.0</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">scrollAreaRight</span><span class="o">.</span><span class="n">setVisible</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">window</span><span class="o">.</span><span class="n">printRightAct</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">window</span><span class="o">.</span><span class="n">fitToWindowAct</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">updateActions</span><span class="p">()</span>
+
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">window</span><span class="o">.</span><span class="n">fitToWindowAct</span><span class="o">.</span><span class="n">isChecked</span><span class="p">():</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">imageLabelRight</span><span class="o">.</span><span class="n">adjustSize</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="QImageViewSync.printLeft"><a class="viewcode-back" href="../test.html#test.QImageViewSync.printLeft">[docs]</a>    <span class="k">def</span> <span class="nf">printLeft</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">dialog</span> <span class="o">=</span> <span class="n">QPrintDialog</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">printer</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">dialog</span><span class="o">.</span><span class="n">exec_</span><span class="p">():</span>
+            <span class="n">painter</span> <span class="o">=</span> <span class="n">QPainter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">printer</span><span class="p">)</span>
+            <span class="n">rect</span> <span class="o">=</span> <span class="n">painter</span><span class="o">.</span><span class="n">viewport</span><span class="p">()</span>
+            <span class="n">size</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">imageLabelLeft</span><span class="o">.</span><span class="n">pixmap</span><span class="p">()</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+            <span class="n">size</span><span class="o">.</span><span class="n">scale</span><span class="p">(</span><span class="n">rect</span><span class="o">.</span><span class="n">size</span><span class="p">(),</span> <span class="n">Qt</span><span class="o">.</span><span class="n">KeepAspectRatio</span><span class="p">)</span>
+            <span class="n">painter</span><span class="o">.</span><span class="n">setViewport</span><span class="p">(</span><span class="n">rect</span><span class="o">.</span><span class="n">x</span><span class="p">(),</span> <span class="n">rect</span><span class="o">.</span><span class="n">y</span><span class="p">(),</span> <span class="n">size</span><span class="o">.</span><span class="n">width</span><span class="p">(),</span> <span class="n">size</span><span class="o">.</span><span class="n">height</span><span class="p">())</span>
+            <span class="n">painter</span><span class="o">.</span><span class="n">setWindow</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">imageLabelLeft</span><span class="o">.</span><span class="n">pixmap</span><span class="p">()</span><span class="o">.</span><span class="n">rect</span><span class="p">())</span>
+            <span class="n">painter</span><span class="o">.</span><span class="n">drawPixmap</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">imageLabelLeft</span><span class="o">.</span><span class="n">pixmap</span><span class="p">())</span></div>
+
+<div class="viewcode-block" id="QImageViewSync.printRight"><a class="viewcode-back" href="../test.html#test.QImageViewSync.printRight">[docs]</a>    <span class="k">def</span> <span class="nf">printRight</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">dialog</span> <span class="o">=</span> <span class="n">QPrintDialog</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">printer</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">dialog</span><span class="o">.</span><span class="n">exec_</span><span class="p">():</span>
+            <span class="n">painter</span> <span class="o">=</span> <span class="n">QPainter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">printer</span><span class="p">)</span>
+            <span class="n">rect</span> <span class="o">=</span> <span class="n">painter</span><span class="o">.</span><span class="n">viewport</span><span class="p">()</span>
+            <span class="n">size</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">imageLabelRight</span><span class="o">.</span><span class="n">pixmap</span><span class="p">()</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+            <span class="n">size</span><span class="o">.</span><span class="n">scale</span><span class="p">(</span><span class="n">rect</span><span class="o">.</span><span class="n">size</span><span class="p">(),</span> <span class="n">Qt</span><span class="o">.</span><span class="n">KeepAspectRatio</span><span class="p">)</span>
+            <span class="n">painter</span><span class="o">.</span><span class="n">setViewport</span><span class="p">(</span><span class="n">rect</span><span class="o">.</span><span class="n">x</span><span class="p">(),</span> <span class="n">rect</span><span class="o">.</span><span class="n">y</span><span class="p">(),</span> <span class="n">size</span><span class="o">.</span><span class="n">width</span><span class="p">(),</span> <span class="n">size</span><span class="o">.</span><span class="n">height</span><span class="p">())</span>
+            <span class="n">painter</span><span class="o">.</span><span class="n">setWindow</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">imageLabelRight</span><span class="o">.</span><span class="n">pixmap</span><span class="p">()</span><span class="o">.</span><span class="n">rect</span><span class="p">())</span>
+            <span class="n">painter</span><span class="o">.</span><span class="n">drawPixmap</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">imageLabelRight</span><span class="o">.</span><span class="n">pixmap</span><span class="p">())</span></div>
+
+<div class="viewcode-block" id="QImageViewSync.zoomIn"><a class="viewcode-back" href="../test.html#test.QImageViewSync.zoomIn">[docs]</a>    <span class="k">def</span> <span class="nf">zoomIn</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">scaleImage</span><span class="p">(</span><span class="mf">1.25</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="QImageViewSync.zoomOut"><a class="viewcode-back" href="../test.html#test.QImageViewSync.zoomOut">[docs]</a>    <span class="k">def</span> <span class="nf">zoomOut</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">scaleImage</span><span class="p">(</span><span class="mf">0.8</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="QImageViewSync.normalSize"><a class="viewcode-back" href="../test.html#test.QImageViewSync.normalSize">[docs]</a>    <span class="k">def</span> <span class="nf">normalSize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">imageLabelLeft</span><span class="o">.</span><span class="n">adjustSize</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">imageLabelRight</span><span class="o">.</span><span class="n">adjustSize</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">scaleFactor</span> <span class="o">=</span> <span class="mf">1.0</span></div>
+
+<div class="viewcode-block" id="QImageViewSync.about"><a class="viewcode-back" href="../test.html#test.QImageViewSync.about">[docs]</a>    <span class="k">def</span> <span class="nf">about</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">QMessageBox</span><span class="o">.</span><span class="n">about</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;Image View in the Main Window&quot;</span><span class="p">,</span>
+                          <span class="s2">&quot;&lt;p&gt;The &lt;b&gt;Image Viewer&lt;/b&gt; example shows how to combine &quot;</span>
+                          <span class="s2">&quot;QLabel and QScrollArea to display an image. QLabel is &quot;</span>
+                          <span class="s2">&quot;typically used for displaying text, but it can also display &quot;</span>
+                          <span class="s2">&quot;an image. QScrollArea provides a scrolling view around &quot;</span>
+                          <span class="s2">&quot;another widget. If the child widget exceeds the size of the &quot;</span>
+                          <span class="s2">&quot;frame, QScrollArea automatically provides scroll bars.&lt;/p&gt;&quot;</span>
+                          <span class="s2">&quot;&lt;p&gt;The example demonstrates how QLabel&#39;s ability to scale &quot;</span>
+                          <span class="s2">&quot;its contents (QLabel.scaledContents), and QScrollArea&#39;s &quot;</span>
+                          <span class="s2">&quot;ability to automatically resize its contents &quot;</span>
+                          <span class="s2">&quot;(QScrollArea.widgetResizable), can be used to implement &quot;</span>
+                          <span class="s2">&quot;zooming and scaling features.&lt;/p&gt;&quot;</span>
+                          <span class="s2">&quot;&lt;p&gt;In addition the example shows how to use QPainter to &quot;</span>
+                          <span class="s2">&quot;print an image.&lt;/p&gt;&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="QImageViewSync.updateActions"><a class="viewcode-back" href="../test.html#test.QImageViewSync.updateActions">[docs]</a>    <span class="k">def</span> <span class="nf">updateActions</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">window</span><span class="o">.</span><span class="n">zoomInAct</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">window</span><span class="o">.</span><span class="n">fitToWindowAct</span><span class="o">.</span><span class="n">isChecked</span><span class="p">())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">window</span><span class="o">.</span><span class="n">zoomOutAct</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">window</span><span class="o">.</span><span class="n">fitToWindowAct</span><span class="o">.</span><span class="n">isChecked</span><span class="p">())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">window</span><span class="o">.</span><span class="n">normalSizeAct</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">window</span><span class="o">.</span><span class="n">fitToWindowAct</span><span class="o">.</span><span class="n">isChecked</span><span class="p">())</span></div>
+
+<div class="viewcode-block" id="QImageViewSync.scaleImage"><a class="viewcode-back" href="../test.html#test.QImageViewSync.scaleImage">[docs]</a>    <span class="k">def</span> <span class="nf">scaleImage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">factor</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">scaleFactor</span> <span class="o">*=</span> <span class="n">factor</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">imageLabelLeft</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">scaleFactor</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">imageLabelLeft</span><span class="o">.</span><span class="n">pixmap</span><span class="p">()</span><span class="o">.</span><span class="n">size</span><span class="p">())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">imageLabelRight</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">scaleFactor</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">imageLabelRight</span><span class="o">.</span><span class="n">pixmap</span><span class="p">()</span><span class="o">.</span><span class="n">size</span><span class="p">())</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">adjustScrollBar</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">scrollAreaLeft</span><span class="o">.</span><span class="n">horizontalScrollBar</span><span class="p">(),</span> <span class="n">factor</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">adjustScrollBar</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">scrollAreaLeft</span><span class="o">.</span><span class="n">verticalScrollBar</span><span class="p">(),</span> <span class="n">factor</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">adjustScrollBar</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">scrollAreaRight</span><span class="o">.</span><span class="n">horizontalScrollBar</span><span class="p">(),</span> <span class="n">factor</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">adjustScrollBar</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">scrollAreaRight</span><span class="o">.</span><span class="n">verticalScrollBar</span><span class="p">(),</span> <span class="n">factor</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">window</span><span class="o">.</span><span class="n">zoomInAct</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">scaleFactor</span> <span class="o">&lt;</span> <span class="mf">3.0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">window</span><span class="o">.</span><span class="n">zoomOutAct</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">scaleFactor</span> <span class="o">&gt;</span> <span class="mf">0.333</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="QImageViewSync.adjustScrollBar"><a class="viewcode-back" href="../test.html#test.QImageViewSync.adjustScrollBar">[docs]</a>    <span class="k">def</span> <span class="nf">adjustScrollBar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">scrollBar</span><span class="p">,</span> <span class="n">factor</span><span class="p">):</span>
+        <span class="n">scrollBar</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">factor</span> <span class="o">*</span> <span class="n">scrollBar</span><span class="o">.</span><span class="n">value</span><span class="p">()</span>
+                               <span class="o">+</span> <span class="p">((</span><span class="n">factor</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">scrollBar</span><span class="o">.</span><span class="n">pageStep</span><span class="p">()</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)))</span></div></div>
+
+
+<div class="viewcode-block" id="MainWindow"><a class="viewcode-back" href="../test.html#test.MainWindow">[docs]</a><span class="k">class</span> <span class="nc">MainWindow</span><span class="p">(</span><span class="n">QMainWindow</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">imageViewSync</span> <span class="o">=</span> <span class="n">QImageViewSync</span><span class="p">(</span><span class="n">window</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setCentralWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">imageViewSync</span><span class="o">.</span><span class="n">centralWidget</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">createActions</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">imageViewSync</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">createMenus</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">setWindowTitle</span><span class="p">(</span><span class="s2">&quot;Image View Sync in the Main Window&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="mi">1200</span><span class="p">,</span> <span class="mi">600</span><span class="p">)</span>
+
+<div class="viewcode-block" id="MainWindow.fitToWindow"><a class="viewcode-back" href="../test.html#test.MainWindow.fitToWindow">[docs]</a>    <span class="k">def</span> <span class="nf">fitToWindow</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">fitToWindow</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fitToWindowAct</span><span class="o">.</span><span class="n">isChecked</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">imageViewSync</span><span class="o">.</span><span class="n">scrollAreaLeft</span><span class="o">.</span><span class="n">setWidgetResizable</span><span class="p">(</span><span class="n">fitToWindow</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">imageViewSync</span><span class="o">.</span><span class="n">scrollAreaRight</span><span class="o">.</span><span class="n">setWidgetResizable</span><span class="p">(</span><span class="n">fitToWindow</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">fitToWindow</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">imageViewSync</span><span class="o">.</span><span class="n">normalSize</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">imageViewSync</span><span class="o">.</span><span class="n">updateActions</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="MainWindow.createActions"><a class="viewcode-back" href="../test.html#test.MainWindow.createActions">[docs]</a>    <span class="k">def</span> <span class="nf">createActions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">view</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">openLeftAct</span> <span class="o">=</span> <span class="n">QAction</span><span class="p">(</span><span class="s2">&quot;&amp;Open Left...&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="p">,</span> <span class="n">shortcut</span><span class="o">=</span><span class="s2">&quot;Ctrl+O&quot;</span><span class="p">,</span> <span class="n">triggered</span><span class="o">=</span><span class="n">view</span><span class="o">.</span><span class="n">openLeft</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">openRightAct</span> <span class="o">=</span> <span class="n">QAction</span><span class="p">(</span><span class="s2">&quot;&amp;Open Right...&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="p">,</span> <span class="n">shortcut</span><span class="o">=</span><span class="s2">&quot;Shift+Ctrl+O&quot;</span><span class="p">,</span> <span class="n">triggered</span><span class="o">=</span><span class="n">view</span><span class="o">.</span><span class="n">openRight</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">printLeftAct</span> <span class="o">=</span> <span class="n">QAction</span><span class="p">(</span><span class="s2">&quot;&amp;Print Left...&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="p">,</span> <span class="n">shortcut</span><span class="o">=</span><span class="s2">&quot;Ctrl+P&quot;</span><span class="p">,</span> <span class="n">enabled</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">triggered</span><span class="o">=</span><span class="n">view</span><span class="o">.</span><span class="n">printLeft</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">printRightAct</span> <span class="o">=</span> <span class="n">QAction</span><span class="p">(</span><span class="s2">&quot;&amp;Print Right...&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="p">,</span>
+                                     <span class="n">shortcut</span><span class="o">=</span><span class="s2">&quot;Shift+Ctrl+P&quot;</span><span class="p">,</span> <span class="n">enabled</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">triggered</span><span class="o">=</span><span class="n">view</span><span class="o">.</span><span class="n">printRight</span><span class="p">)</span>
+        <span class="c1"># self.exitAct = QAction(&quot;E&amp;xit&quot;, self, shortcut=&quot;Ctrl+Q&quot;, triggered=image.close)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">zoomInAct</span> <span class="o">=</span> <span class="n">QAction</span><span class="p">(</span><span class="s2">&quot;Zoom &amp;In (25%)&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="p">,</span> <span class="n">shortcut</span><span class="o">=</span><span class="s2">&quot;Ctrl++&quot;</span><span class="p">,</span> <span class="n">enabled</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">triggered</span><span class="o">=</span><span class="n">view</span><span class="o">.</span><span class="n">zoomIn</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">zoomOutAct</span> <span class="o">=</span> <span class="n">QAction</span><span class="p">(</span><span class="s2">&quot;Zoom &amp;Out (25%)&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="p">,</span> <span class="n">shortcut</span><span class="o">=</span><span class="s2">&quot;Ctrl+-&quot;</span><span class="p">,</span> <span class="n">enabled</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">triggered</span><span class="o">=</span><span class="n">view</span><span class="o">.</span><span class="n">zoomOut</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">normalSizeAct</span> <span class="o">=</span> <span class="n">QAction</span><span class="p">(</span><span class="s2">&quot;&amp;Normal Size&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="p">,</span> <span class="n">shortcut</span><span class="o">=</span><span class="s2">&quot;Ctrl+S&quot;</span><span class="p">,</span> <span class="n">enabled</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">triggered</span><span class="o">=</span><span class="n">view</span><span class="o">.</span><span class="n">normalSize</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fitToWindowAct</span> <span class="o">=</span> <span class="n">QAction</span><span class="p">(</span><span class="s2">&quot;&amp;Fit to Window&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="p">,</span>
+                                      <span class="n">enabled</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">checkable</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">shortcut</span><span class="o">=</span><span class="s2">&quot;Ctrl+F&quot;</span><span class="p">,</span> <span class="n">triggered</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">fitToWindow</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">aboutAct</span> <span class="o">=</span> <span class="n">QAction</span><span class="p">(</span><span class="s2">&quot;&amp;About&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="p">,</span> <span class="n">triggered</span><span class="o">=</span><span class="n">view</span><span class="o">.</span><span class="n">about</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">aboutQtAct</span> <span class="o">=</span> <span class="n">QAction</span><span class="p">(</span><span class="s2">&quot;About &amp;Qt&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="p">,</span> <span class="n">triggered</span><span class="o">=</span><span class="n">qApp</span><span class="o">.</span><span class="n">aboutQt</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MainWindow.createMenus"><a class="viewcode-back" href="../test.html#test.MainWindow.createMenus">[docs]</a>    <span class="k">def</span> <span class="nf">createMenus</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fileMenu</span> <span class="o">=</span> <span class="n">QMenu</span><span class="p">(</span><span class="s2">&quot;&amp;File&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fileMenu</span><span class="o">.</span><span class="n">addAction</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">openLeftAct</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fileMenu</span><span class="o">.</span><span class="n">addAction</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">openRightAct</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fileMenu</span><span class="o">.</span><span class="n">addSeparator</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fileMenu</span><span class="o">.</span><span class="n">addAction</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">printLeftAct</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fileMenu</span><span class="o">.</span><span class="n">addAction</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">printRightAct</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fileMenu</span><span class="o">.</span><span class="n">addSeparator</span><span class="p">()</span>
+        <span class="c1"># self.fileMenu.addAction(self.exitAct)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">viewMenu</span> <span class="o">=</span> <span class="n">QMenu</span><span class="p">(</span><span class="s2">&quot;&amp;View&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">viewMenu</span><span class="o">.</span><span class="n">addAction</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">zoomInAct</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">viewMenu</span><span class="o">.</span><span class="n">addAction</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">zoomOutAct</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">viewMenu</span><span class="o">.</span><span class="n">addAction</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">normalSizeAct</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">viewMenu</span><span class="o">.</span><span class="n">addSeparator</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">viewMenu</span><span class="o">.</span><span class="n">addAction</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fitToWindowAct</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">helpMenu</span> <span class="o">=</span> <span class="n">QMenu</span><span class="p">(</span><span class="s2">&quot;&amp;Help&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">helpMenu</span><span class="o">.</span><span class="n">addAction</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">aboutAct</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">helpMenu</span><span class="o">.</span><span class="n">addAction</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">aboutQtAct</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">menuBar</span><span class="p">()</span><span class="o">.</span><span class="n">addMenu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fileMenu</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">menuBar</span><span class="p">()</span><span class="o">.</span><span class="n">addMenu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">viewMenu</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">menuBar</span><span class="p">()</span><span class="o">.</span><span class="n">addMenu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">helpMenu</span><span class="p">)</span></div></div>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">sys</span>
+    <span class="kn">from</span> <span class="nn">PyQt5.QtWidgets</span> <span class="kn">import</span> <span class="n">QApplication</span>
+
+    <span class="n">app</span> <span class="o">=</span> <span class="n">QApplication</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
+    <span class="n">win</span> <span class="o">=</span> <span class="n">MainWindow</span><span class="p">()</span>
+    <span class="n">win</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">exec_</span><span class="p">())</span>
+
+
+</pre></div>
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2023, Srihari Thyagarajan
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer no-toc">
+      
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/scripts/furo.js"></script>
+    </body>
+</html>

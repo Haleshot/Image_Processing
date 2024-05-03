@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Image_Processing_Options</class>
+ <widget class="QDialog" name="Image_Processing_Options">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1201</width>
+    <height>801</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QPushButton" name="DownSampling_Button">
+   <property name="geometry">
+    <rect>
+     <x>170</x>
+     <y>180</y>
+     <width>211</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 16pt &quot;MS Shell Dlg 2&quot;;
+background-color: rgb(0, 255, 0);
+</string>
+   </property>
+   <property name="text">
+    <string>Down Sampling</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="UpSampling_Button">
+   <property name="geometry">
+    <rect>
+     <x>170</x>
+     <y>310</y>
+     <width>211</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 16pt &quot;MS Shell Dlg 2&quot;;
+background-color: rgb(0, 255, 0);
+</string>
+   </property>
+   <property name="text">
+    <string>Up Sampling</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="Negative_Button">
+   <property name="geometry">
+    <rect>
+     <x>170</x>
+     <y>430</y>
+     <width>211</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 11.5pt &quot;MS Shell Dlg 2&quot;;
+background-color: rgb(0, 255, 0);
+</string>
+   </property>
+   <property name="text">
+    <string>Negative of the Image</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="Threshold_With_Button">
+   <property name="geometry">
+    <rect>
+     <x>170</x>
+     <y>550</y>
+     <width>211</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 9pt &quot;MS Shell Dlg 2&quot;;
+background-color: rgb(0, 255, 0);
+</string>
+   </property>
+   <property name="text">
+    <string>Thresholding with Background</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="Threshold_Without_Button">
+   <property name="geometry">
+    <rect>
+     <x>770</x>
+     <y>180</y>
+     <width>211</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 8.5pt &quot;MS Shell Dlg 2&quot;;
+background-color: rgb(0, 255, 0);
+</string>
+   </property>
+   <property name="text">
+    <string>Thresholding without Background</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="Blur_Button">
+   <property name="geometry">
+    <rect>
+     <x>770</x>
+     <y>310</y>
+     <width>211</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 16pt &quot;MS Shell Dlg 2&quot;;
+background-color: rgb(0, 255, 0);
+</string>
+   </property>
+   <property name="text">
+    <string>Apply Blurring</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="LPF_Button">
+   <property name="geometry">
+    <rect>
+     <x>770</x>
+     <y>430</y>
+     <width>211</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 16pt &quot;MS Shell Dlg 2&quot;;
+background-color: rgb(0, 255, 0);
+</string>
+   </property>
+   <property name="text">
+    <string>LPF</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="Gaussian_Button">
+   <property name="geometry">
+    <rect>
+     <x>770</x>
+     <y>550</y>
+     <width>211</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 16pt &quot;MS Shell Dlg 2&quot;;
+background-color: rgb(0, 255, 0);
+</string>
+   </property>
+   <property name="text">
+    <string>Gaussian Noise</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="Title">
+   <property name="geometry">
+    <rect>
+     <x>330</x>
+     <y>60</y>
+     <width>571</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 24pt &quot;MS Shell Dlg 2&quot;;
+</string>
+   </property>
+   <property name="text">
+    <string>Image Processing Options:</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="Facial_Feature_Detection_Button">
+   <property name="geometry">
+    <rect>
+     <x>110</x>
+     <y>660</y>
+     <width>366</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 16pt &quot;MS Shell Dlg 2&quot;;
+background-color: rgb(0, 255, 0);
+</string>
+   </property>
+   <property name="text">
+    <string>Facial Feature Detection</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="Laplace_Button">
+   <property name="geometry">
+    <rect>
+     <x>770</x>
+     <y>660</y>
+     <width>211</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 16pt &quot;MS Shell Dlg 2&quot;;
+background-color: rgb(0, 255, 0);
+</string>
+   </property>
+   <property name="text">
+    <string>Laplace Edge</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
