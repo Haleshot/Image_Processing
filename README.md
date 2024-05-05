@@ -21,7 +21,7 @@
     <li><a href="#Conclusion"> Conclusion </a></li>
     <li><a href="#Contributing">  Contributing </a></li>
     <li><a href="#ToDo">  To Do </a></li>
-    <li><a href="#Video Demo">  Video Demo </a></li>
+    <li><a href="#Video Demos">  Video Demos </a></li>
 
   </ol>
 </details>
@@ -412,6 +412,7 @@ Simple terms:
 - [ ] Improve Documentation, refine Sphinx structure and docs.
 - [ ] Add [Dep Tree visualization](https://dep-tree-explorer.vercel.app/)
 - [ ] Try creating a Release if possible, explore PyQt5 .exe format export.
+- [ ] Show directory structure of the project.
 
 ### In Progress
 
@@ -430,7 +431,7 @@ Simple terms:
 <hr>
 
 <!-- Video Demo -->
-<h2 id="Video Demoes"> Video Demoes </h2>
+<h2 id="Video Demos"> Video Demos </h2>
 <!-- 
 <p align="center"> <img src="https://media.tenor.com/hB9OTbewrikAAAAi/work-work-in-progress.gif" width="200" height="300" /> </p> -->
 The entire project demo can be seen here - https://youtu.be/O-x44AT6ylU
