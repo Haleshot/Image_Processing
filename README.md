@@ -411,6 +411,7 @@ Simple terms:
 - [ ] Refine UI more, add Video processing and Erosion/Dilation features (Feature Request).
 - [ ] Improve Documentation, refine Sphinx structure and docs.
 - [ ] Add [Dep Tree visualization](https://dep-tree-explorer.vercel.app/)
+- [ ] Try creating a Release if possible, explore PyQt5 .exe format export.
 
 ### In Progress
 
