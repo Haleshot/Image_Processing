@@ -432,8 +432,10 @@ Simple terms:
 
 <!-- Video Demo -->
 <h2 id="Video Demos"> Video Demos </h2>
+
 <!-- 
 <p align="center"> <img src="https://media.tenor.com/hB9OTbewrikAAAAi/work-work-in-progress.gif" width="200" height="300" /> </p> -->
+
 The entire project demo can be seen here - https://youtu.be/O-x44AT6ylU
 
 <li><a href="##Down Sampling"> Down Sampling </a></li>
