@@ -412,12 +412,12 @@ Simple terms:
 - [ ] Improve Documentation, refine Sphinx structure and docs.
 - [ ] Add [Dep Tree visualization](https://dep-tree-explorer.vercel.app/)
 - [ ] Try creating a Release if possible, explore PyQt5 .exe format export.
-- [ ] Show directory structure of the project.
 
 ### In Progress
 
 - [ ] Showing user, which file to run as main file - portraying user flow.
 - [ ] Update documentation and make it relevant to sphinx comment format.
+- [ ] Show directory structure of the project.
 
 ### Done ✓
 
